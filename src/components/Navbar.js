@@ -47,7 +47,7 @@ export default function Navbar() {
           </div>
           <Button className={classes.navbarBtns}>
             <LocationOn style={{ marginRight: "9px" }} />
-            <Typography>Россия</Typography>
+            <Typography>Санкт-Петербург</Typography>
           </Button>
           <Button className={classes.navbarBtns}>
             <Tune style={{ marginRight: "9px" }} />
