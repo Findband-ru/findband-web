@@ -3,8 +3,12 @@ import { fade, makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
-    marginLeft: "200px",
-    marginRight: "200px",
+    // maxWidth: 880,
+    // flexDirection: "center",
+    display: "flex",
+    justifyContent: "center",
+    // marginLeft: "200px",
+    // marginRight: "200px",
   },
   title: {
     display: "none",
@@ -56,6 +60,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#F3F3F5",
     borderRadius: "24px",
     marginLeft: "35px",
+    textTransform: "none",
   },
 }));
 

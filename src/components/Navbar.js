@@ -21,8 +21,14 @@ export default function Navbar() {
     <div className={classes.grow}>
       <AppBar
         position="static"
+        // position="relative"
         color="transparent"
-        style={{ boxShadow: "none", borderBottom: "2px solid #F3F3F5" }}
+        style={{
+          boxShadow: "none",
+          borderBottom: "2px solid #F3F3F5",
+          margin: "0 auto",
+          width: 1200,
+        }}
       >
         <Toolbar>
           <Typography className={classes.title} variant="h6" noWrap>
@@ -51,7 +57,7 @@ export default function Navbar() {
           </Button>
           <Button className={classes.navbarBtns}>
             <Tune style={{ marginRight: "9px" }} />
-            <Typography>Фильтры</Typography>
+            <Typography style={{ textTransform: "none" }}>Фильтры</Typography>
           </Button>
         </Toolbar>
       </AppBar>

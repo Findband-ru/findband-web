@@ -11,6 +11,7 @@ export default function Auth() {
         borderRadius: "26px",
         marginLeft: "180px",
         marginRight: "35px",
+        textTransform: "none",
       }}
     >
       Войти

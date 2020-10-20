@@ -16,3 +16,29 @@ export const heartIcon = {
   marginLeft: 470,
   color: "white",
 };
+
+export const playerIcon = {
+  position: "relative",
+  marginLeft: 50,
+};
+
+export const feed = {
+  display: "flex",
+  flexDirection: "column",
+  height: "100vh",
+  overflowY: "scroll",
+  paddingBottom: 100,
+  "&::-webkit-scrollbar": {
+    display: "none",
+  },
+};
+
+export const profileCard = {
+  paddingBottom: 20,
+};
+
+export const cardTitleText = {
+  fontSize: 24,
+  color: "#000",
+  fontWeight: 700,
+};

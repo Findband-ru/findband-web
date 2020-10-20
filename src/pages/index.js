@@ -1,14 +1,21 @@
 import React from "react";
 import Navbar from "../components/Navbar";
-import Sidebar from "../components/Sidebar";
+import HomePage from "../components/HomePage";
+import useStyles from "../style/sidebarStyle";
 
-function HomePage() {
+function App() {
+  const classes = useStyles();
   return (
     <div>
+      <style jsx global>{`
+        body {
+          overflow: hidden;
+        }
+      `}</style>
       <Navbar />
-      <Sidebar />
+      <HomePage />
     </div>
   );
 }
 
-export default HomePage;
+export default App;
