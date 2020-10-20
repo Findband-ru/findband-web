@@ -11,21 +11,21 @@ import Typography from "@material-ui/core/Typography";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 
-import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
-import LocationOn from "@material-ui/icons/LocationOn";
+// import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
+// import LocationOn from "@material-ui/icons/LocationOn";
 import StarBorder from "@material-ui/icons/StarBorder";
 import Telegram from "@material-ui/icons/Telegram";
 import Instagram from "@material-ui/icons/Instagram";
 import ShareIcon from "@material-ui/icons/Share";
 import Settings from "@material-ui/icons/Settings";
 
-import * as styles from "../style/profileCardStyle";
+import * as styles from "../style/feedStyle";
 
 import { firebaseProject } from "../../firebaseConfig";
 
-import Player from "../components/Player";
+// import Player from "./Player";
 
-class Profile extends React.Component {
+class FeedCards extends React.Component {
   state = {
     docProfile: null,
   };
@@ -74,11 +74,11 @@ class Profile extends React.Component {
                     title="Profile Image"
                   >
                     {/* <IconButton
-            className={classes.heartIcon}
-            aria-label="add to favorites"
-          >
-            <FavoriteBorder />
-          </IconButton> */}
+                      className={classes.heartIcon}
+                      aria-label="add to favorites"
+                    >
+                      <FavoriteBorder />
+                    </IconButton> */}
                     <IconButton
                       className={classes.heartIcon}
                       aria-label="add to favorites"
@@ -144,4 +144,4 @@ class Profile extends React.Component {
   }
 }
 
-export default withStyles(styles)(Profile);
+export default withStyles(styles)(FeedCards);

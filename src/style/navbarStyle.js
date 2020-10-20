@@ -1,14 +1,10 @@
-import { fade, makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
-    // maxWidth: 880,
-    // flexDirection: "center",
     display: "flex",
     justifyContent: "center",
-    // marginLeft: "200px",
-    // marginRight: "200px",
   },
   title: {
     display: "none",
@@ -20,11 +16,8 @@ const useStyles = makeStyles((theme) => ({
   },
   search: {
     position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    "&:hover": {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
-    },
+    borderRadius: 8,
+    backgroundColor: "#F3F3F5",
     marginRight: theme.spacing(2),
     marginLeft: 0,
     width: "100%",
@@ -55,7 +48,6 @@ const useStyles = makeStyles((theme) => ({
       width: "20ch",
     },
   },
-  /* Navbar Buttons */
   navbarBtns: {
     backgroundColor: "#F3F3F5",
     borderRadius: "24px",

@@ -21,7 +21,6 @@ export default function Navbar() {
     <div className={classes.grow}>
       <AppBar
         position="static"
-        // position="relative"
         color="transparent"
         style={{
           boxShadow: "none",
@@ -35,10 +34,7 @@ export default function Navbar() {
             Findband
           </Typography>
           <Auth />
-          <div
-            className={classes.search}
-            style={{ borderRadius: 8, backgroundColor: "#F3F3F5" }}
-          >
+          <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>

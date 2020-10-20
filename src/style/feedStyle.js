@@ -8,7 +8,9 @@ export const media = {
   maxHeight: 365,
   maxWidth: 520,
   borderRadius: 16,
-  paddingTop: "56.25%", // 16:9
+  marginLeft: 5,
+  marginRight: 5,
+  paddingTop: "50%", // 16:9
 };
 
 export const heartIcon = {
