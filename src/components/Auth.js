@@ -1,8 +1,13 @@
 import React from "react";
+import Link from "next/link";
 import { Button } from "@material-ui/core";
 import Tooltip from "@material-ui/core/Tooltip";
 
+import useStyles from "../style/firstEnterStyle";
+
 export default function Auth() {
+  const classes = useStyles();
+
   return (
     <Tooltip
       title="Регистрация позволяет выкладывать музыку, общаться с другими музыкантами и добавлять в избранное"
@@ -18,9 +23,12 @@ export default function Auth() {
           marginLeft: "180px",
           marginRight: "35px",
           textTransform: "none",
+          textDecoration: "none",
         }}
       >
-        Войти
+        <Link href="/firstEnterPage" classes={{ root: classes.textLink }}>
+          Войти
+        </Link>
       </Button>
     </Tooltip>
   );
