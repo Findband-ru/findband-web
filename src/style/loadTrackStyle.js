@@ -1,28 +1,22 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
-  mainPage: {
+  main: {
+    flexGrow: 1,
     display: "flex",
     flexDirection: "column",
+    alignItems: "center",
     justifyContent: "center",
+    margin: 0,
   },
   grow: {
     flexGrow: 1,
     flexDirection: "row",
     display: "flex",
     alignItems: "center",
-    justifyContent: "flex-end",
+    width: 800,
     boxShadow: "none",
     borderBottom: "2px solid #F3F3F5",
-    margin: "0 auto",
-    width: 800,
-  },
-  root: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    maxWidth: 800,
     margin: "0 auto",
   },
   title: {
@@ -32,43 +26,47 @@ const useStyles = makeStyles((theme) => ({
     },
     fontSize: 24,
     fontWeight: 700,
+    marginLeft: 340,
   },
-  textTitle: {
-    fontSize: 24,
-    fontWeight: 700,
-    marginTop: 40,
-  },
-  textDesclaimer: {
+  subtitle: {
     fontSize: 15,
     fontWeight: 400,
-  },
-  textButton: {
-    fontSize: 17,
-    fontWeight: 600,
     fontStyle: "normal",
-    color: "#fff",
-    textTransform: "none",
+    color: "#7C7E8F",
+    marginBottom: 24,
   },
-  phoneButton: {
-    backgroundColor: "#FA5821",
-    borderRadius: 26,
-    width: 528,
-    height: 52,
-    marginTop: 24,
-  },
-  textUnderButton: {
-    fontSize: 14,
+  skipText: {
+    fontSize: 15,
     fontWeight: 400,
     fontStyle: "normal",
-    marginTop: 12,
     color: "#7C7E8F",
+    marginLeft: 120,
   },
-  socialButtons: {
-    width: 162,
+  loadTitle: {
+    fontSize: 24,
+    fontWeight: 700,
+    fontStyle: "normal",
+    marginTop: 38,
+  },
+  block: {
+    alignItems: "center",
+    justifyContent: "center",
+    display: "flex",
+    flexDirection: "column",
+  },
+  loadButtons: {
+    color: "white",
+    borderRadius: 26,
+    textTransform: "none",
+    marginBottom: 5,
+    width: 527,
     height: 52,
-    borderRadius: 50,
-    marginRight: 20,
-    marginTop: 12,
+  },
+  buttonsText: {
+    fontSize: 17,
+    fontWeight: 400,
+    fontStyle: "normal",
+    color: "#fff",
   },
 }));
 
