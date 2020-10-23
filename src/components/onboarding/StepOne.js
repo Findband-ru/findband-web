@@ -1,19 +1,25 @@
 import React from "react";
 import Link from "next/link";
+
 import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
 
-import useStyles from "../style/firstEnterStyle";
-
 import { Button, IconButton } from "@material-ui/core";
 import Close from "@material-ui/icons/Close";
-import Facebook from "@material-ui/icons/Facebook";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFacebookF,
+  faGoogle,
+  faVk,
+} from "@fortawesome/free-brands-svg-icons";
 
-import Policy from "../components/utils/PolicyFooter";
+import Policy from "../utils/PolicyFooter";
 
-export default function FirstEnter() {
+import useStyles from "../../style/onboardingStyles/stepOneStyle";
+
+export default function StepOne(props) {
   const classes = useStyles();
-
+  console.log(props);
   return (
     <div className={classes.mainPage}>
       <AppBar className={classes.grow} position="static" color="transparent">
@@ -38,11 +44,9 @@ export default function FirstEnter() {
             добавлять их в избранное и делиться своей музыкой
           </Typography>
         </div>
-        <Link href="/mePage">
-          <Button className={classes.phoneButton}>
-            <Typography className={classes.textButton}>По телефону</Typography>
-          </Button>
-        </Link>
+        <Button className={classes.phoneButton} onClick={props.setStep}>
+          <Typography className={classes.textButton}>По телефону</Typography>
+        </Button>
         <Typography className={classes.textUnderButton}>
           или с помощью
         </Typography>
@@ -51,19 +55,19 @@ export default function FirstEnter() {
             className={classes.socialButtons}
             style={{ backgroundColor: "#4680C2" }}
           >
-            <Facebook />
+            <FontAwesomeIcon icon={faVk} size="lg" color="#fff" />
           </IconButton>
           <IconButton
             className={classes.socialButtons}
             style={{ backgroundColor: "#E7E7EB" }}
           >
-            <Facebook />
+            <FontAwesomeIcon icon={faGoogle} size="lg" />
           </IconButton>
           <IconButton
             className={classes.socialButtons}
             style={{ backgroundColor: "#007AFF" }}
           >
-            <Facebook />
+            <FontAwesomeIcon icon={faFacebookF} size="lg" color="#fff" />
           </IconButton>
         </div>
       </div>

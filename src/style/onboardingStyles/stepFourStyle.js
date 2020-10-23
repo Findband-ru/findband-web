@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
     },
     fontSize: 24,
     fontWeight: 700,
+    marginLeft: 340,
   },
   subtitle: {
     fontSize: 15,

@@ -4,12 +4,13 @@ import Link from "next/link";
 import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
 
-import Category from "../components/utils/CategoryList";
-import Policy from "../components/utils/PolicyFooter";
+import Category from "../utils/CategoryList";
+import Policy from "../utils/PolicyFooter";
 
-import useStyles from "../style/categoryPageStyle";
+import useStyles from "../../style/onboardingStyles/stepTwoThreeStyle";
+import { Button } from "@material-ui/core";
 
-export default function Me() {
+export default function StepThree(props) {
   const classes = useStyles();
 
   return (
@@ -19,13 +20,13 @@ export default function Me() {
           <Typography className={classes.title} variant="h6" noWrap>
             Findband
           </Typography>
-          <Link href="/findoutPage">
+          <Button style={{ textTransform: "none" }} onClick={props.setStep}>
             <Typography className={classes.skipText}>Пропустить</Typography>
-          </Link>
+          </Button>
         </AppBar>
       </div>
       <div>
-        <Typography className={classes.titleMe}>Я...</Typography>
+        <Typography className={classes.titleMe}>Ищу...</Typography>
       </div>
       <Category />
       <Policy />

@@ -15,7 +15,7 @@ export default function Auth() {
       fontSize={25}
     >
       <Button variant="contained" className={classes.signinButton}>
-        <Link href="/firstEnterPage">
+        <Link href="/onboarding">
           <Typography className={classes.signinText}>Войти</Typography>
         </Link>
       </Button>

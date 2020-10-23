@@ -6,13 +6,13 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
-import Policy from "../components/utils/PolicyFooter";
+import Policy from "../utils/PolicyFooter";
 
-import useStyles from "../style/editProfileStyle";
+import useStyles from "../../style/onboardingStyles/stepFourStyle";
 
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 
-export default function Me() {
+export default function StepFour(props) {
   const classes = useStyles();
 
   return (
@@ -71,9 +71,12 @@ export default function Me() {
         <img className={classes.imageItem} src="/example2.png" alt="my image" />
       </div>
       <Button variant="contained" className={classes.nextButton}>
-        <Link href="/loadTrackPage">
+        <Button
+          style={{ textTransform: "none", color: "#fff" }}
+          onClick={props.setStep}
+        >
           <Typography className={classes.nextText}>Продолжить</Typography>
-        </Link>
+        </Button>
       </Button>
       <div style={{ marginTop: -50 }}>
         <Policy />

@@ -2,117 +2,337 @@ import React from "react";
 
 import PeopleOutline from "@material-ui/icons/PeopleOutline";
 import Album from "@material-ui/icons/Album";
+import RecordVoiceOver from "@material-ui/icons/RecordVoiceOver";
+import Equalizer from "@material-ui/icons/Equalizer";
+import MusicVideo from "@material-ui/icons/MusicVideo";
+import Straighten from "@material-ui/icons/Straighten";
+import AllInclusive from "@material-ui/icons/AllInclusive";
+import RadioButtonUnchecked from "@material-ui/icons/RadioButtonUnchecked";
 
+import Checkbox from "@material-ui/core/Checkbox";
 import Typography from "@material-ui/core/Typography";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faGuitar,
+  faUsers,
+  faUserGraduate,
+  faGraduationCap,
+  faFeatherAlt,
+  faMicrophone,
+  faCompactDisc,
+  faSchool,
+  faSearchDollar,
+  faCheckCircle,
+  faDrum,
+} from "@fortawesome/free-solid-svg-icons";
+
 import { Button } from "@material-ui/core";
+import { withStyles } from "@material-ui/core";
+import * as styles from "../../style/categoryListStyle";
 
-import { CheckBox } from "@material-ui/icons";
-
-import CheckCircleOutline from "@material-ui/icons/CheckCircleOutline";
-
-import useStyles from "../../style/categoryListStyle";
-
-export default function Category() {
-  const classes = useStyles();
-
+function Category({ classes }) {
   return (
     <div className={classes.buttonGroup}>
       <Button className={classes.button}>
-        <PeopleOutline className={classes.piktograms} />
+        <FontAwesomeIcon
+          icon={faUsers}
+          size="lg"
+          className={classes.piktograms}
+        />
         <Typography className={classes.buttonText}>Группа</Typography>
-        <CheckBox />
+        <Checkbox
+          icon={<RadioButtonUnchecked style={{ display: "none" }} />}
+          checkedIcon={
+            <FontAwesomeIcon
+              icon={faCheckCircle}
+              style={{ color: "#FA5821" }}
+            />
+          }
+        />
       </Button>
       <Button className={classes.button}>
-        <Album className={classes.piktograms} />
+        <FontAwesomeIcon
+          icon={faGuitar}
+          size="lg"
+          className={classes.piktograms}
+        />
         <Typography className={classes.buttonText}>Гитарист</Typography>
-        <CheckBox />
+        <Checkbox
+          icon={<RadioButtonUnchecked style={{ display: "none" }} />}
+          checkedIcon={
+            <FontAwesomeIcon
+              icon={faCheckCircle}
+              style={{ color: "#FA5821" }}
+            />
+          }
+        />
       </Button>
       <Button className={classes.button}>
-        <PeopleOutline className={classes.piktograms} />
+        <Equalizer className={classes.piktograms} />
         <Typography className={classes.buttonText}>Битмэйкер</Typography>
-        <CheckBox />
+        <Checkbox
+          icon={<RadioButtonUnchecked style={{ display: "none" }} />}
+          checkedIcon={
+            <FontAwesomeIcon
+              icon={faCheckCircle}
+              style={{ color: "#FA5821" }}
+            />
+          }
+        />
       </Button>
       <Button className={classes.button}>
-        <PeopleOutline className={classes.piktograms} />
+        <RecordVoiceOver className={classes.piktograms} />
         <Typography className={classes.buttonText}>Битбоксер</Typography>
-        <CheckBox />
+        <Checkbox
+          icon={<RadioButtonUnchecked style={{ display: "none" }} />}
+          checkedIcon={
+            <FontAwesomeIcon
+              icon={faCheckCircle}
+              style={{ color: "#FA5821" }}
+            />
+          }
+        />
       </Button>
       <Button className={classes.button}>
         <PeopleOutline className={classes.piktograms} />
         <Typography className={classes.buttonText}>Организатор</Typography>
-        <CheckBox />
+        <Checkbox
+          icon={<RadioButtonUnchecked style={{ display: "none" }} />}
+          checkedIcon={
+            <FontAwesomeIcon
+              icon={faCheckCircle}
+              style={{ color: "#FA5821" }}
+            />
+          }
+        />
       </Button>
       <Button className={classes.button}>
-        <PeopleOutline className={classes.piktograms} />
+        <FontAwesomeIcon
+          icon={faUserGraduate}
+          size="lg"
+          className={classes.piktograms}
+        />
         <Typography className={classes.buttonText}>Ученик</Typography>
-        <CheckBox />
+        <Checkbox
+          icon={<RadioButtonUnchecked style={{ display: "none" }} />}
+          checkedIcon={
+            <FontAwesomeIcon
+              icon={faCheckCircle}
+              style={{ color: "#FA5821" }}
+            />
+          }
+        />
       </Button>
       <Button className={classes.button}>
-        <Album className={classes.piktograms} />
+        <FontAwesomeIcon
+          icon={faFeatherAlt}
+          size="lg"
+          className={classes.piktograms}
+        />
         <Typography className={classes.buttonText}>Автор</Typography>
-        <CheckBox />
+        <Checkbox
+          icon={<RadioButtonUnchecked style={{ display: "none" }} />}
+          checkedIcon={
+            <FontAwesomeIcon
+              icon={faCheckCircle}
+              style={{ color: "#FA5821" }}
+            />
+          }
+        />
       </Button>
       <Button className={classes.button}>
-        <PeopleOutline className={classes.piktograms} />
+        <FontAwesomeIcon
+          icon={faGuitar}
+          size="lg"
+          className={classes.piktograms}
+        />
         <Typography className={classes.buttonText}>Басист</Typography>
-        <CheckBox />
+        <Checkbox
+          icon={<RadioButtonUnchecked style={{ display: "none" }} />}
+          checkedIcon={
+            <FontAwesomeIcon
+              icon={faCheckCircle}
+              style={{ color: "#FA5821" }}
+            />
+          }
+        />
       </Button>
       <Button className={classes.button}>
         <PeopleOutline className={classes.piktograms} />
         <Typography className={classes.buttonText}>Рэпер</Typography>
-        <CheckBox />
+        <Checkbox
+          icon={<RadioButtonUnchecked style={{ display: "none" }} />}
+          checkedIcon={
+            <FontAwesomeIcon
+              icon={faCheckCircle}
+              style={{ color: "#FA5821" }}
+            />
+          }
+        />
       </Button>
       <Button className={classes.button}>
-        <PeopleOutline className={classes.piktograms} />
+        <FontAwesomeIcon
+          icon={faSearchDollar}
+          size="lg"
+          className={classes.piktograms}
+        />
         <Typography className={classes.buttonText}>Продюсер</Typography>
-        <CheckBox />
+        <Checkbox
+          icon={<RadioButtonUnchecked style={{ display: "none" }} />}
+          checkedIcon={
+            <FontAwesomeIcon
+              icon={faCheckCircle}
+              style={{ color: "#FA5821" }}
+            />
+          }
+        />
       </Button>
       <Button className={classes.button}>
         <Album className={classes.piktograms} />
         <Typography className={classes.buttonText}>Духовые</Typography>
-        <CheckBox />
+        <Checkbox
+          icon={<RadioButtonUnchecked style={{ display: "none" }} />}
+          checkedIcon={
+            <FontAwesomeIcon
+              icon={faCheckCircle}
+              style={{ color: "#FA5821" }}
+            />
+          }
+        />
       </Button>
       <Button className={classes.button}>
-        <PeopleOutline className={classes.piktograms} />
+        <FontAwesomeIcon
+          icon={faSchool}
+          size="lg"
+          className={classes.piktograms}
+        />
         <Typography className={classes.buttonText}>Муз.школа</Typography>
-        <CheckBox />
+        <Checkbox
+          icon={<RadioButtonUnchecked style={{ display: "none" }} />}
+          checkedIcon={
+            <FontAwesomeIcon
+              icon={faCheckCircle}
+              style={{ color: "#FA5821" }}
+            />
+          }
+          checkedIcon={
+            <FontAwesomeIcon
+              icon={faCheckCircle}
+              style={{ color: "#FA5821" }}
+            />
+          }
+        />
       </Button>
       <Button className={classes.button}>
-        <PeopleOutline className={classes.piktograms} />
+        <FontAwesomeIcon
+          icon={faDrum}
+          size="lg"
+          className={classes.piktograms}
+        />
         <Typography className={classes.buttonText}>Ударник</Typography>
-        <CheckBox />
+        <Checkbox
+          icon={<RadioButtonUnchecked style={{ display: "none" }} />}
+          checkedIcon={
+            <FontAwesomeIcon
+              icon={faCheckCircle}
+              style={{ color: "#FA5821" }}
+            />
+          }
+        />
       </Button>
       <Button className={classes.button}>
-        <PeopleOutline className={classes.piktograms} />
+        <FontAwesomeIcon
+          icon={faMicrophone}
+          size="lg"
+          className={classes.piktograms}
+        />
         <Typography className={classes.buttonText}>Вокалист</Typography>
-        <CheckBox />
+        <Checkbox
+          icon={<RadioButtonUnchecked style={{ display: "none" }} />}
+          checkedIcon={
+            <FontAwesomeIcon
+              icon={faCheckCircle}
+              style={{ color: "#FA5821" }}
+            />
+          }
+        />
       </Button>
       <Button className={classes.button}>
-        <Album className={classes.piktograms} />
+        <Straighten className={classes.piktograms} />
         <Typography className={classes.buttonText}>Клавишник</Typography>
-        <CheckBox />
+        <Checkbox
+          icon={<RadioButtonUnchecked style={{ display: "none" }} />}
+          checkedIcon={
+            <FontAwesomeIcon
+              icon={faCheckCircle}
+              style={{ color: "#FA5821" }}
+            />
+          }
+        />
       </Button>
       <Button className={classes.button}>
-        <PeopleOutline className={classes.piktograms} />
+        <FontAwesomeIcon
+          icon={faCompactDisc}
+          size="lg"
+          className={classes.piktograms}
+        />
         <Typography className={classes.buttonText}>Промоутер</Typography>
-        <CheckBox />
+        <Checkbox
+          icon={<RadioButtonUnchecked style={{ display: "none" }} />}
+          checkedIcon={
+            <FontAwesomeIcon
+              icon={faCheckCircle}
+              style={{ color: "#FA5821" }}
+            />
+          }
+        />
       </Button>
       <Button className={classes.button}>
-        <PeopleOutline className={classes.piktograms} />
+        <FontAwesomeIcon
+          icon={faGraduationCap}
+          size="lg"
+          className={classes.piktograms}
+        />
         <Typography className={classes.buttonText}>Учитель</Typography>
-        <CheckBox />
-      </Button>{" "}
-      <Button className={classes.button}>
-        <PeopleOutline className={classes.piktograms} />
-        <Typography className={classes.buttonText}>Реп.база</Typography>
-        <CheckBox />
+        <Checkbox
+          icon={<RadioButtonUnchecked style={{ display: "none" }} />}
+          checkedIcon={
+            <FontAwesomeIcon
+              icon={faCheckCircle}
+              style={{ color: "#FA5821" }}
+            />
+          }
+        />
       </Button>
       <Button className={classes.button}>
-        <PeopleOutline className={classes.piktograms} />
+        <MusicVideo className={classes.piktograms} />
+        <Typography className={classes.buttonText}>Реп.база</Typography>
+        <Checkbox
+          icon={<RadioButtonUnchecked style={{ display: "none" }} />}
+          checkedIcon={
+            <FontAwesomeIcon
+              icon={faCheckCircle}
+              style={{ color: "#FA5821" }}
+            />
+          }
+        />
+      </Button>
+      <Button className={classes.button}>
+        <AllInclusive className={classes.piktograms} />
         <Typography className={classes.buttonText}>Другое</Typography>
-        <CheckBox />
+        <Checkbox
+          icon={<RadioButtonUnchecked style={{ display: "none" }} />}
+          checkedIcon={
+            <FontAwesomeIcon
+              icon={faCheckCircle}
+              style={{ color: "#FA5821" }}
+            />
+          }
+        />
       </Button>
     </div>
   );
 }
+
+export default withStyles(styles)(Category);
