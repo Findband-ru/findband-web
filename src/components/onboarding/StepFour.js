@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
-import Policy from "../utils/PolicyFooter";
+import Policy from "../PolicyFooter";
 
 import useStyles from "../../style/onboardingStyles/stepFourStyle";
 
@@ -60,15 +60,31 @@ export default function StepFour(props) {
         <TextareaAutosize
           className={classes.textArea}
           rowsMin={6}
-          placeholder="Расскажите о себе..."
+          placeholder="Расскажи о себе..."
         />
       </div>
       <Typography className={classes.fotoText}>Фотографии</Typography>
       <div className={classes.imageGroup}>
-        <img className={classes.imageItem} src="/example1.png" alt="my image" />
-        <img className={classes.imageItem} src="/example2.png" alt="my image" />
-        <img className={classes.imageItem} src="/example1.png" alt="my image" />
-        <img className={classes.imageItem} src="/example2.png" alt="my image" />
+        <img
+          className={classes.imageItem}
+          src="/img/example1.png"
+          alt="my image"
+        />
+        <img
+          className={classes.imageItem}
+          src="/img/example2.png"
+          alt="my image"
+        />
+        <img
+          className={classes.imageItem}
+          src="/img/example1.png"
+          alt="my image"
+        />
+        <img
+          className={classes.imageItem}
+          src="/img/example2.png"
+          alt="my image"
+        />
       </div>
       <Button variant="contained" className={classes.nextButton}>
         <Button

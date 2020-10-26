@@ -14,9 +14,10 @@ export const button = {
   backgroundColor: "#F3F3F5",
   marginTop: 11,
   marginLeft: 15,
-  justifyContent: "space-between",
+  justifyContent: "flex-start",
 };
 export const buttonText = {
+  marginLeft: 8,
   fontSize: 15,
   fontWeight: 400,
   fontStyle: "normal",
@@ -25,4 +26,10 @@ export const buttonText = {
 };
 export const piktograms = {
   color: "#7C7E8F",
+};
+export const checkedIcon = {
+  position: "fixed",
+  marginLeft: 130,
+  color: "#FA5821",
+  fontSize: 20,
 };

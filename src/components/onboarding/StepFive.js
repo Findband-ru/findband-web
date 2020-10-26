@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 
 import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
@@ -9,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDropbox, faSoundcloud } from "@fortawesome/free-brands-svg-icons";
 import { faLaptop } from "@fortawesome/free-solid-svg-icons";
 
-import Policy from "../utils/PolicyFooter";
+import Policy from "../PolicyFooter";
 
 import useStyles from "../../style/onboardingStyles/stepFiveStyle";
 

@@ -12,7 +12,7 @@ import Tune from "@material-ui/icons/Tune";
 
 import useStyles from "../style/navbarStyle";
 
-import Auth from "../components/Auth";
+import Auth from "./AuthButton";
 
 export default function Navbar() {
   const classes = useStyles();

@@ -1,7 +1,6 @@
 import React from "react";
 import { withStyles } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
@@ -11,19 +10,14 @@ import Typography from "@material-ui/core/Typography";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 
-// import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
-// import LocationOn from "@material-ui/icons/LocationOn";
 import StarBorder from "@material-ui/icons/StarBorder";
 import Telegram from "@material-ui/icons/Telegram";
 import Instagram from "@material-ui/icons/Instagram";
 import ShareIcon from "@material-ui/icons/Share";
-import Settings from "@material-ui/icons/Settings";
 
 import * as styles from "../style/feedStyle";
 
 import { firebaseProject } from "../../firebaseConfig";
-
-// import Player from "./Player";
 
 class FeedCards extends React.Component {
   state = {
@@ -59,33 +53,17 @@ class FeedCards extends React.Component {
             return (
               <ListItem className={classes.profileCard}>
                 <Card className={classes.root}>
-                  <CardHeader
-                    action={
-                      <IconButton aria-label="settings">
-                        <Settings />
-                      </IconButton>
-                    }
-                    title="Мой профиль"
-                    classes={{ title: classes.cardTitleText }}
-                  />
                   <CardMedia
                     className={classes.media}
-                    image="/profileImage.png"
+                    image="/img/image.png"
                     title="Profile Image"
                   >
-                    {/* <IconButton
-                      className={classes.heartIcon}
-                      aria-label="add to favorites"
-                    >
-                      <FavoriteBorder />
-                    </IconButton> */}
                     <IconButton
                       className={classes.heartIcon}
                       aria-label="add to favorites"
                     >
                       <StarBorder />
                     </IconButton>
-                    {/* <Player /> */}
                   </CardMedia>
                   <CardContent>
                     <div>
@@ -102,10 +80,6 @@ class FeedCards extends React.Component {
                         color="textSecondary"
                         component="p"
                       >
-                        {/* <LocationOn
-                          style={{ marginRight: "9px" }}
-                          fontSize="small"
-                        /> */}
                         {item.location}
                       </Typography>
                       <Typography

@@ -13,7 +13,7 @@ import {
   faVk,
 } from "@fortawesome/free-brands-svg-icons";
 
-import Policy from "../utils/PolicyFooter";
+import Policy from "../PolicyFooter";
 
 import useStyles from "../../style/onboardingStyles/stepOneStyle";
 

@@ -3,8 +3,8 @@ import React from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
 
-import Category from "../utils/CategoryList";
-import Policy from "../utils/PolicyFooter";
+import Category from "../categoryUser/CategoryUser";
+import Policy from "../PolicyFooter";
 
 import useStyles from "../../style/onboardingStyles/stepTwoThreeStyle";
 import { Button } from "@material-ui/core";
