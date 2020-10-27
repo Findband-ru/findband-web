@@ -1,19 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-
 import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
+import List from "@material-ui/core/List";
 import Button from "@material-ui/core/Button";
-
 import Policy from "../PolicyFooter";
-
 import useStyles from "../../style/onboardingStyles/stepFourStyle";
-
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 
-export default function StepFour(props) {
+export default function StepFour({ updateUserCredits, setStep, createUser }) {
   const classes = useStyles();
+
+  const openFile = function (event) {
+    const input = event.target;
+    const reader = new FileReader();
+    reader.onload = function () {
+      const dataURL = reader.result;
+      const output = document.getElementById("output");
+      output.src = dataURL;
+    };
+    reader.readAsDataURL(input.files[0]);
+  };
 
   return (
     <div className={classes.main}>
@@ -37,6 +45,7 @@ export default function StepFour(props) {
           id="contained-button-file"
           multiple
           type="file"
+          onChange={openFile}
         />
         <label htmlFor="contained-button-file">
           <Typography className={classes.subtitle}>
@@ -50,6 +59,9 @@ export default function StepFour(props) {
           classes={{ root: classes.inputName }}
           id="outlined-basic"
           variant="outlined"
+          onChange={(event) =>
+            updateUserCredits("name", event.currentTarget.value)
+          }
         />
         <div style={{ width: "100%" }}>
           <Typography className={classes.nameText}>Био</Typography>
@@ -61,38 +73,30 @@ export default function StepFour(props) {
           className={classes.textArea}
           rowsMin={6}
           placeholder="Расскажи о себе..."
+          onChange={(event) =>
+            updateUserCredits("about", event.currentTarget.value)
+          }
         />
       </div>
       <Typography className={classes.fotoText}>Фотографии</Typography>
-      <div className={classes.imageGroup}>
-        <img
-          className={classes.imageItem}
-          src="/img/example1.png"
-          alt="my image"
-        />
+      <List className={classes.imageGroup}>
+        <img className={classes.imageItem} id="output" src="" alt="my image" />
         <img
           className={classes.imageItem}
           src="/img/example2.png"
           alt="my image"
         />
-        <img
-          className={classes.imageItem}
-          src="/img/example1.png"
-          alt="my image"
-        />
-        <img
-          className={classes.imageItem}
-          src="/img/example2.png"
-          alt="my image"
-        />
-      </div>
-      <Button variant="contained" className={classes.nextButton}>
-        <Button
-          style={{ textTransform: "none", color: "#fff" }}
-          onClick={props.setStep}
-        >
-          <Typography className={classes.nextText}>Продолжить</Typography>
-        </Button>
+      </List>
+      <Button
+        style={{ textTransform: "none", color: "#fff" }}
+        onClick={() => {
+          setStep();
+          createUser();
+        }}
+        variant="contained"
+        className={classes.nextButton}
+      >
+        <Typography className={classes.nextText}>Продолжить</Typography>
       </Button>
       <div style={{ marginTop: -50 }}>
         <Policy />

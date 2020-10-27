@@ -14,11 +14,11 @@ export default function Auth() {
       arrow={true}
       fontSize={25}
     >
-      <Button variant="contained" className={classes.signinButton}>
-        <Link href="/onboarding">
+      <Link href="/onboarding">
+        <Button variant="contained" className={classes.signinButton}>
           <Typography className={classes.signinText}>Войти</Typography>
-        </Link>
-      </Button>
+        </Button>
+      </Link>
     </Tooltip>
   );
 }

@@ -25,7 +25,7 @@ export default function StepOne(props) {
       <AppBar className={classes.grow} position="static" color="transparent">
         <Typography className={classes.title} variant="h6" noWrap>
           Findband
-          <IconButton style={{ paddingLeft: 150, paddingRight: 175 }}>
+          <IconButton style={{ marginLeft: 150, marginRight: 175 }}>
             <Link href="/">
               <Close />
             </Link>

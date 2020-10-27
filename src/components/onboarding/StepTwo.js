@@ -27,7 +27,7 @@ export default function StepTwo(props) {
       <div>
         <Typography className={classes.titleMe}>Я...</Typography>
       </div>
-      <Category />
+      <Category setCategory={props.setCategory} />
       <Policy />
     </div>
   );

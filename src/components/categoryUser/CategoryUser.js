@@ -4,7 +4,7 @@ import { withStyles } from "@material-ui/core";
 import * as styles from "../../style/categoryStyle";
 import CategoryBtn from "./CategoryBtn";
 
-function Category({ classes }) {
+function Category({ classes, setCategory }) {
   return (
     <div className={classes.buttonGroup}>
       {categories.map((category, index) => (
@@ -13,6 +13,7 @@ function Category({ classes }) {
           key={index}
           icon={category.icon}
           classes={classes}
+          setCategory={setCategory}
         />
       ))}
     </div>

@@ -27,7 +27,7 @@ export default function StepThree(props) {
       <div>
         <Typography className={classes.titleMe}>Ищу...</Typography>
       </div>
-      <Category />
+      <Category setCategory={props.setCategory} />
       <Policy />
     </div>
   );

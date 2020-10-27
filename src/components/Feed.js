@@ -6,18 +6,15 @@ import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-
 import StarBorder from "@material-ui/icons/StarBorder";
 import Telegram from "@material-ui/icons/Telegram";
 import Instagram from "@material-ui/icons/Instagram";
 import ShareIcon from "@material-ui/icons/Share";
-
 import * as styles from "../style/feedStyle";
-
 import { firebaseProject } from "../../firebaseConfig";
+import { categories } from "../components/categoryUser/categories";
 
 class FeedCards extends React.Component {
   state = {
@@ -81,6 +78,33 @@ class FeedCards extends React.Component {
                         component="p"
                       >
                         {item.location}
+                      </Typography>
+                      {categories.label === item.mySkill ? (
+                        <div>
+                          {categories.icon}
+                          <Typography
+                            variant="body2"
+                            color="textSecondary"
+                            component="p"
+                          >
+                            {item.mySkill}
+                          </Typography>
+                        </div>
+                      ) : (
+                        <Typography
+                          variant="body2"
+                          color="textSecondary"
+                          component="p"
+                        >
+                          {item.mySkill}
+                        </Typography>
+                      )}
+                      <Typography
+                        variant="body2"
+                        color="textSecondary"
+                        component="p"
+                      >
+                        {item.findSkill}
                       </Typography>
                       <Typography
                         variant="body2"
