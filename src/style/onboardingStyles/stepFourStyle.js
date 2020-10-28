@@ -90,9 +90,15 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 16,
     marginRight: 16,
     marginBottom: 16,
+    backgroundColor: "#F3F3F5",
   },
   imageGroup: {
-    width: 515,
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    flexWrap: "wrap",
+    width: 540,
   },
   nextText: {
     textDecoration: "none",
@@ -118,6 +124,11 @@ const useStyles = makeStyles((theme) => ({
     color: "#B0B2BD",
     borderColor: "#B0B2BD",
     marginTop: 10,
+  },
+  closeIcon: {
+    position: "absolute",
+    right: 15,
+    color: "#fff",
   },
 }));
 

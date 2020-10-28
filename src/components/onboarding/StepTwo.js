@@ -1,13 +1,10 @@
 import React from "react";
-
 import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
-
 import Category from "../categoryUser/CategoryUser";
 import Policy from "../PolicyFooter";
-
 import useStyles from "../../style/onboardingStyles/stepTwoThreeStyle";
-import { Button } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
 
 export default function StepTwo(props) {
   const classes = useStyles();

@@ -1,13 +1,9 @@
 import React from "react";
-
-import { IconButton } from "@material-ui/core";
-
+import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-
 import Telegram from "@material-ui/icons/Telegram";
 import Instagram from "@material-ui/icons/Instagram";
 import Twitter from "@material-ui/icons/Twitter";
-
 import useStyles from "../style/policyFooterStyle";
 
 export default function Policy() {

@@ -1,26 +1,23 @@
 import React, { useState } from "react";
 import Link from "next/link";
+import ImageUploading from "react-images-uploading";
 import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
-import List from "@material-ui/core/List";
+import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
+import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import Policy from "../PolicyFooter";
 import useStyles from "../../style/onboardingStyles/stepFourStyle";
-import TextareaAutosize from "@material-ui/core/TextareaAutosize";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 
 export default function StepFour({ updateUserCredits, setStep, createUser }) {
   const classes = useStyles();
+  const [images, setImages] = useState([]);
 
-  const openFile = function (event) {
-    const input = event.target;
-    const reader = new FileReader();
-    reader.onload = function () {
-      const dataURL = reader.result;
-      const output = document.getElementById("output");
-      output.src = dataURL;
-    };
-    reader.readAsDataURL(input.files[0]);
+  const onChange = (imageList) => {
+    setImages(imageList);
   };
 
   return (
@@ -39,19 +36,28 @@ export default function StepFour({ updateUserCredits, setStep, createUser }) {
         <Typography className={classes.aboutTitle}>Расскажи о себе</Typography>
       </div>
       <div>
-        <input
-          accept="image/*"
-          className={classes.input}
-          id="contained-button-file"
-          multiple
-          type="file"
-          onChange={openFile}
-        />
-        <label htmlFor="contained-button-file">
-          <Typography className={classes.subtitle}>
-            Загрузи фотографии
-          </Typography>
-        </label>
+        <div>
+          <ImageUploading
+            multiple
+            value={images}
+            onChange={onChange}
+            maxNumber={4}
+            dataURLKey="data_url"
+          >
+            {({ onImageUpload }) => (
+              <div>
+                <Button
+                  style={{ textTransform: "none" }}
+                  onClick={onImageUpload}
+                >
+                  <Typography className={classes.subtitle}>
+                    Загрузи фотографии
+                  </Typography>
+                </Button>
+              </div>
+            )}
+          </ImageUploading>
+        </div>
       </div>
       <div className={classes.textInputBlock}>
         <Typography className={classes.nameText}>Имя</Typography>
@@ -79,14 +85,34 @@ export default function StepFour({ updateUserCredits, setStep, createUser }) {
         />
       </div>
       <Typography className={classes.fotoText}>Фотографии</Typography>
-      <List className={classes.imageGroup}>
-        <img className={classes.imageItem} id="output" src="" alt="my image" />
-        <img
-          className={classes.imageItem}
-          src="/img/example2.png"
-          alt="my image"
-        />
-      </List>
+      <div>
+        <ImageUploading
+          multiple
+          value={images}
+          onChange={onChange}
+          dataURLKey="data_url"
+        >
+          {({ imageList, onImageRemove }) => (
+            <div className={classes.imageGroup}>
+              {imageList.map((image, index) => (
+                <div style={{ display: "flex", position: "relative" }}>
+                  <img
+                    key={index}
+                    className={classes.imageItem}
+                    src={image.data_url}
+                  />
+                  <IconButton className={classes.closeIcon}>
+                    <FontAwesomeIcon
+                      icon={faTimesCircle}
+                      onClick={() => onImageRemove(index)}
+                    />
+                  </IconButton>
+                </div>
+              ))}
+            </div>
+          )}
+        </ImageUploading>
+      </div>
       <Button
         style={{ textTransform: "none", color: "#fff" }}
         onClick={() => {
