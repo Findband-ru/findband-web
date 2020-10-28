@@ -1,9 +1,7 @@
 import React from "react";
 import Link from "next/link";
-
 import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
-
 import { Button, IconButton } from "@material-ui/core";
 import Close from "@material-ui/icons/Close";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,9 +10,7 @@ import {
   faGoogle,
   faVk,
 } from "@fortawesome/free-brands-svg-icons";
-
 import Policy from "../PolicyFooter";
-
 import useStyles from "../../style/onboardingStyles/stepOneStyle";
 
 export default function StepOne(props) {
@@ -44,8 +40,13 @@ export default function StepOne(props) {
             добавлять их в избранное и делиться своей музыкой
           </Typography>
         </div>
-        <Button className={classes.phoneButton} onClick={props.setStep}>
+        {/* <Button className={classes.phoneButton} onClick={props.setStep}>
           <Typography className={classes.textButton}>По телефону</Typography>
+        </Button> */}
+        <Button className={classes.phoneButton} onClick={props.setStep}>
+          <Typography className={classes.textButton}>
+            По электронной почте
+          </Typography>
         </Button>
         <Typography className={classes.textUnderButton}>
           или с помощью

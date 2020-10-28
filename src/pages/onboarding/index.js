@@ -6,6 +6,7 @@ import StepTwo from "../../components/onboarding/StepTwo";
 import StepThree from "../../components/onboarding/StepThree";
 import StepFour from "../../components/onboarding/StepFour";
 import StepFive from "../../components/onboarding/StepFive";
+import SignIn from "../../components/onboarding/SignIn";
 import { firebaseProject } from "../../../firebaseConfig";
 
 class Registration extends React.Component {
@@ -88,8 +89,10 @@ class Registration extends React.Component {
         return <StepOneA setStep={() => this.setState({ step: 6 })} />;
       case 6:
         return <StepOneB setStep={() => this.setState({ step: 1 })} />;
+      case 7:
+        return <SignIn setStep={() => this.setState({ step: 1 })} />;
       default:
-        return <StepOne setStep={() => this.setState({ step: 5 })} />;
+        return <StepOne setStep={() => this.setState({ step: 7 })} />;
     }
   };
 

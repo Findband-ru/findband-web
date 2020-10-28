@@ -11,9 +11,10 @@ var firebaseConfig = {
   appId: "1:946433486588:web:fd10809dfb0c39c70ef179",
   measurementId: "G-DCKBKVT8YX",
 };
-// Initialize Firebase
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
+
+// var storageRef = firebase.storage().ref("images");
 
 export const firebaseProject = firebase;
