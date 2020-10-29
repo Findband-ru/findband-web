@@ -11,7 +11,6 @@ import Policy from "../PolicyFooter";
 import useStyles from "../../style/onboardingStyles/stepFourStyle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
-// import { firebaseProject } from "../../firebaseConfig";
 
 export default function StepFour({ updateUserCredits, setStep, createUser }) {
   const classes = useStyles();

@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 import { Button, Typography } from "@material-ui/core";
 import Tooltip from "@material-ui/core/Tooltip";
-
 import useStyles from "../style/authStyle";
 
 export default function Auth() {

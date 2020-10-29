@@ -6,7 +6,7 @@ import StepTwo from "../../components/onboarding/StepTwo";
 import StepThree from "../../components/onboarding/StepThree";
 import StepFour from "../../components/onboarding/StepFour";
 import StepFive from "../../components/onboarding/StepFive";
-import SignIn from "../../components/onboarding/SignIn";
+import SignUp from "../../components/onboarding/SignUp";
 import { firebaseProject } from "../../../firebaseConfig";
 
 class Registration extends React.Component {
@@ -16,13 +16,14 @@ class Registration extends React.Component {
     findSkill: [],
     name: "",
     about: "",
+    userId: null,
   };
 
   createUser = () => {
     const findbandUsers = firebaseProject.firestore().collection("users");
 
     findbandUsers
-      .doc()
+      .doc(this.state.userId)
       .set({
         mySkill: this.state.mySkill,
         findSkill: this.state.findSkill,
@@ -35,6 +36,53 @@ class Registration extends React.Component {
       .catch(function (error) {
         console.error("Error writing document: ", error);
       });
+  };
+
+  handleLogin = (email, password) => {
+    // this.clearErrors();
+    firebaseProject
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .catch((err) => {
+        console.log(error);
+        // switch (err.code) {
+        //   case "auth/invalid-email":
+        //   case "auth/user-disabled":
+        //   case "auth/user-not-found":
+        //     setEmailError(err.message);
+        //     break;
+        //   case "auth/wrong-password":
+        //     setPasswordError(err.message);
+        //     break;
+        // }
+      });
+  };
+
+  handleSignup = (email, password) => {
+    // this.clearErrors();
+    firebaseProject
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(({ user }) => {
+        console.log("uid", user.uid);
+        this.setState({ userId: user.uid });
+      })
+      .catch((err) => {
+        console.log(error);
+        // switch (err.code) {
+        //   case "auth/email-already-in-use":
+        //   case "auth/invalid-email":
+        //     setEmailError(err.message);
+        //     break;
+        //   case "auth/weak-password":
+        //     setPasswordError(err.message);
+        //     break;
+        // }
+      });
+  };
+
+  handleLogout = () => {
+    firebaseProject.auth().signOut();
   };
 
   updateStateArray = (array, label) => {
@@ -90,7 +138,13 @@ class Registration extends React.Component {
       case 6:
         return <StepOneB setStep={() => this.setState({ step: 1 })} />;
       case 7:
-        return <SignIn setStep={() => this.setState({ step: 1 })} />;
+        return (
+          <SignUp
+            setStep={() => this.setState({ step: 1 })}
+            handleLogin={this.handleLogin}
+            handleSignup={this.handleSignup}
+          />
+        );
       default:
         return <StepOne setStep={() => this.setState({ step: 7 })} />;
     }

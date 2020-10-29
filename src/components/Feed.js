@@ -104,7 +104,7 @@ class FeedCards extends React.Component {
                         color="textSecondary"
                         component="p"
                       >
-                        {item.findSkill}
+                        ищет {item.findSkill}
                       </Typography>
                       <Typography
                         variant="body2"

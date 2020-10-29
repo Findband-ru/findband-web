@@ -1,6 +1,8 @@
 import * as firebase from "firebase/app";
 import "firebase/firestore";
 
+require("firebase/auth");
+
 var firebaseConfig = {
   apiKey: "AIzaSyDd4SLlFOh0Wo4YVNAcxpV9WI5I5ytc6Wk",
   authDomain: "findband-4fa3c.firebaseapp.com",
@@ -14,7 +16,5 @@ var firebaseConfig = {
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
-
-// var storageRef = firebase.storage().ref("images");
 
 export const firebaseProject = firebase;
