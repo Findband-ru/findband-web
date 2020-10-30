@@ -11,13 +11,36 @@ import Policy from "../PolicyFooter";
 import useStyles from "../../style/onboardingStyles/stepFourStyle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+import { firebaseProject } from "../../../firebaseConfig";
 
-export default function StepFour({ updateUserCredits, setStep, createUser }) {
+const db = firebaseProject.firestore();
+
+export default function StepFour({
+  updateUserCredits,
+  setStep,
+  createUser,
+  getImages,
+}) {
   const classes = useStyles();
   const [images, setImages] = useState([]);
+  const [fileUrl, setFileUrl] = useState(null);
+  const [users, setUsers] = useState([]);
 
   const onChange = (imageList) => {
+    console.log(imageList);
+    getImages(imageList);
     setImages(imageList);
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const username = e.target.username.value;
+    if (!username) {
+      return;
+    }
+    db.collection("users").doc(username).set({
+      image: imageUrl,
+    });
   };
 
   return (

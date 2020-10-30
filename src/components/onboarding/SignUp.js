@@ -95,7 +95,7 @@ export default function SignUp({ handleLogin, handleSignup, setStep }) {
               className={classes.nextButton}
               onClick={() => {
                 setStep();
-                handleSignup(email, password);
+                handleLogin(email, password);
               }}
             >
               <Typography className={classes.textButton}>
@@ -121,7 +121,7 @@ export default function SignUp({ handleLogin, handleSignup, setStep }) {
               className={classes.nextButton}
               onClick={() => {
                 setStep();
-                handleLogin();
+                handleSignup(email, password);
               }}
             >
               <Typography className={classes.textButton}>Войти</Typography>

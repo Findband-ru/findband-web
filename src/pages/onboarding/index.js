@@ -14,13 +14,26 @@ class Registration extends React.Component {
     step: 0,
     mySkill: [],
     findSkill: [],
+    images: [],
     name: "",
     about: "",
     userId: null,
   };
 
-  createUser = () => {
+  uploadImages = () =>
+    this.state.images.map(async (img) => {
+      const bucketPath = "/images/" + this.state.userId + "/" + img.file.name;
+      await firebaseProject.storage().ref(bucketPath).put(img.file);
+      const url = await firebaseProject
+        .storage()
+        .ref(bucketPath)
+        .getDownloadURL();
+      return url;
+    });
+
+  createUser = async () => {
     const findbandUsers = firebaseProject.firestore().collection("users");
+    const imagesUrls = await this.uploadImages();
 
     findbandUsers
       .doc(this.state.userId)
@@ -29,6 +42,7 @@ class Registration extends React.Component {
         findSkill: this.state.findSkill,
         name: this.state.name,
         about: this.state.about,
+        images: await Promise.all(imagesUrls),
       })
       .then(function () {
         console.log("Document successfully written!");
@@ -40,11 +54,16 @@ class Registration extends React.Component {
 
   handleLogin = (email, password) => {
     // this.clearErrors();
+    console.log(email, password);
     firebaseProject
       .auth()
       .signInWithEmailAndPassword(email, password)
+      .then(({ user }) => {
+        console.log("uid", user.uid);
+        this.setState({ userId: user.uid });
+      })
       .catch((err) => {
-        console.log(error);
+        console.log(err);
         // switch (err.code) {
         //   case "auth/invalid-email":
         //   case "auth/user-disabled":
@@ -68,7 +87,7 @@ class Registration extends React.Component {
         this.setState({ userId: user.uid });
       })
       .catch((err) => {
-        console.log(error);
+        console.log(err);
         // switch (err.code) {
         //   case "auth/email-already-in-use":
         //   case "auth/invalid-email":
@@ -128,6 +147,7 @@ class Registration extends React.Component {
           <StepFour
             setStep={() => this.setState({ step: 4 })}
             updateUserCredits={this.updateUserCredits}
+            getImages={(images) => this.setState({ images })}
             createUser={this.createUser}
           />
         );

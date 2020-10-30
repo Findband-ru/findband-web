@@ -52,7 +52,7 @@ class FeedCards extends React.Component {
                 <Card className={classes.root}>
                   <CardMedia
                     className={classes.media}
-                    image="/img/image.png"
+                    image={item.images[0]}
                     title="Profile Image"
                   >
                     <IconButton
@@ -96,7 +96,7 @@ class FeedCards extends React.Component {
                           color="textSecondary"
                           component="p"
                         >
-                          {item.mySkill}
+                          {item.mySkill.toString()}
                         </Typography>
                       )}
                       <Typography
@@ -104,7 +104,7 @@ class FeedCards extends React.Component {
                         color="textSecondary"
                         component="p"
                       >
-                        ищет {item.findSkill}
+                        ищет {item.findSkill.toString()}
                       </Typography>
                       <Typography
                         variant="body2"
