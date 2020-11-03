@@ -1,10 +1,10 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import HomePage from "../components/HomePage";
-
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-
 import AvertaCyrillicOtf from "../../public/fonts/Averta-Cyrillic-Black.otf";
+import Sidebar from "../components/Sidebar";
+import useStyles from "../style/indexStyle";
 
 const mainFont = {
   fontFamily: "AvertaCyrillicBlack",
@@ -25,19 +25,22 @@ const theme = createMuiTheme({
 });
 
 function App() {
+  const classes = useStyles();
+
   return (
-    <div>
-      <ThemeProvider theme={theme}>
-        <style jsx global>{`
-          body {
-            font-family: AvertaCyrillicBlack, sans-serif;
-            overflow: hidden;
-          }
-        `}</style>
+    <ThemeProvider theme={theme}>
+      <style jsx global>{`
+        body {
+          font-family: AvertaCyrillicBlack, sans-serif;
+          overflow: hidden;
+        }
+      `}</style>
+      <div className={classes.container}>
         <Navbar />
+        <Sidebar />
         <HomePage />
-      </ThemeProvider>
-    </div>
+      </div>
+    </ThemeProvider>
   );
 }
 

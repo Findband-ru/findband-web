@@ -2,6 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
+    display: "fixed",
     flexGrow: 1,
     display: "flex",
     justifyContent: "center",
@@ -11,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("sm")]: {
       display: "block",
     },
-    fontSize: "24px",
+    fontSize: 24,
     fontWeight: 700,
   },
   search: {
@@ -50,8 +51,8 @@ const useStyles = makeStyles((theme) => ({
   },
   navbarBtns: {
     backgroundColor: "#F3F3F5",
-    borderRadius: "24px",
-    marginLeft: "35px",
+    borderRadius: 24,
+    marginLeft: 35,
     textTransform: "none",
   },
 }));

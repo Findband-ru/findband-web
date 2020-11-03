@@ -1,42 +1,42 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles((theme) => ({
+// const screenHeight = document.documentElement.clientHeight;
+
+const useStyles = makeStyles(() => ({
   root: {
     display: "flex",
+    position: "fixed",
     justifyContent: "center",
     borderWidth: 0,
     maxWidth: 1200,
     margin: "0 auto",
+    left: "40%",
   },
-  drawer: {
-    width: 400,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: 350,
-    position: "absolute",
-    border: "none",
-  },
-  drawerContainer: {
+  container: {
     overflow: "auto",
+    position: "fixed",
+    top: "55%",
+    left: "20%",
+    webkitTransform: "translateY(-50%)",
+    msTransform: "translateY(-50%)",
+    transform: "translateY(-50%)",
   },
   content: {
     position: "relative",
     display: "flex",
     flexGrow: 1,
-    padding: theme.spacing(3),
   },
   policyText: {
     marginLeft: 7,
     fontWeight: 400,
     color: "#7C7E8F",
-    fontSize: "13px",
+    fontSize: 13,
   },
   projectNameText: {
     marginLeft: 7,
     color: "#111235",
     fontWeight: 400,
-    fontSize: "12px",
+    fontSize: 12,
     marginTop: 16,
   },
   sideBarText: {
@@ -45,6 +45,8 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 17,
   },
   sidebarButton: {
+    height: 52,
+    width: 304,
     borderRadius: 50,
   },
   sidebarSocialIcon: {
@@ -52,6 +54,10 @@ const useStyles = makeStyles((theme) => ({
     padding: 6,
     borderRadius: 50,
     border: "1px solid #B0B2BD",
+  },
+  policyContainer: {
+    // marginTop: screenHeight - 570,
+    marginTop: 410,
   },
 }));
 

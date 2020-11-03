@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import { Button, IconButton } from "@material-ui/core";
 import Close from "@material-ui/icons/Close";
 import Policy from "../PolicyFooter";
-import useStyles from "../../style/onboardingStyles/signInStyle";
+import useStyles from "../../style/onboardingStyles/signUpStyle";
 import { firebaseProject } from "../../../firebaseConfig";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -16,8 +16,6 @@ export default function SignUp({ handleLogin, handleSignup, setStep }) {
   const [user, setUser] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
   const [hasAccount, setHasAccount] = useState(false);
 
   const clearInputs = () => {
@@ -35,11 +33,6 @@ export default function SignUp({ handleLogin, handleSignup, setStep }) {
       }
     });
   };
-
-  // const clearErrors = () => {
-  //   setEmailError("");
-  //   setPasswordError("");
-  // };
 
   useEffect(() => {
     authListener();
@@ -98,6 +91,30 @@ export default function SignUp({ handleLogin, handleSignup, setStep }) {
                 handleLogin(email, password);
               }}
             >
+              <Typography className={classes.textButton}>Войти</Typography>
+            </Button>
+            <Typography style={{ marginTop: 7, textAlign: "right" }}>
+              Нет аккаунта?{" "}
+              <span
+                onClick={() => setHasAccount(!hasAccount)}
+                style={{
+                  color: "#FA5821",
+                  fontWeight: 600,
+                }}
+              >
+                Зарегистрироваться
+              </span>
+            </Typography>
+          </>
+        ) : (
+          <>
+            <Button
+              className={classes.nextButton}
+              onClick={() => {
+                setStep();
+                handleSignup(email, password);
+              }}
+            >
               <Typography className={classes.textButton}>
                 Зарегистрироваться
               </Typography>
@@ -112,30 +129,6 @@ export default function SignUp({ handleLogin, handleSignup, setStep }) {
                 }}
               >
                 Войти
-              </span>
-            </Typography>
-          </>
-        ) : (
-          <>
-            <Button
-              className={classes.nextButton}
-              onClick={() => {
-                setStep();
-                handleSignup(email, password);
-              }}
-            >
-              <Typography className={classes.textButton}>Войти</Typography>
-            </Button>
-            <Typography style={{ marginTop: 7, textAlign: "right" }}>
-              Нет аккаунта?{" "}
-              <span
-                onClick={() => setHasAccount(!hasAccount)}
-                style={{
-                  color: "#FA5821",
-                  fontWeight: 600,
-                }}
-              >
-                Зарегистрироваться
               </span>
             </Typography>
           </>

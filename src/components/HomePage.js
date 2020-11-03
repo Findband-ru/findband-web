@@ -1,8 +1,5 @@
 import React from "react";
-
 import FeedCards from "./Feed";
-import Sidebar from "./Sidebar";
-
 import useStyles from "../style/sidebarStyle";
 
 export default function HomePage() {
@@ -10,10 +7,7 @@ export default function HomePage() {
 
   return (
     <div className={classes.root}>
-      <main className={classes.content}>
-        <Sidebar />
-        <FeedCards />
-      </main>
+      <FeedCards />
     </div>
   );
 }

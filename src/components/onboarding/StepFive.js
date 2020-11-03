@@ -1,19 +1,26 @@
-import React from "react";
-
+import React, { useState } from "react";
+import Link from "next/link";
+import ImageUploading from "react-images-uploading";
 import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
+import TextField from "@material-ui/core/TextField";
+import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDropbox, faSoundcloud } from "@fortawesome/free-brands-svg-icons";
-import { faLaptop } from "@fortawesome/free-solid-svg-icons";
-
+import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import Policy from "../PolicyFooter";
-
 import useStyles from "../../style/onboardingStyles/stepFiveStyle";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+import CitiesList from "./ChooseCity";
 
-export default function StepFive(props) {
+export default function StepFive({ updateUserCredits, createUser, getImages }) {
   const classes = useStyles();
+  const [images, setImages] = useState([]);
+
+  const onChange = (imageList) => {
+    getImages(imageList);
+    setImages(imageList);
+  };
 
   return (
     <div className={classes.main}>
@@ -22,62 +29,108 @@ export default function StepFive(props) {
           <Typography className={classes.title} variant="h6" noWrap>
             Findband
           </Typography>
-          <Button style={{ textTransform: "none" }} onClick={props.setStep}>
-            <Typography className={classes.skipText}>Пропустить</Typography>
-          </Button>
+          <Link href="/">
+            <Typography className={classes.skipText}>На главную</Typography>
+          </Link>
         </AppBar>
       </div>
-      <div className={classes.block}>
-        <Typography className={classes.loadTitle}>Загрузи свой трек</Typography>
-        <Typography className={classes.subtitle}>
-          Его будут слушать другие пользователи из твоей карточки
-        </Typography>
+      <div>
+        <Typography className={classes.aboutTitle}>Расскажи о себе</Typography>
       </div>
-      <div className={classes.block}>
-        <Button
-          variant="contained"
-          className={classes.loadButtons}
-          style={{ backgroundColor: "#F3F3F5" }}
-        >
-          <FontAwesomeIcon
-            icon={faLaptop}
-            size="lg"
-            style={{ marginRight: 50, color: "#000" }}
-          />
-          <Typography className={classes.buttonsText} style={{ color: "#000" }}>
-            Загрузить с устройства
-          </Typography>
-        </Button>
-        <Button
-          variant="contained"
-          className={classes.loadButtons}
-          style={{ background: "#FF5500" }}
-        >
-          <FontAwesomeIcon
-            icon={faSoundcloud}
-            size="lg"
-            style={{ marginRight: 50 }}
-          />
-          <Typography className={classes.buttonsText}>
-            Выбрать на Sound Cloud
-          </Typography>
-        </Button>
-        <Button
-          variant="contained"
-          className={classes.loadButtons}
-          style={{ background: "#0061FF" }}
-        >
-          <FontAwesomeIcon
-            icon={faDropbox}
-            size="lg"
-            style={{ marginRight: 50 }}
-          />
-          <Typography className={classes.buttonsText}>
-            Выбрать на Dropbox
-          </Typography>
-        </Button>
+      <div>
+        <div>
+          <ImageUploading
+            multiple
+            value={images}
+            onChange={onChange}
+            maxNumber={4}
+            dataURLKey="data_url"
+          >
+            {({ onImageUpload }) => (
+              <div>
+                <Button
+                  style={{ textTransform: "none" }}
+                  onClick={onImageUpload}
+                >
+                  <Typography className={classes.subtitle}>
+                    Загрузи фотографии
+                  </Typography>
+                </Button>
+              </div>
+            )}
+          </ImageUploading>
+        </div>
       </div>
-      <Policy />
+      <div className={classes.textInputBlock}>
+        <Typography className={classes.nameText}>Имя</Typography>
+        <TextField
+          classes={{ root: classes.inputName }}
+          variant="outlined"
+          onChange={(event) =>
+            updateUserCredits("name", event.currentTarget.value)
+          }
+        />
+        <div style={{ width: "100%" }}>
+          <Typography className={classes.nameText}>Био</Typography>
+          <Typography className={classes.symbolLimit}>
+            До 160 символов
+          </Typography>
+        </div>
+        <TextareaAutosize
+          className={classes.textArea}
+          rowsMin={6}
+          placeholder="Расскажи о себе..."
+          onChange={(event) =>
+            updateUserCredits("about", event.currentTarget.value)
+          }
+        />
+        <Typography className={classes.nameText}>Город</Typography>
+        <CitiesList />
+      </div>
+      <Typography className={classes.fotoText}>Фотографии</Typography>
+      <div>
+        <ImageUploading
+          multiple
+          value={images}
+          onChange={onChange}
+          dataURLKey="data_url"
+        >
+          {({ imageList, onImageRemove }) => (
+            <div className={classes.imageGroup}>
+              {imageList.map((image, index) => (
+                <div style={{ display: "flex", position: "relative" }}>
+                  <img
+                    key={index}
+                    className={classes.imageItem}
+                    src={image.data_url}
+                  />
+                  <IconButton className={classes.closeIcon}>
+                    <FontAwesomeIcon
+                      icon={faTimesCircle}
+                      onClick={() => onImageRemove(index)}
+                    />
+                  </IconButton>
+                </div>
+              ))}
+            </div>
+          )}
+        </ImageUploading>
+      </div>
+      <Link href="/profile">
+        <Button
+          style={{ textTransform: "none", color: "#fff" }}
+          onClick={() => createUser()}
+          variant="contained"
+          className={classes.nextButton}
+        >
+          <Typography className={classes.nextText}>
+            Сохранить профиль
+          </Typography>
+        </Button>
+      </Link>
+      <div style={{ marginTop: -50 }}>
+        <Policy />
+      </div>
     </div>
   );
 }

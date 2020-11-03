@@ -1,11 +1,8 @@
 import React from "react";
-
 import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
-
 import Category from "../categoryUser/CategoryUser";
 import Policy from "../PolicyFooter";
-
 import useStyles from "../../style/onboardingStyles/stepTwoThreeStyle";
 import { Button } from "@material-ui/core";
 
@@ -20,7 +17,7 @@ export default function StepThree(props) {
             Findband
           </Typography>
           <Button style={{ textTransform: "none" }} onClick={props.setStep}>
-            <Typography className={classes.skipText}>Пропустить</Typography>
+            <Typography className={classes.skipText}>Далее</Typography>
           </Button>
         </AppBar>
       </div>

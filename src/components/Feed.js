@@ -14,7 +14,6 @@ import Instagram from "@material-ui/icons/Instagram";
 import ShareIcon from "@material-ui/icons/Share";
 import * as styles from "../style/feedStyle";
 import { firebaseProject } from "../../firebaseConfig";
-import { categories } from "../components/categoryUser/categories";
 
 class FeedCards extends React.Component {
   state = {
@@ -31,8 +30,6 @@ class FeedCards extends React.Component {
         querySnapshot.forEach(function (doc) {
           profiles.push(doc.data());
         });
-        console.log("profiles", profiles);
-
         this.setState({ docProfile: profiles });
       })
       .catch(function (error) {
@@ -79,46 +76,21 @@ class FeedCards extends React.Component {
                       >
                         {item.location}
                       </Typography>
-                      {categories.label === item.mySkill ? (
-                        <div>
-                          {categories.icon}
-                          <Typography
-                            variant="body2"
-                            color="textSecondary"
-                            component="p"
-                          >
-                            {item.mySkill}
-                          </Typography>
-                        </div>
-                      ) : (
-                        <Typography
-                          variant="body2"
-                          color="textSecondary"
-                          component="p"
-                        >
-                          {item.mySkill.toString()}
-                        </Typography>
-                      )}
                       <Typography
                         variant="body2"
                         color="textSecondary"
                         component="p"
+                        style={{ fontWeight: 700 }}
                       >
-                        ищет {item.findSkill.toString()}
+                        {item.mySkill.join(", ")}
                       </Typography>
+
                       <Typography
                         variant="body2"
                         color="textSecondary"
                         component="p"
                       >
                         {item.about}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        color="textSecondary"
-                        component="p"
-                      >
-                        +7 {item.phone}
                       </Typography>
                     </div>
                   </CardContent>

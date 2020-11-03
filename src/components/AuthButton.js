@@ -3,9 +3,15 @@ import Link from "next/link";
 import { Button, Typography } from "@material-ui/core";
 import Tooltip from "@material-ui/core/Tooltip";
 import useStyles from "../style/authStyle";
+import { firebaseProject } from "../../firebaseConfig";
 
-export default function Auth() {
+const handleLogout = () => {
+  firebaseProject.auth().signOut();
+};
+
+export default function Auth(props) {
   const classes = useStyles();
+  const user = firebaseProject.auth().currentUser;
 
   return (
     <Tooltip
@@ -13,11 +19,23 @@ export default function Auth() {
       arrow={true}
       fontSize={25}
     >
-      <Link href="/onboarding">
-        <Button variant="contained" className={classes.signinButton}>
-          <Typography className={classes.signinText}>Войти</Typography>
-        </Button>
-      </Link>
+      {user === null ? (
+        <Link href="/onboarding">
+          <Button variant="contained" className={classes.signinButton}>
+            <Typography className={classes.signinText}>Войти</Typography>
+          </Button>
+        </Link>
+      ) : (
+        <Link href="/">
+          <Button
+            variant="contained"
+            className={classes.signinButton}
+            onClick={() => handleLogout()}
+          >
+            <Typography className={classes.signinText}>Выйти</Typography>
+          </Button>
+        </Link>
+      )}
     </Tooltip>
   );
 }

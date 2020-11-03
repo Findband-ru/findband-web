@@ -1,7 +1,5 @@
 import React from "react";
 import StepOne from "../../components/onboarding/StepOne";
-import StepOneA from "../../components/onboarding/StepOneA";
-import StepOneB from "../../components/onboarding/StepOneB";
 import StepTwo from "../../components/onboarding/StepTwo";
 import StepThree from "../../components/onboarding/StepThree";
 import StepFour from "../../components/onboarding/StepFour";
@@ -100,9 +98,10 @@ class Registration extends React.Component {
       });
   };
 
-  handleLogout = () => {
-    firebaseProject.auth().signOut();
-  };
+  // clearErrors = () => {
+  //   setEmailError("");
+  //   setPasswordError("");
+  // };
 
   updateStateArray = (array, label) => {
     let categoryArr = this.state[array];
@@ -126,47 +125,42 @@ class Registration extends React.Component {
     switch (this.state.step) {
       case 1:
         return (
-          <StepTwo
+          <SignUp
             setStep={() => this.setState({ step: 2 })}
+            handleLogin={this.handleLogin}
+            handleSignup={this.handleSignup}
+          />
+        );
+      case 2:
+        return (
+          <StepTwo
+            setStep={() => this.setState({ step: 3 })}
             setCategory={(label) => {
               this.updateStateArray("mySkill", label);
             }}
           />
         );
-      case 2:
+      case 3:
         return (
           <StepThree
-            setStep={() => this.setState({ step: 3 })}
+            setStep={() => this.setState({ step: 4 })}
             setCategory={(label) => {
               this.updateStateArray("findSkill", label);
             }}
           />
         );
-      case 3:
+      case 4:
+        return <StepFour setStep={() => this.setState({ step: 5 })} />;
+      case 5:
         return (
-          <StepFour
-            setStep={() => this.setState({ step: 4 })}
+          <StepFive
             updateUserCredits={this.updateUserCredits}
             getImages={(images) => this.setState({ images })}
             createUser={this.createUser}
           />
         );
-      case 4:
-        return <StepFive setStep={() => this.setState({ step: 3 })} />;
-      case 5:
-        return <StepOneA setStep={() => this.setState({ step: 6 })} />;
-      case 6:
-        return <StepOneB setStep={() => this.setState({ step: 1 })} />;
-      case 7:
-        return (
-          <SignUp
-            setStep={() => this.setState({ step: 1 })}
-            handleLogin={this.handleLogin}
-            handleSignup={this.handleSignup}
-          />
-        );
       default:
-        return <StepOne setStep={() => this.setState({ step: 7 })} />;
+        return <StepOne setStep={() => this.setState({ step: 1 })} />;
     }
   };
 

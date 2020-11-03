@@ -15,7 +15,7 @@ import useStyles from "../../style/onboardingStyles/stepOneStyle";
 
 export default function StepOne(props) {
   const classes = useStyles();
-  console.log(props);
+
   return (
     <div className={classes.mainPage}>
       <AppBar className={classes.grow} position="static" color="transparent">
@@ -40,9 +40,6 @@ export default function StepOne(props) {
             добавлять их в избранное и делиться своей музыкой
           </Typography>
         </div>
-        {/* <Button className={classes.phoneButton} onClick={props.setStep}>
-          <Typography className={classes.textButton}>По телефону</Typography>
-        </Button> */}
         <Button className={classes.phoneButton} onClick={props.setStep}>
           <Typography className={classes.textButton}>
             По электронной почте

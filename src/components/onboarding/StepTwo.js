@@ -17,7 +17,7 @@ export default function StepTwo(props) {
             Findband
           </Typography>
           <Button style={{ textTransform: "none" }} onClick={props.setStep}>
-            <Typography className={classes.skipText}>Пропустить</Typography>
+            <Typography className={classes.skipText}>Далее</Typography>
           </Button>
         </AppBar>
       </div>
