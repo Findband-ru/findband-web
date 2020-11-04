@@ -5,24 +5,14 @@ import Button from "@material-ui/core/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDropbox, faSoundcloud } from "@fortawesome/free-brands-svg-icons";
 import { faLaptop } from "@fortawesome/free-solid-svg-icons";
-import Policy from "../PolicyFooter";
-import useStyles from "../../style/onboardingStyles/stepFourStyle";
+import Policy from "../policy/PolicyFooter";
+import useStyles from "./styles/stepFourStyle";
 
 export default function StepFour(props) {
   const classes = useStyles();
 
   return (
     <div className={classes.main}>
-      <div>
-        <AppBar className={classes.grow} position="static" color="transparent">
-          <Typography className={classes.title} variant="h6" noWrap>
-            Findband
-          </Typography>
-          <Button style={{ textTransform: "none" }} onClick={props.setStep}>
-            <Typography className={classes.skipText}>Далее</Typography>
-          </Button>
-        </AppBar>
-      </div>
       <div className={classes.block}>
         <Typography className={classes.loadTitle}>Загрузи свой трек</Typography>
         <Typography className={classes.subtitle}>

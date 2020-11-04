@@ -1,8 +1,8 @@
 import React from "react";
-import { categories } from "./categories";
 import { withStyles } from "@material-ui/core";
-import * as styles from "../../style/categoryStyle";
+import * as styles from "./style";
 import CategoryBtn from "./CategoryBtn";
+import { categories } from "./categories";
 
 function Category({ classes, setCategory }) {
   return (

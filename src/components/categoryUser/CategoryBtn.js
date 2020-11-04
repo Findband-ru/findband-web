@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { withStyles } from "@material-ui/core";
-import * as styles from "../../style/categoryStyle";
+import * as styles from "./style";
 
 const CategoryBtn = ({ key, label, icon, classes, setCategory }) => {
   const [checked, setCheck] = useState(false);

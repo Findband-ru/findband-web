@@ -41,6 +41,7 @@ export const profileCard = {
 
 export const cardTitleText = {
   fontSize: 24,
-  color: "#000",
   fontWeight: 700,
+  fontStyle: "normal",
+  color: "#000",
 };

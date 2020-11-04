@@ -10,24 +10,14 @@ import {
   faGoogle,
   faVk,
 } from "@fortawesome/free-brands-svg-icons";
-import Policy from "../PolicyFooter";
-import useStyles from "../../style/onboardingStyles/stepOneStyle";
+import Policy from "../policy/PolicyFooter";
+import useStyles from "./styles/stepOneStyle";
 
 export default function StepOne(props) {
   const classes = useStyles();
 
   return (
     <div className={classes.mainPage}>
-      <AppBar className={classes.grow} position="static" color="transparent">
-        <Typography className={classes.title} variant="h6" noWrap>
-          Findband
-          <IconButton style={{ marginLeft: 150, marginRight: 175 }}>
-            <Link href="/">
-              <Close />
-            </Link>
-          </IconButton>
-        </Typography>
-      </AppBar>
       <div className={classes.root}>
         <div style={{ textAlign: "center" }}>
           <Typography className={classes.textTitle}>

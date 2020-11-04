@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import List from "@material-ui/core/List";
 import Typography from "@material-ui/core/Typography";
 import ListItem from "@material-ui/core/ListItem";
@@ -13,52 +13,65 @@ import IconButton from "@material-ui/core/IconButton";
 import Telegram from "@material-ui/icons/Telegram";
 import Instagram from "@material-ui/icons/Instagram";
 import Twitter from "@material-ui/icons/Twitter";
-import useStyles from "../style/sidebarStyle";
-import { firebaseProject } from "../../firebaseConfig";
+import useStyles from "./style";
 
-export default function Sidebar() {
+export default function Sidebar({ userId, setIsProfile, setPageType }) {
   const classes = useStyles();
-  const user = firebaseProject.auth().currentUser;
+  const router = useRouter();
 
   return (
     <div className={classes.container}>
       <List>
-        {user === null ? (
-          <Link href="/onboarding">
-            <ListItem button classes={{ button: classes.sidebarButton }}>
-              <ListItemIcon>
-                <PersonOutline />
-              </ListItemIcon>
-              <ListItemText
-                primary="Войти"
-                classes={{ primary: classes.sideBarText }}
-              />
-            </ListItem>
-          </Link>
-        ) : (
-          <Link href="/profile">
-            <ListItem button classes={{ button: classes.sidebarButton }}>
-              <ListItemIcon>
-                <PersonOutline />
-              </ListItemIcon>
-              <ListItemText
-                primary="Профиль"
-                classes={{ primary: classes.sideBarText }}
-              />
-            </ListItem>
-          </Link>
-        )}
-        <Link href="/">
-          <ListItem button classes={{ button: classes.sidebarButton }}>
+        {userId === null ? (
+          <ListItem
+            button
+            onClick={() => {
+              setPageType(2);
+              router.push("/onboarding");
+            }}
+            classes={{ button: classes.sidebarButton }}
+          >
             <ListItemIcon>
-              <EventNote />
+              <PersonOutline />
             </ListItemIcon>
             <ListItemText
-              primary="Лента"
+              primary="Войти"
               classes={{ primary: classes.sideBarText }}
             />
           </ListItem>
-        </Link>
+        ) : (
+          <ListItem
+            button
+            onClick={() => {
+              setIsProfile(true);
+              setPageType(1);
+              router.push("/profile");
+            }}
+            classes={{ button: classes.sidebarButton }}
+          >
+            <ListItemIcon>
+              <PersonOutline />
+            </ListItemIcon>
+            <ListItemText
+              primary="Профиль"
+              classes={{ primary: classes.sideBarText }}
+            />
+          </ListItem>
+        )}
+        <ListItem button classes={{ button: classes.sidebarButton }}>
+          <ListItemIcon>
+            <EventNote />
+          </ListItemIcon>
+          <ListItemText
+            button
+            onClick={() => {
+              setIsProfile(false);
+              router.push("/");
+            }}
+            primary="Лента"
+            classes={{ primary: classes.sideBarText }}
+          />
+        </ListItem>
         <ListItem button classes={{ button: classes.sidebarButton }}>
           <ListItemIcon>
             <FavoriteBorder />

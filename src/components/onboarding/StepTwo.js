@@ -2,8 +2,8 @@ import React from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
 import Category from "../categoryUser/CategoryUser";
-import Policy from "../PolicyFooter";
-import useStyles from "../../style/onboardingStyles/stepTwoThreeStyle";
+import Policy from "../policy/PolicyFooter";
+import useStyles from "./styles/stepTwoThreeStyle";
 import Button from "@material-ui/core/Button";
 
 export default function StepTwo(props) {
@@ -11,16 +11,6 @@ export default function StepTwo(props) {
 
   return (
     <div className={classes.main}>
-      <div>
-        <AppBar className={classes.grow} position="static" color="transparent">
-          <Typography className={classes.title} variant="h6" noWrap>
-            Findband
-          </Typography>
-          <Button style={{ textTransform: "none" }} onClick={props.setStep}>
-            <Typography className={classes.skipText}>Далее</Typography>
-          </Button>
-        </AppBar>
-      </div>
       <div>
         <Typography className={classes.titleMe}>Я...</Typography>
       </div>

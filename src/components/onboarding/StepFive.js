@@ -7,11 +7,11 @@ import TextField from "@material-ui/core/TextField";
 import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
-import Policy from "../PolicyFooter";
-import useStyles from "../../style/onboardingStyles/stepFiveStyle";
+import Policy from "../policy/PolicyFooter";
+import useStyles from "./styles/stepFiveStyle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
-import CitiesList from "./ChooseCity";
+import CitiesList from "./cityList/ChooseCity";
 
 export default function StepFive({ updateUserCredits, createUser, getImages }) {
   const classes = useStyles();
@@ -24,16 +24,6 @@ export default function StepFive({ updateUserCredits, createUser, getImages }) {
 
   return (
     <div className={classes.main}>
-      <div>
-        <AppBar className={classes.grow} position="static" color="transparent">
-          <Typography className={classes.title} variant="h6" noWrap>
-            Findband
-          </Typography>
-          <Link href="/">
-            <Typography className={classes.skipText}>На главную</Typography>
-          </Link>
-        </AppBar>
-      </div>
       <div>
         <Typography className={classes.aboutTitle}>Расскажи о себе</Typography>
       </div>

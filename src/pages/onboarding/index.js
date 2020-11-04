@@ -1,10 +1,11 @@
 import React from "react";
+import { withRouter } from "next/router";
+import SignUp from "../../components/onboarding/SignUp";
 import StepOne from "../../components/onboarding/StepOne";
 import StepTwo from "../../components/onboarding/StepTwo";
 import StepThree from "../../components/onboarding/StepThree";
 import StepFour from "../../components/onboarding/StepFour";
 import StepFive from "../../components/onboarding/StepFive";
-import SignUp from "../../components/onboarding/SignUp";
 import { firebaseProject } from "../../../firebaseConfig";
 
 class Registration extends React.Component {
@@ -58,7 +59,7 @@ class Registration extends React.Component {
       .signInWithEmailAndPassword(email, password)
       .then(({ user }) => {
         console.log("uid", user.uid);
-        this.setState({ userId: user.uid });
+        this.props.router.push("/");
       })
       .catch((err) => {
         console.log(err);
@@ -169,4 +170,4 @@ class Registration extends React.Component {
   }
 }
 
-export default Registration;
+export default withRouter(Registration);

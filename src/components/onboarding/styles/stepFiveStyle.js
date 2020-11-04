@@ -90,7 +90,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 16,
     marginRight: 16,
     marginBottom: 16,
-    backgroundColor: "#F3F3F5",
+    color: "#F3F3F5",
   },
   imageGroup: {
     display: "flex",

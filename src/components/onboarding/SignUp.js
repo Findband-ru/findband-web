@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
-import { Button, IconButton } from "@material-ui/core";
-import Close from "@material-ui/icons/Close";
-import Policy from "../PolicyFooter";
-import useStyles from "../../style/onboardingStyles/signUpStyle";
+import { Button } from "@material-ui/core";
+import Policy from "../policy/PolicyFooter";
+import useStyles from "./styles/signUpStyle";
 import { firebaseProject } from "../../../firebaseConfig";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -40,16 +37,6 @@ export default function SignUp({ handleLogin, handleSignup, setStep }) {
 
   return (
     <div className={classes.mainPage}>
-      <AppBar className={classes.grow} position="static" color="transparent">
-        <Typography className={classes.title} variant="h6" noWrap>
-          Findband
-          <IconButton style={{ marginLeft: 150, marginRight: 175 }}>
-            <Link href="/">
-              <Close />
-            </Link>
-          </IconButton>
-        </Typography>
-      </AppBar>
       <div className={classes.root}>
         <Typography className={classes.textTitle}>
           Вход и регистрация
@@ -87,7 +74,6 @@ export default function SignUp({ handleLogin, handleSignup, setStep }) {
             <Button
               className={classes.nextButton}
               onClick={() => {
-                setStep();
                 handleLogin(email, password);
               }}
             >

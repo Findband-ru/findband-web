@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import Telegram from "@material-ui/icons/Telegram";
 import Instagram from "@material-ui/icons/Instagram";
 import Twitter from "@material-ui/icons/Twitter";
-import useStyles from "../style/policyFooterStyle";
+import useStyles from "./style";
 
 export default function Policy() {
   const classes = useStyles();
