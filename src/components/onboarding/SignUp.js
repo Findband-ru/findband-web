@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { withStyles } from "@material-ui/core";
+import { useRouter } from "next/router";
 import Typography from "@material-ui/core/Typography";
 import { Button } from "@material-ui/core";
 import Policy from "../policy/PolicyFooter";
@@ -9,7 +10,9 @@ import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 
-function SignUp({ handleLogin, handleSignup, setStep, classes }) {
+function SignUp({ handleLogin, handleSignup, setStep, setPageType, classes }) {
+  const router = useRouter();
+  const classes = useStyles();
   const [user, setUser] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -75,6 +78,8 @@ function SignUp({ handleLogin, handleSignup, setStep, classes }) {
               className={classes.nextButton}
               onClick={() => {
                 handleLogin(email, password);
+                router.push("/");
+                setPageType(0);
               }}
             >
               <Typography className={classes.textButton}>Войти</Typography>
@@ -98,6 +103,7 @@ function SignUp({ handleLogin, handleSignup, setStep, classes }) {
               className={classes.nextButton}
               onClick={() => {
                 setStep();
+                setPageType(3);
                 handleSignup(email, password);
               }}
             >

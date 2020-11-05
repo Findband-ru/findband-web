@@ -10,13 +10,23 @@ export const sidebarStyle = {
   },
   container: {
     overflow: "auto",
-    position: "fixed",
+    position: "absolute",
     top: "55%",
     left: "20%",
     webkitTransform: "translateY(-50%)",
     msTransform: "translateY(-50%)",
     transform: "translateY(-50%)",
   },
+  root: {
+    display: "flex",
+    // position: "fixed",
+    justifyContent: "center",
+    borderWidth: 0,
+    maxWidth: 1200,
+    margin: "0 auto",
+    left: "40%",
+  },
+
   content: {
     position: "relative",
     display: "flex",

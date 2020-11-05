@@ -1,6 +1,5 @@
 import React from "react";
 import { withStyles } from "@material-ui/core";
-import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import InputBase from "@material-ui/core/InputBase";
 import { Button } from "@material-ui/core";
@@ -12,10 +11,11 @@ import { Link } from "@material-ui/core";
 import Setting from "../../../public/svg/icons/setting.svg";
 import { navStyle } from "./style";
 import IconButton from "@material-ui/core/IconButton";
-import Close from "@material-ui/icons/Close";
+import Close from "../../../public/svg/icons/close.svg";
 
-const Navbar = (props) => {
-  const { userId, pageType, classes } = props;
+export default function Navbar(props) {
+  const { userId, pageType, setPageType, classes } = props;
+
   switch (pageType) {
     case 1:
       return (
@@ -42,12 +42,13 @@ const Navbar = (props) => {
           </Toolbar>
         </div>
       );
+    /* Ввод эл.почты/логина */
     case 2:
       return (
         <div className={classes.grow} color="transparent">
           <span className={classes.title}>
             Findband
-            <IconButton style={{ marginLeft: 150, marginRight: 175 }}>
+            <IconButton style={{ left: "15%" }}>
               <Link href="/">
                 <Close />
               </Link>
@@ -55,13 +56,21 @@ const Navbar = (props) => {
           </span>
         </div>
       );
+    /* Выбор категории "Я/Ищу" */
     case 3:
       return (
         <div className={classes.grow} color="transparent">
-          <span className={classes.title}>Findband</span>
-          <Button style={{ textTransform: "none" }} onClick={props.setStep}>
-            <span className={classes.skipText}>Далее</span>
-          </Button>
+          <Typography className={classes.title} variant="h6" noWrap>
+            Findband
+            <Button
+              style={{ left: "15%" }}
+              // onClick={() => {
+              //   setPageType(4);
+              // }}
+            >
+              <Typography className={classes.skipText}>Далее</Typography>
+            </Button>
+          </Typography>
         </div>
       );
     case 4:
@@ -77,8 +86,10 @@ const Navbar = (props) => {
       return (
         <div className={classes.grow} color="transparent">
           <Toolbar>
-            <span className={classes.title}>Findband</span>
-            <Auth userId={userId} />
+            <Typography className={classes.title} variant="h6" noWrap>
+              Findband
+            </Typography>
+            <Auth userId={userId} setPageType={setPageType} />
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
@@ -104,6 +115,6 @@ const Navbar = (props) => {
         </div>
       );
   }
-};
+}
 
 export default withStyles(navStyle)(Navbar);

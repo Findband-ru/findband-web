@@ -14,6 +14,8 @@ export const navStyle = {
     right: 0,
   },
   title: {
+    textAlign: "center",
+    width: "100%",
     display: "none",
     fontSize: 24,
     fontWeight: 700,
@@ -45,4 +47,17 @@ export const navStyle = {
     marginLeft: 35,
     textTransform: "none",
   },
+<<<<<<< HEAD
 };
+=======
+  skipText: {
+    fontSize: 15,
+    fontWeight: 400,
+    fontStyle: "normal",
+    color: "#7C7E8F",
+    textTransform: "none",
+  },
+}));
+
+export default useStyles;
+>>>>>>> 442af666dd370431055f5301f40e7f630fd67d0f

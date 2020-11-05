@@ -41,17 +41,7 @@ class FeedCards extends React.Component {
     const { classes } = this.props;
 
     return (
-      <div
-        style={{
-          display: "flex",
-          position: "fixed",
-          justifyContent: "center",
-          borderWidth: 0,
-          maxWidth: 1200,
-          margin: "0 auto",
-          left: "40%",
-        }}
-      >
+      <div className={classes.container}>
         <List className={classes.feed}>
           {this.state.docProfile !== null &&
             this.state.docProfile.map((item, ind) => {
@@ -64,7 +54,7 @@ class FeedCards extends React.Component {
                       title="Profile Image"
                     >
                       <IconButton
-                        className={classes.heartIcon}
+                        className={classes.starIcon}
                         aria-label="add to favorites"
                       >
                         <StarBorder />

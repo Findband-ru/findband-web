@@ -66,7 +66,7 @@ const ProfilePage = ({ userId, classes }) => {
                 variant="body2"
                 color="textSecondary"
                 component="p"
-                className={classes.text}
+                className={classes.title}
               >
                 {name}
               </Typography>
@@ -76,7 +76,7 @@ const ProfilePage = ({ userId, classes }) => {
                 component="p"
                 style={{ fontWeight: 700 }}
               >
-                {mySkill}
+                {mySkill.join(", ")}
               </Typography>
               <Typography
                 variant="body2"
@@ -84,7 +84,8 @@ const ProfilePage = ({ userId, classes }) => {
                 component="p"
                 style={{ fontWeight: 700 }}
               >
-                {findSkill}
+                <span style={{ fontWeight: 400 }}>Ищу </span>{" "}
+                {findSkill.join(", ")}
               </Typography>
               <Typography
                 variant="body2"

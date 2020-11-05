@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Button, Typography } from "@material-ui/core";
 import { buttonStyle } from "./style";
 import { firebaseProject } from "../../../firebaseConfig";
+import useStyles from "./style";
 
 const handleLogout = () => {
   firebaseProject.auth().signOut();
@@ -11,10 +12,14 @@ const handleLogout = () => {
 
 function Auth({ userId, classes }) {
   return (
-    <>
+    <div>
       {userId === null ? (
         <Link href="/onboarding">
-          <Button variant="contained" className={classes.signinButton}>
+          <Button
+            variant="contained"
+            className={classes.signinButton}
+            onClick={() => setPageType(2)}
+          >
             <Typography className={classes.signinBtnText}>Войти</Typography>
           </Button>
         </Link>
@@ -29,7 +34,7 @@ function Auth({ userId, classes }) {
           </Button>
         </Link>
       )}
-    </>
+    </div>
   );
 }
 

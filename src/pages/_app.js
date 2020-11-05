@@ -34,20 +34,19 @@ function MyApp({ Component, pageProps }) {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link rel="icon" type="image/png" href="/favicon-16x16.png" />
       </Head>
-      <div
-        style={{
-          position: "relative",
-          flexGrow: 1,
-          justifyContent: "center",
-        }}
-      >
-        <Navbar userId={userId} pageType={pageType} isProfile={isProfile} />
+      <div className={classes.container}>
+        <Navbar
+          userId={userId}
+          pageType={pageType}
+          isProfile={isProfile}
+          setPageType={setPageType}
+        />
         <Sidebar
           userId={userId}
           setIsProfile={setIsProfile}
           setPageType={setPageType}
         />
-        <Component {...pageProps} userId={userId} />
+        <Component {...pageProps} userId={userId} setPageType={setPageType} />
       </div>
     </>
   );
