@@ -1,8 +1,4 @@
-import { makeStyles } from "@material-ui/core/styles";
-
-// const screenHeight = document.documentElement.clientHeight;
-
-const useStyles = makeStyles(() => ({
+export const sidebarStyle = {
   root: {
     display: "flex",
     position: "fixed",
@@ -58,6 +54,4 @@ const useStyles = makeStyles(() => ({
   policyContainer: {
     marginTop: 410,
   },
-}));
-
-export default useStyles;
+};

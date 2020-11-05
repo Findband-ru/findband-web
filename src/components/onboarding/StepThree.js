@@ -1,21 +1,21 @@
 import React from "react";
-import AppBar from "@material-ui/core/AppBar";
+import { withStyles } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import Category from "../categoryUser/CategoryUser";
 import Policy from "../policy/PolicyFooter";
-import useStyles from "./styles/stepTwoThreeStyle";
+import { stepTwoThreeStyle } from "./styles/stepTwoThreeStyle";
 import { Button } from "@material-ui/core";
 
-export default function StepThree(props) {
-  const classes = useStyles();
-
+function StepThree({ setCategory, classes }) {
   return (
     <div className={classes.main}>
       <div>
         <Typography className={classes.titleMe}>Ищу...</Typography>
       </div>
-      <Category setCategory={props.setCategory} />
+      <Category setCategory={setCategory} />
       <Policy />
     </div>
   );
 }
+
+export default withStyles(stepTwoThreeStyle)(StepThree);

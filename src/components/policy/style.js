@@ -1,6 +1,4 @@
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles(() => ({
+export const policyStyle = {
   policySection: {
     display: "flex",
     flexDirection: "column",
@@ -28,6 +26,4 @@ const useStyles = makeStyles(() => ({
     fontSize: "12px",
     marginTop: 16,
   },
-}));
-
-export default useStyles;
+};

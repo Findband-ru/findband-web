@@ -56,7 +56,7 @@ class FeedCards extends React.Component {
           {this.state.docProfile !== null &&
             this.state.docProfile.map((item, ind) => {
               return (
-                <ListItem className={classes.profileCard}>
+                <ListItem className={classes.profileCard} key={ind}>
                   <Card className={classes.root}>
                     <CardMedia
                       className={classes.media}

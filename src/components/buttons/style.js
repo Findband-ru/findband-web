@@ -1,6 +1,4 @@
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles((theme) => ({
+export const buttonStyle = {
   /* Auth Button */
   signinButton: {
     backgroundColor: "#FA5821",
@@ -34,6 +32,4 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 600,
     fontStyle: "normal",
   },
-}));
-
-export default useStyles;
+};

@@ -1,6 +1,4 @@
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles((theme) => ({
+export const stepFiveStyle = {
   main: {
     flexGrow: 1,
     display: "flex",
@@ -134,6 +132,4 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 10,
     minWidth: 500,
   },
-}));
-
-export default useStyles;
+};

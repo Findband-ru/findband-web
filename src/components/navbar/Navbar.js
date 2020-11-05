@@ -1,32 +1,27 @@
 import React from "react";
+import { withStyles } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
 import InputBase from "@material-ui/core/InputBase";
 import { Button } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import LocationOn from "@material-ui/icons/LocationOn";
 import Tune from "@material-ui/icons/Tune";
-import useStyles from "./style";
 import Auth from "../buttons/AuthButton";
 import { Link } from "@material-ui/core";
 import Setting from "../../../public/svg/icons/setting.svg";
+import { navStyle } from "./style";
 import IconButton from "@material-ui/core/IconButton";
 import Close from "@material-ui/icons/Close";
 
-export default function Navbar(props) {
-  const { userId, pageType } = props;
-  console.log(props);
-  const classes = useStyles();
-
+const Navbar = (props) => {
+  const { userId, pageType, classes } = props;
   switch (pageType) {
     case 1:
       return (
         <div className={classes.grow} color="transparent">
           <Toolbar>
-            <Typography className={classes.title} variant="h6" noWrap>
-              Findband
-            </Typography>
+            <span className={classes.title}>Findband</span>
             <div
               style={{
                 display: "flex",
@@ -37,7 +32,7 @@ export default function Navbar(props) {
                 marginLeft: 250,
               }}
             >
-              <Typography className={classes.title}>Мой профиль</Typography>
+              <span className={classes.title}>Мой профиль</span>
               <Link href="/settings">
                 <IconButton aria-label="settings">
                   <Setting />
@@ -50,35 +45,31 @@ export default function Navbar(props) {
     case 2:
       return (
         <div className={classes.grow} color="transparent">
-          <Typography className={classes.title} variant="h6" noWrap>
+          <span className={classes.title}>
             Findband
             <IconButton style={{ marginLeft: 150, marginRight: 175 }}>
               <Link href="/">
                 <Close />
               </Link>
             </IconButton>
-          </Typography>
+          </span>
         </div>
       );
     case 3:
       return (
         <div className={classes.grow} color="transparent">
-          <Typography className={classes.title} variant="h6" noWrap>
-            Findband
-          </Typography>
+          <span className={classes.title}>Findband</span>
           <Button style={{ textTransform: "none" }} onClick={props.setStep}>
-            <Typography className={classes.skipText}>Далее</Typography>
+            <span className={classes.skipText}>Далее</span>
           </Button>
         </div>
       );
     case 4:
       return (
         <div className={classes.grow} color="transparent">
-          <Typography className={classes.title} variant="h6" noWrap>
-            Findband
-          </Typography>
+          <span className={classes.title}>Findband</span>
           <Link href="/">
-            <Typography className={classes.skipText}>На главную</Typography>
+            <span className={classes.skipText}>На главную</span>
           </Link>
         </div>
       );
@@ -86,9 +77,7 @@ export default function Navbar(props) {
       return (
         <div className={classes.grow} color="transparent">
           <Toolbar>
-            <Typography className={classes.title} variant="h6" noWrap>
-              Findband
-            </Typography>
+            <span className={classes.title}>Findband</span>
             <Auth userId={userId} />
             <div className={classes.search}>
               <div className={classes.searchIcon}>
@@ -105,14 +94,16 @@ export default function Navbar(props) {
             </div>
             <Button className={classes.navbarBtns}>
               <LocationOn style={{ marginRight: "9px" }} />
-              <Typography>Санкт-Петербург</Typography>
+              <span>Санкт-Петербург</span>
             </Button>
             <Button className={classes.navbarBtns}>
               <Tune style={{ marginRight: "9px" }} />
-              <Typography style={{ textTransform: "none" }}>Фильтры</Typography>
+              <span style={{ textTransform: "none" }}>Фильтры</span>
             </Button>
           </Toolbar>
         </div>
       );
   }
-}
+};
+
+export default withStyles(navStyle)(Navbar);

@@ -1,5 +1,6 @@
-const withFonts = require("next-fonts");
-module.exports = withFonts({
+// const withFonts = require("next-fonts");
+module.exports = {
+  distDir: "../.next",
   webpack(config, options) {
     config.module.rules.push({
       test: /\.svg$/,
@@ -7,4 +8,4 @@ module.exports = withFonts({
     });
     return config;
   },
-});
+};

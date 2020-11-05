@@ -1,4 +1,5 @@
 import React from "react";
+import { withStyles } from "@material-ui/core";
 import { useRouter } from "next/router";
 import List from "@material-ui/core/List";
 import Typography from "@material-ui/core/Typography";
@@ -13,57 +14,54 @@ import IconButton from "@material-ui/core/IconButton";
 import Telegram from "@material-ui/icons/Telegram";
 import Instagram from "@material-ui/icons/Instagram";
 import Twitter from "@material-ui/icons/Twitter";
-import useStyles from "./style";
+import { sidebarStyle } from "./style";
 
-export default function Sidebar({ userId, setIsProfile, setPageType }) {
-  const classes = useStyles();
+function Sidebar({ userId, setIsProfile, setPageType, classes }) {
   const router = useRouter();
 
   return (
     <div className={classes.container}>
       <List>
         {userId === null ? (
-          <ListItem
-            button
-            onClick={() => {
-              setPageType(2);
-              router.push("/onboarding");
-            }}
-            classes={{ button: classes.sidebarButton }}
-          >
-            <ListItemIcon>
-              <PersonOutline />
-            </ListItemIcon>
-            <ListItemText
-              primary="Войти"
-              classes={{ primary: classes.sideBarText }}
-            />
+          <ListItem>
+            <button
+              onClick={() => {
+                setPageType(2);
+                router.push("/onboarding");
+              }}
+              classes={{ button: classes.sidebarButton }}
+            >
+              <ListItemIcon>
+                <PersonOutline />
+              </ListItemIcon>
+              <ListItemText
+                primary="Войти"
+                classes={{ primary: classes.sideBarText }}
+              />
+            </button>
           </ListItem>
         ) : (
-          <ListItem
-            button
-            onClick={() => {
-              setIsProfile(true);
-              setPageType(1);
-              router.push("/profile");
-            }}
-            classes={{ button: classes.sidebarButton }}
-          >
-            <ListItemIcon>
-              <PersonOutline />
-            </ListItemIcon>
-            <ListItemText
-              primary="Профиль"
-              classes={{ primary: classes.sideBarText }}
-            />
+          <ListItem>
+            <button
+              onClick={() => {
+                setIsProfile(true);
+                setPageType(1);
+                router.push("/profile");
+              }}
+              classes={{ button: classes.sidebarButton }}
+            >
+              <ListItemIcon>
+                <PersonOutline />
+              </ListItemIcon>
+              <ListItemText
+                primary="Профиль"
+                classes={{ primary: classes.sideBarText }}
+              />
+            </button>
           </ListItem>
         )}
-        <ListItem button classes={{ button: classes.sidebarButton }}>
-          <ListItemIcon>
-            <EventNote />
-          </ListItemIcon>
-          <ListItemText
-            button
+        <ListItem>
+          <button
             onClick={() => {
               setIsProfile(false);
               setPageType(0);
@@ -71,25 +69,34 @@ export default function Sidebar({ userId, setIsProfile, setPageType }) {
             }}
             primary="Лента"
             classes={{ primary: classes.sideBarText }}
-          />
+          >
+            <ListItemIcon>
+              <EventNote />
+            </ListItemIcon>
+            <ListItemText />
+          </button>
         </ListItem>
-        <ListItem button classes={{ button: classes.sidebarButton }}>
-          <ListItemIcon>
-            <FavoriteBorder />
-          </ListItemIcon>
-          <ListItemText
-            primary="Избранные"
-            classes={{ primary: classes.sideBarText }}
-          />
+        <ListItem>
+          <button className={classes.sidebarButton}>
+            <ListItemIcon>
+              <FavoriteBorder />
+            </ListItemIcon>
+            <ListItemText
+              primary="Избранные"
+              classes={{ primary: classes.sideBarText }}
+            />
+          </button>
         </ListItem>
-        <ListItem button classes={{ button: classes.sidebarButton }}>
-          <ListItemIcon>
-            <ChatBubbleOutline />
-          </ListItemIcon>
-          <ListItemText
-            primary="Сообщения"
-            classes={{ primary: classes.sideBarText }}
-          />
+        <ListItem>
+          <button className={classes.sidebarButton}>
+            <ListItemIcon>
+              <ChatBubbleOutline />
+            </ListItemIcon>
+            <ListItemText
+              primary="Сообщения"
+              classes={{ primary: classes.sideBarText }}
+            />
+          </button>
         </ListItem>
       </List>
       <div className={classes.policyContainer}>
@@ -118,3 +125,5 @@ export default function Sidebar({ userId, setIsProfile, setPageType }) {
     </div>
   );
 }
+
+export default withStyles(sidebarStyle)(Sidebar);

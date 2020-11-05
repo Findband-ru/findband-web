@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { withStyles } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { Button } from "@material-ui/core";
 import Policy from "../policy/PolicyFooter";
-import useStyles from "./styles/signUpStyle";
+import { signUpStyle } from "./styles/signUpStyle";
 import { firebaseProject } from "../../../firebaseConfig";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 
-export default function SignUp({ handleLogin, handleSignup, setStep }) {
-  const classes = useStyles();
+function SignUp({ handleLogin, handleSignup, setStep, classes }) {
   const [user, setUser] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -126,3 +126,5 @@ export default function SignUp({ handleLogin, handleSignup, setStep }) {
     </div>
   );
 }
+
+export default withStyles(signUpStyle)(SignUp);

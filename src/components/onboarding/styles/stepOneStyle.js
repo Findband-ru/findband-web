@@ -1,6 +1,4 @@
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles((theme) => ({
+export const stepOneStyle = {
   mainPage: {
     display: "flex",
     flexDirection: "column",
@@ -70,6 +68,4 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 20,
     marginTop: 12,
   },
-}));
-
-export default useStyles;
+};

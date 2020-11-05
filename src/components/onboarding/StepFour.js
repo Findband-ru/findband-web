@@ -1,4 +1,5 @@
 import React from "react";
+import { withStyles } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
@@ -6,11 +7,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDropbox, faSoundcloud } from "@fortawesome/free-brands-svg-icons";
 import { faLaptop } from "@fortawesome/free-solid-svg-icons";
 import Policy from "../policy/PolicyFooter";
-import useStyles from "./styles/stepFourStyle";
+import { stepFourStyle } from "./styles/stepFourStyle";
 
-export default function StepFour(props) {
-  const classes = useStyles();
-
+function StepFour({ classes }) {
   return (
     <div className={classes.main}>
       <div className={classes.block}>
@@ -67,3 +66,5 @@ export default function StepFour(props) {
     </div>
   );
 }
+
+export default withStyles(stepFourStyle)(StepFour);

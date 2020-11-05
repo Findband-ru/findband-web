@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { withStyles } from "@material-ui/core";
 import Link from "next/link";
 import ImageUploading from "react-images-uploading";
 import AppBar from "@material-ui/core/AppBar";
@@ -8,13 +9,12 @@ import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import Policy from "../policy/PolicyFooter";
-import useStyles from "./styles/stepFiveStyle";
+import { stepFiveStyle } from "./styles/stepFiveStyle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import CitiesList from "./cityList/ChooseCity";
 
-export default function StepFive({ updateUserCredits, createUser, getImages }) {
-  const classes = useStyles();
+function StepFive({ updateUserCredits, createUser, getImages, classes }) {
   const [images, setImages] = useState([]);
 
   const onChange = (imageList) => {
@@ -124,3 +124,5 @@ export default function StepFive({ updateUserCredits, createUser, getImages }) {
     </div>
   );
 }
+
+export default withStyles(stepFiveStyle)(StepFive);

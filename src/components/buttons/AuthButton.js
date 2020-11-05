@@ -1,16 +1,15 @@
 import React from "react";
+import { withStyles } from "@material-ui/core";
 import Link from "next/link";
 import { Button, Typography } from "@material-ui/core";
-import useStyles from "./style";
+import { buttonStyle } from "./style";
 import { firebaseProject } from "../../../firebaseConfig";
 
 const handleLogout = () => {
   firebaseProject.auth().signOut();
 };
 
-export default function Auth({ userId }) {
-  const classes = useStyles();
-
+function Auth({ userId, classes }) {
   return (
     <>
       {userId === null ? (
@@ -33,3 +32,5 @@ export default function Auth({ userId }) {
     </>
   );
 }
+
+export default withStyles(buttonStyle)(Auth);
