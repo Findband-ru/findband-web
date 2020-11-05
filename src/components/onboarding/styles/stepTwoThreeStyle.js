@@ -1,6 +1,4 @@
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles(() => ({
+export const stepTwoThreeStyle = {
   main: {
     flexGrow: 1,
     display: "flex",
@@ -14,6 +12,4 @@ const useStyles = makeStyles(() => ({
     fontStyle: "normal",
     marginTop: 38,
   },
-}));
-
-export default useStyles;
+};

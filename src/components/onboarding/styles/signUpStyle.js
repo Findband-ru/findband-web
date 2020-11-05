@@ -1,6 +1,4 @@
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles(() => ({
+export const signUpStyle = {
   mainPage: {
     display: "absolute",
     flexDirection: "column",
@@ -48,6 +46,4 @@ const useStyles = makeStyles(() => ({
     height: 52,
     marginTop: 55,
   },
-}));
-
-export default useStyles;
+};

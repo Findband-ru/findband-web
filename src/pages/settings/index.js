@@ -1,7 +1,8 @@
 import React from "react";
+import { withStyles } from "@material-ui/core/styles";
 import { useRouter } from "next/router";
 import Sidebar from "../../components/sidebar/Sidebar";
-import useStyles from "./style";
+import { settingsStyle } from "../../style/settingsStyle";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -10,8 +11,7 @@ import ShevronLeft from "../../../public/svg/icons/shevronLeft.svg";
 // import { firebaseProject } from "../../../firebaseConfig";
 // import { Link } from "@material-ui/core";
 
-export default function SettingPage() {
-  const classes = useStyles();
+const SettingPage = ({ classes }) => {
   const router = useRouter();
 
   //   const user = firebaseProject.auth().currentUser;
@@ -87,4 +87,6 @@ export default function SettingPage() {
       </main>
     </div>
   );
-}
+};
+
+export default withStyles(settingsStyle)(SettingPage);

@@ -1,13 +1,14 @@
 import React from "react";
+import { withStyles } from "@material-ui/core";
+import { stepTwoThreeStyle } from "./styles/stepTwoThreeStyle";
+
 import Typography from "@material-ui/core/Typography";
 import Category from "../categoryUser/CategoryUser";
 import Policy from "../policy/PolicyFooter";
 import useStyles from "./styles/stepTwoThreeStyle";
 import Next from "../buttons/NextButton";
 
-export default function StepTwo({ setCategory, setStep }) {
-  const classes = useStyles();
-
+function StepTwo({ setCategory, setStep }) {
   return (
     <div className={classes.main}>
       <div>
@@ -19,3 +20,5 @@ export default function StepTwo({ setCategory, setStep }) {
     </div>
   );
 }
+
+export default withStyles(stepTwoThreeStyle)(StepTwo);

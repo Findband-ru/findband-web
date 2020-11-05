@@ -1,9 +1,7 @@
 import React from "react";
-import Link from "next/link";
-import AppBar from "@material-ui/core/AppBar";
+import { withStyles } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { Button, IconButton } from "@material-ui/core";
-import Close from "@material-ui/icons/Close";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebookF,
@@ -11,11 +9,9 @@ import {
   faVk,
 } from "@fortawesome/free-brands-svg-icons";
 import Policy from "../policy/PolicyFooter";
-import useStyles from "./styles/stepOneStyle";
+import { stepOneStyle } from "./styles/stepOneStyle";
 
-export default function StepOne(props) {
-  const classes = useStyles();
-
+function StepOne({ setStep, classes }) {
   return (
     <div className={classes.mainPage}>
       <div className={classes.root}>
@@ -30,7 +26,7 @@ export default function StepOne(props) {
             добавлять их в избранное и делиться своей музыкой
           </Typography>
         </div>
-        <Button className={classes.phoneButton} onClick={props.setStep}>
+        <Button className={classes.phoneButton} onClick={setStep}>
           <Typography className={classes.textButton}>
             По электронной почте
           </Typography>
@@ -65,3 +61,5 @@ export default function StepOne(props) {
     </div>
   );
 }
+
+export default withStyles(stepOneStyle)(StepOne);

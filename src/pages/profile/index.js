@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import Card from "@material-ui/core/Card";
@@ -9,11 +10,10 @@ import StarBorder from "@material-ui/icons/StarBorder";
 import Telegram from "@material-ui/icons/Telegram";
 import Instagram from "@material-ui/icons/Instagram";
 import ShareIcon from "@material-ui/icons/Share";
-import useStyles from "./style";
+import { profileStyle } from "../../style/profileStyle";
 import { firebaseProject } from "../../../firebaseConfig";
 
-export default function ProfilePage({ userId }) {
-  const classes = useStyles();
+const ProfilePage = ({ userId, classes }) => {
   const [name, setName] = useState("");
   const [images, setImages] = useState("");
   const [mySkill, setMySkill] = useState([]);
@@ -111,4 +111,6 @@ export default function ProfilePage({ userId }) {
       </main>
     </div>
   );
-}
+};
+
+export default withStyles(profileStyle)(ProfilePage);

@@ -1,6 +1,8 @@
 import React from "react";
+import { withStyles } from "@material-ui/core";
 import Link from "next/link";
 import { Button, Typography } from "@material-ui/core";
+import { buttonStyle } from "./style";
 import { firebaseProject } from "../../../firebaseConfig";
 import useStyles from "./style";
 
@@ -8,9 +10,7 @@ const handleLogout = () => {
   firebaseProject.auth().signOut();
 };
 
-export default function Auth({ userId, setPageType }) {
-  const classes = useStyles();
-
+function Auth({ userId, classes }) {
   return (
     <div>
       {userId === null ? (
@@ -37,3 +37,5 @@ export default function Auth({ userId, setPageType }) {
     </div>
   );
 }
+
+export default withStyles(buttonStyle)(Auth);

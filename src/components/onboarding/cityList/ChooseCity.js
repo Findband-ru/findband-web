@@ -1,21 +1,17 @@
 import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 
-const useStyles = makeStyles((theme) => ({
+const styles = {
   formControl: {
     minWidth: 500,
     marginTop: 10,
   },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
-}));
+};
 
-export default function CitiesList() {
-  const classes = useStyles();
+function CitiesList({ classes }) {
   const [city, setCity] = useState("");
 
   const handleChange = (event) => {
@@ -47,3 +43,5 @@ export default function CitiesList() {
     </FormControl>
   );
 }
+
+export default withStyles(styles)(CitiesList);

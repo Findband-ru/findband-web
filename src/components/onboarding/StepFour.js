@@ -1,17 +1,15 @@
 import React from "react";
-import AppBar from "@material-ui/core/AppBar";
+import { withStyles } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDropbox, faSoundcloud } from "@fortawesome/free-brands-svg-icons";
 import { faLaptop } from "@fortawesome/free-solid-svg-icons";
 import Policy from "../policy/PolicyFooter";
-import useStyles from "./styles/stepFourStyle";
+import { stepFourStyle } from "./styles/stepFourStyle";
 import Next from "../buttons/NextButton";
 
-export default function StepFour({ setPageType, setStep }) {
-  const classes = useStyles();
-
+function StepFour({ classes, setPageType, setStep }) {
   return (
     <div className={classes.main}>
       <div className={classes.block}>
@@ -69,3 +67,5 @@ export default function StepFour({ setPageType, setStep }) {
     </div>
   );
 }
+
+export default withStyles(stepFourStyle)(StepFour);

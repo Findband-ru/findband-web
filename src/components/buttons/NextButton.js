@@ -1,11 +1,10 @@
 import React from "react";
+import { withStyles } from "@material-ui/core";
 import Link from "next/link";
 import { Button, Typography } from "@material-ui/core";
-import useStyles from "./style";
+import { buttonStyle } from "./style";
 
-export default function Next({ setPageType, setStep }) {
-  const classes = useStyles();
-
+function Next({ setPageType, setStep, classes }) {
   return (
     <Link href="/onboarding">
       <Button
@@ -21,3 +20,5 @@ export default function Next({ setPageType, setStep }) {
     </Link>
   );
 }
+
+export default withStyles(buttonStyle)(Next);

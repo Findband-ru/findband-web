@@ -1,6 +1,13 @@
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles(() => ({
+export const sidebarStyle = {
+  root: {
+    display: "flex",
+    position: "fixed",
+    justifyContent: "center",
+    borderWidth: 0,
+    maxWidth: 1200,
+    margin: "0 auto",
+    left: "40%",
+  },
   container: {
     overflow: "auto",
     position: "absolute",
@@ -57,6 +64,4 @@ const useStyles = makeStyles(() => ({
   policyContainer: {
     marginTop: 410,
   },
-}));
-
-export default useStyles;
+};

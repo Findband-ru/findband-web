@@ -1,6 +1,4 @@
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles((theme) => ({
+export const settingsStyle = {
   container: {
     position: "relative",
     flexGrow: 1,
@@ -13,9 +11,6 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     display: "none",
-    [theme.breakpoints.up("sm")]: {
-      display: "block",
-    },
     fontSize: 24,
     fontWeight: 700,
   },
@@ -45,6 +40,10 @@ const useStyles = makeStyles((theme) => ({
     fontStyle: "normal",
     color: "#161931",
   },
-}));
-
-export default useStyles;
+  skipText: {
+    fontSize: 15,
+    fontWeight: 700,
+    fontStyle: "normal",
+    color: "#FA5821",
+  },
+};
