@@ -20,9 +20,9 @@ const useStyles = makeStyles((theme) => ({
     width: 800,
   },
   title: {
-    [theme.breakpoints.up("sm")]: {
-      display: "block",
-    },
+    // [theme.breakpoints.up("sm")]: {
+    //   display: "block",
+    // },
     fontSize: 24,
     fontWeight: 700,
     marginLeft: 340,

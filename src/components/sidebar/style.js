@@ -56,7 +56,6 @@ const useStyles = makeStyles(() => ({
     border: "1px solid #B0B2BD",
   },
   policyContainer: {
-    // marginTop: screenHeight - 570,
     marginTop: 410,
   },
 }));

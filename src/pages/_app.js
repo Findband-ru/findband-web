@@ -28,7 +28,7 @@ function MyApp({ Component, pageProps }) {
   const classes = useStyles();
   const [userId, setUserId] = useState(null);
   const [isProfile, setIsProfile] = useState(false);
-  const [pageType, setPageType] = useState("feed");
+  const [pageType, setPageType] = useState(0);
 
   const onChange = (user) => {
     if (user) {
@@ -51,7 +51,7 @@ function MyApp({ Component, pageProps }) {
         }
       `}</style>
       <div className={classes.container}>
-        <Navbar userId={userId} pageType={isProfile} />
+        <Navbar userId={userId} pageType={pageType} isProfile={isProfile} />
         <Sidebar
           userId={userId}
           setIsProfile={setIsProfile}

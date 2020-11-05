@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   mainPage: {
-    display: "flex",
+    display: "absolute",
     flexDirection: "column",
     justifyContent: "center",
   },
@@ -23,14 +23,14 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 800,
     margin: "0 auto",
   },
-  title: {
-    display: "none",
-    [theme.breakpoints.up("sm")]: {
-      display: "block",
-    },
-    fontSize: 24,
-    fontWeight: 700,
-  },
+  // title: {
+  //   display: "none",
+  //   [theme.breakpoints.up("sm")]: {
+  //     display: "block",
+  //   },
+  //   fontSize: 24,
+  //   fontWeight: 700,
+  // },
   textTitle: {
     fontSize: 24,
     fontWeight: 700,

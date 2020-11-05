@@ -66,6 +66,7 @@ export default function Sidebar({ userId, setIsProfile, setPageType }) {
             button
             onClick={() => {
               setIsProfile(false);
+              setPageType(0);
               router.push("/");
             }}
             primary="Лента"

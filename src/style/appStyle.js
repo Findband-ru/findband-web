@@ -4,6 +4,7 @@ const useStyles = makeStyles(() => ({
   container: {
     position: "relative",
     flexGrow: 1,
+    justifyContent: "center",
   },
 }));
 

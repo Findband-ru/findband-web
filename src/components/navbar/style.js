@@ -2,10 +2,18 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
-    display: "fixed",
-    flexGrow: 1,
+    position: "absolute",
+    zIndex: 5,
     display: "flex",
+    flexGrow: 1,
     justifyContent: "center",
+    boxShadow: "none",
+    borderBottom: "2px solid #F3F3F5",
+    backgroundColor: "#fff",
+    margin: "0 auto",
+    width: 1200,
+    left: 0,
+    right: 0,
   },
   title: {
     display: "none",

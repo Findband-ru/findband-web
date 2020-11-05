@@ -22,126 +22,96 @@ export default function Navbar(props) {
   switch (pageType) {
     case 1:
       return (
-        <div className={classes.grow}>
-          <AppBar
-            position="static"
-            color="transparent"
-            style={{
-              boxShadow: "none",
-              borderBottom: "2px solid #F3F3F5",
-              margin: "0 auto",
-              width: 1200,
-            }}
-          >
-            <Toolbar>
-              <Typography className={classes.title} variant="h6" noWrap>
-                Findband
-              </Typography>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  width: 500,
-                  marginLeft: 250,
-                }}
-              >
-                <Typography className={classes.title}>Мой профиль</Typography>
-                <Link href="/settings">
-                  <IconButton aria-label="settings">
-                    <Setting />
-                  </IconButton>
-                </Link>
-              </div>
-            </Toolbar>
-          </AppBar>
+        <div className={classes.grow} color="transparent">
+          <Toolbar>
+            <Typography className={classes.title} variant="h6" noWrap>
+              Findband
+            </Typography>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-between",
+                width: 500,
+                marginLeft: 250,
+              }}
+            >
+              <Typography className={classes.title}>Мой профиль</Typography>
+              <Link href="/settings">
+                <IconButton aria-label="settings">
+                  <Setting />
+                </IconButton>
+              </Link>
+            </div>
+          </Toolbar>
         </div>
       );
     case 2:
       return (
-        <div>
-          <AppBar
-            className={classes.grow}
-            position="static"
-            color="transparent"
-          >
-            <Typography className={classes.title} variant="h6" noWrap>
-              Findband
-              <IconButton style={{ marginLeft: 150, marginRight: 175 }}>
-                <Link href="/">
-                  <Close />
-                </Link>
-              </IconButton>
-            </Typography>
-          </AppBar>
+        <div className={classes.grow} color="transparent">
+          <Typography className={classes.title} variant="h6" noWrap>
+            Findband
+            <IconButton style={{ marginLeft: 150, marginRight: 175 }}>
+              <Link href="/">
+                <Close />
+              </Link>
+            </IconButton>
+          </Typography>
         </div>
       );
     case 3:
       return (
-        <AppBar className={classes.grow} position="static" color="transparent">
+        <div className={classes.grow} color="transparent">
           <Typography className={classes.title} variant="h6" noWrap>
             Findband
           </Typography>
           <Button style={{ textTransform: "none" }} onClick={props.setStep}>
             <Typography className={classes.skipText}>Далее</Typography>
           </Button>
-        </AppBar>
+        </div>
       );
     case 4:
       return (
-        <AppBar className={classes.grow} position="static" color="transparent">
+        <div className={classes.grow} color="transparent">
           <Typography className={classes.title} variant="h6" noWrap>
             Findband
           </Typography>
           <Link href="/">
             <Typography className={classes.skipText}>На главную</Typography>
           </Link>
-        </AppBar>
+        </div>
       );
     default:
       return (
-        <div className={classes.grow}>
-          <AppBar
-            position="static"
-            color="transparent"
-            style={{
-              boxShadow: "none",
-              borderBottom: "2px solid #F3F3F5",
-              margin: "0 auto",
-              width: 1200,
-            }}
-          >
-            <Toolbar>
-              <Typography className={classes.title} variant="h6" noWrap>
-                Findband
-              </Typography>
-              <Auth userId={userId} />
-              <div className={classes.search}>
-                <div className={classes.searchIcon}>
-                  <SearchIcon />
-                </div>
-                <InputBase
-                  placeholder="Поиск"
-                  classes={{
-                    root: classes.inputRoot,
-                    input: classes.inputInput,
-                  }}
-                  inputProps={{ "aria-label": "search" }}
-                />
+        <div className={classes.grow} color="transparent">
+          <Toolbar>
+            <Typography className={classes.title} variant="h6" noWrap>
+              Findband
+            </Typography>
+            <Auth userId={userId} />
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
               </div>
-              <Button className={classes.navbarBtns}>
-                <LocationOn style={{ marginRight: "9px" }} />
-                <Typography>Санкт-Петербург</Typography>
-              </Button>
-              <Button className={classes.navbarBtns}>
-                <Tune style={{ marginRight: "9px" }} />
-                <Typography style={{ textTransform: "none" }}>
-                  Фильтры
-                </Typography>
-              </Button>
-            </Toolbar>
-          </AppBar>
+              <InputBase
+                placeholder="Поиск"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                inputProps={{ "aria-label": "search" }}
+              />
+            </div>
+            <Button className={classes.navbarBtns}>
+              <LocationOn style={{ marginRight: "9px" }} />
+              <Typography>Санкт-Петербург</Typography>
+            </Button>
+            <Button className={classes.navbarBtns}>
+              <Tune style={{ marginRight: "9px" }} />
+              <Typography style={{ textTransform: "none" }}>Фильтры</Typography>
+            </Button>
+          </Toolbar>
         </div>
       );
   }
