@@ -20,6 +20,7 @@ export default function Navbar(props) {
 
   switch (pageType) {
     case 1:
+      /* Страница профиля */
       return (
         <div className={classes.grow} color="transparent">
           <Toolbar>
@@ -77,6 +78,7 @@ export default function Navbar(props) {
           </Typography>
         </div>
       );
+    /* Страница заполнения профиля */
     case 4:
       return (
         <div className={classes.grow} color="transparent">
@@ -84,7 +86,7 @@ export default function Navbar(props) {
             Findband
           </Typography>
           <Link href="/">
-            <Typography className={classes.skipText}>На главную</Typography>
+            <Typography className={classes.skipText}>Домой</Typography>
           </Link>
         </div>
       );

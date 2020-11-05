@@ -13,6 +13,7 @@ export default function Next({ setPageType, setStep }) {
         className={classes.nextButton}
         onClick={() => {
           setStep();
+          // setPageType(4);
         }}
       >
         <Typography className={classes.nextBtnText}>Продолжить</Typography>

@@ -64,7 +64,7 @@ export default function StepFour({ setPageType, setStep }) {
           </Typography>
         </Button>
       </div>
-      <Next setStep={() => setStep({ step: 5 })} setPageType={setPageType(4)} />
+      <Next setStep={() => setStep({ step: 5 })} setPageType={setPageType()} />
       <Policy />
     </div>
   );
