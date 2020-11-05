@@ -1,5 +1,6 @@
 import React from "react";
 import { withStyles } from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
 import Toolbar from "@material-ui/core/Toolbar";
 import InputBase from "@material-ui/core/InputBase";
 import { Button } from "@material-ui/core";
@@ -13,9 +14,7 @@ import { navStyle } from "./style";
 import IconButton from "@material-ui/core/IconButton";
 import Close from "../../../public/svg/icons/close.svg";
 
-export default function Navbar(props) {
-  const { userId, pageType, setPageType, classes } = props;
-
+function Navbar({ userId, pageType, setPageType, classes }) {
   switch (pageType) {
     case 1:
       return (

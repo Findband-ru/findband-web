@@ -34,7 +34,13 @@ function MyApp({ Component, pageProps }) {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link rel="icon" type="image/png" href="/favicon-16x16.png" />
       </Head>
-      <div className={classes.container}>
+      <div
+        className={{
+          position: "relative",
+          flexGrow: 1,
+          justifyContent: "center",
+        }}
+      >
         <Navbar
           userId={userId}
           pageType={pageType}

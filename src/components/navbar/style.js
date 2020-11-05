@@ -47,9 +47,6 @@ export const navStyle = {
     marginLeft: 35,
     textTransform: "none",
   },
-<<<<<<< HEAD
-};
-=======
   skipText: {
     fontSize: 15,
     fontWeight: 400,
@@ -57,7 +54,4 @@ export const navStyle = {
     color: "#7C7E8F",
     textTransform: "none",
   },
-}));
-
-export default useStyles;
->>>>>>> 442af666dd370431055f5301f40e7f630fd67d0f
+};

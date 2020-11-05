@@ -12,7 +12,6 @@ import OutlinedInput from "@material-ui/core/OutlinedInput";
 
 function SignUp({ handleLogin, handleSignup, setStep, setPageType, classes }) {
   const router = useRouter();
-  const classes = useStyles();
   const [user, setUser] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
