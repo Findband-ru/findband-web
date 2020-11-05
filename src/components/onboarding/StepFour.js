@@ -7,8 +7,9 @@ import { faDropbox, faSoundcloud } from "@fortawesome/free-brands-svg-icons";
 import { faLaptop } from "@fortawesome/free-solid-svg-icons";
 import Policy from "../policy/PolicyFooter";
 import useStyles from "./styles/stepFourStyle";
+import Next from "../buttons/NextButton";
 
-export default function StepFour(props) {
+export default function StepFour({ setPageType, setStep }) {
   const classes = useStyles();
 
   return (
@@ -63,6 +64,7 @@ export default function StepFour(props) {
           </Typography>
         </Button>
       </div>
+      <Next setStep={() => setStep({ step: 5 })} setPageType={setPageType(4)} />
       <Policy />
     </div>
   );

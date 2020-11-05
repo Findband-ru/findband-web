@@ -1,6 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
-import Sidebar from "../../components/Sidebar";
+import Sidebar from "../../components/sidebar/Sidebar";
 import useStyles from "./style";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";

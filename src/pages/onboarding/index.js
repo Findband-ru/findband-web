@@ -130,6 +130,7 @@ class Registration extends React.Component {
             setStep={() => this.setState({ step: 2 })}
             handleLogin={this.handleLogin}
             handleSignup={this.handleSignup}
+            setPageType={this.props.setPageType}
           />
         );
       case 2:
@@ -151,7 +152,12 @@ class Registration extends React.Component {
           />
         );
       case 4:
-        return <StepFour setStep={() => this.setState({ step: 5 })} />;
+        return (
+          <StepFour
+            setStep={() => this.setState({ step: 5 })}
+            setPageType={this.props.setPageType}
+          />
+        );
       case 5:
         return (
           <StepFive

@@ -1,12 +1,12 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   /* Auth Button */
   signinButton: {
     backgroundColor: "#FA5821",
     color: "white",
     borderRadius: 26,
-    marginLeft: 180,
+    marginLeft: 80,
     marginRight: 35,
     textTransform: "none",
     textDecoration: "none",
@@ -22,9 +22,10 @@ const useStyles = makeStyles((theme) => ({
   nextButton: {
     backgroundColor: "#FA5821",
     color: "white",
+    height: 52,
+    width: 167,
+    marginTop: 50,
     borderRadius: 26,
-    // marginLeft: 180,
-    // marginRight: 35,
     textTransform: "none",
     textDecoration: "none",
   },

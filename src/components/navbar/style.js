@@ -16,6 +16,8 @@ const useStyles = makeStyles((theme) => ({
     right: 0,
   },
   title: {
+    textAlign: "center",
+    width: "100%",
     display: "none",
     [theme.breakpoints.up("sm")]: {
       display: "block",
@@ -61,6 +63,13 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#F3F3F5",
     borderRadius: 24,
     marginLeft: 35,
+    textTransform: "none",
+  },
+  skipText: {
+    fontSize: 15,
+    fontWeight: 400,
+    fontStyle: "normal",
+    color: "#7C7E8F",
     textTransform: "none",
   },
 }));

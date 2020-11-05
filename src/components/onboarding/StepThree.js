@@ -1,12 +1,11 @@
 import React from "react";
-import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
 import Category from "../categoryUser/CategoryUser";
 import Policy from "../policy/PolicyFooter";
 import useStyles from "./styles/stepTwoThreeStyle";
-import { Button } from "@material-ui/core";
+import Next from "../buttons/NextButton";
 
-export default function StepThree(props) {
+export default function StepThree({ setCategory, setStep }) {
   const classes = useStyles();
 
   return (
@@ -14,7 +13,8 @@ export default function StepThree(props) {
       <div>
         <Typography className={classes.titleMe}>Ищу...</Typography>
       </div>
-      <Category setCategory={props.setCategory} />
+      <Category setCategory={setCategory} />
+      <Next setStep={() => setStep({ step: 4 })} />
       <Policy />
     </div>
   );

@@ -1,5 +1,4 @@
 import React from "react";
-import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import InputBase from "@material-ui/core/InputBase";
@@ -12,10 +11,10 @@ import Auth from "../buttons/AuthButton";
 import { Link } from "@material-ui/core";
 import Setting from "../../../public/svg/icons/setting.svg";
 import IconButton from "@material-ui/core/IconButton";
-import Close from "@material-ui/icons/Close";
+import Close from "../../../public/svg/icons/close.svg";
 
 export default function Navbar(props) {
-  const { userId, pageType } = props;
+  const { userId, pageType, setPageType } = props;
   console.log(props);
   const classes = useStyles();
 
@@ -47,12 +46,13 @@ export default function Navbar(props) {
           </Toolbar>
         </div>
       );
+    /* Ввод эл.почты/логина */
     case 2:
       return (
         <div className={classes.grow} color="transparent">
           <Typography className={classes.title} variant="h6" noWrap>
             Findband
-            <IconButton style={{ marginLeft: 150, marginRight: 175 }}>
+            <IconButton style={{ left: "15%" }}>
               <Link href="/">
                 <Close />
               </Link>
@@ -60,15 +60,21 @@ export default function Navbar(props) {
           </Typography>
         </div>
       );
+    /* Выбор категории "Я/Ищу" */
     case 3:
       return (
         <div className={classes.grow} color="transparent">
           <Typography className={classes.title} variant="h6" noWrap>
             Findband
+            <Button
+              style={{ left: "15%" }}
+              // onClick={() => {
+              //   setPageType(4);
+              // }}
+            >
+              <Typography className={classes.skipText}>Далее</Typography>
+            </Button>
           </Typography>
-          <Button style={{ textTransform: "none" }} onClick={props.setStep}>
-            <Typography className={classes.skipText}>Далее</Typography>
-          </Button>
         </div>
       );
     case 4:
@@ -89,7 +95,7 @@ export default function Navbar(props) {
             <Typography className={classes.title} variant="h6" noWrap>
               Findband
             </Typography>
-            <Auth userId={userId} />
+            <Auth userId={userId} setPageType={setPageType} />
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />

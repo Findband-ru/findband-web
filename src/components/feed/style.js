@@ -1,3 +1,13 @@
+export const container = {
+  display: "flex",
+  position: "absolute",
+  justifyContent: "center",
+  borderWidth: 0,
+  maxWidth: 1200,
+  margin: "0 auto",
+  left: "40%",
+};
+
 export const root = {
   maxHeight: 588,
   maxWidth: 528,
@@ -13,15 +23,10 @@ export const media = {
   paddingTop: "50%", // 16:9
 };
 
-export const heartIcon = {
+export const starIcon = {
   position: "relative",
   marginLeft: 470,
   color: "white",
-};
-
-export const playerIcon = {
-  position: "relative",
-  marginLeft: 50,
 };
 
 export const feed = {

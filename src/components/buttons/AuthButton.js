@@ -1,21 +1,25 @@
 import React from "react";
 import Link from "next/link";
 import { Button, Typography } from "@material-ui/core";
-import useStyles from "./style";
 import { firebaseProject } from "../../../firebaseConfig";
+import useStyles from "./style";
 
 const handleLogout = () => {
   firebaseProject.auth().signOut();
 };
 
-export default function Auth({ userId }) {
+export default function Auth({ userId, setPageType }) {
   const classes = useStyles();
 
   return (
-    <>
+    <div>
       {userId === null ? (
         <Link href="/onboarding">
-          <Button variant="contained" className={classes.signinButton}>
+          <Button
+            variant="contained"
+            className={classes.signinButton}
+            onClick={() => setPageType(2)}
+          >
             <Typography className={classes.signinBtnText}>Войти</Typography>
           </Button>
         </Link>
@@ -30,6 +34,6 @@ export default function Auth({ userId }) {
           </Button>
         </Link>
       )}
-    </>
+    </div>
   );
 }

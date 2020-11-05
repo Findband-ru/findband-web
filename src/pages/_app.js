@@ -51,13 +51,18 @@ function MyApp({ Component, pageProps }) {
         }
       `}</style>
       <div className={classes.container}>
-        <Navbar userId={userId} pageType={pageType} isProfile={isProfile} />
+        <Navbar
+          userId={userId}
+          pageType={pageType}
+          isProfile={isProfile}
+          setPageType={setPageType}
+        />
         <Sidebar
           userId={userId}
           setIsProfile={setIsProfile}
           setPageType={setPageType}
         />
-        <Component {...pageProps} userId={userId} />
+        <Component {...pageProps} userId={userId} setPageType={setPageType} />
       </div>
     </ThemeProvider>
   );
