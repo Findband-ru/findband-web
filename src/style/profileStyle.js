@@ -1,13 +1,7 @@
 export const profileStyle = {
   container: {
-    position: "relative",
     flexGrow: 1,
-  },
-  grow: {
-    display: "fixed",
-    flexGrow: 1,
-    display: "flex",
-    justifyContent: "center",
+    marginLeft: 50,
   },
   title: {
     display: "none",
@@ -15,7 +9,8 @@ export const profileStyle = {
     fontWeight: 700,
   },
   root: {
-    marginTop: 50,
+    position: "absolute",
+    marginTop: 100,
     marginLeft: 700,
     maxHeight: 588,
     maxWidth: 528,

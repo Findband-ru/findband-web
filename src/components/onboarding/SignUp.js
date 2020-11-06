@@ -10,7 +10,14 @@ import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 
-function SignUp({ handleLogin, handleSignup, setStep, setPageType, classes }) {
+function SignUp({
+  handleLogin,
+  handleSignup,
+  setStep,
+  setPageType,
+  setIsOnboard,
+  classes,
+}) {
   const router = useRouter();
   const [user, setUser] = useState("");
   const [email, setEmail] = useState("");
@@ -76,31 +83,6 @@ function SignUp({ handleLogin, handleSignup, setStep, setPageType, classes }) {
             <Button
               className={classes.nextButton}
               onClick={() => {
-                handleLogin(email, password);
-                router.push("/");
-                setPageType(0);
-              }}
-            >
-              <Typography className={classes.textButton}>Войти</Typography>
-            </Button>
-            <Typography style={{ marginTop: 7, textAlign: "right" }}>
-              Нет аккаунта?{" "}
-              <span
-                onClick={() => setHasAccount(!hasAccount)}
-                style={{
-                  color: "#FA5821",
-                  fontWeight: 600,
-                }}
-              >
-                Зарегистрироваться
-              </span>
-            </Typography>
-          </>
-        ) : (
-          <>
-            <Button
-              className={classes.nextButton}
-              onClick={() => {
                 setStep();
                 setPageType(3);
                 handleSignup(email, password);
@@ -123,9 +105,35 @@ function SignUp({ handleLogin, handleSignup, setStep, setPageType, classes }) {
               </span>
             </Typography>
           </>
+        ) : (
+          <>
+            <Button
+              className={classes.nextButton}
+              onClick={() => {
+                handleLogin(email, password);
+                router.push("/");
+                setPageType(0);
+                setIsOnboard(false);
+              }}
+            >
+              <Typography className={classes.textButton}>Войти</Typography>
+            </Button>
+            <Typography style={{ marginTop: 7, textAlign: "right" }}>
+              Нет аккаунта?{" "}
+              <span
+                onClick={() => setHasAccount(!hasAccount)}
+                style={{
+                  color: "#FA5821",
+                  fontWeight: 600,
+                }}
+              >
+                Зарегистрироваться
+              </span>
+            </Typography>
+          </>
         )}
       </div>
-      <div style={{ marginTop: "282px" }}>
+      <div style={{ marginTop: 150 }}>
         <Policy />
       </div>
     </div>

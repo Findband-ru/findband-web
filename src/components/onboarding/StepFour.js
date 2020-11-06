@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { withStyles } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
@@ -7,7 +8,7 @@ import { faDropbox, faSoundcloud } from "@fortawesome/free-brands-svg-icons";
 import { faLaptop } from "@fortawesome/free-solid-svg-icons";
 import Policy from "../policy/PolicyFooter";
 import { stepFourStyle } from "./styles/stepFourStyle";
-import Next from "../buttons/NextButton";
+// import Next from "../buttons/NextButton";
 
 function StepFour({ classes, setPageType, setStep }) {
   return (
@@ -62,7 +63,18 @@ function StepFour({ classes, setPageType, setStep }) {
           </Typography>
         </Button>
       </div>
-      <Next setStep={() => setStep({ step: 5 })} setPageType={setPageType()} />
+      <Link href="/onboarding">
+        <Button
+          variant="contained"
+          className={classes.nextButton}
+          onClick={() => {
+            setStep();
+            setPageType(4);
+          }}
+        >
+          <Typography className={classes.nextBtnText}>Продолжить</Typography>
+        </Button>
+      </Link>
       <Policy />
     </div>
   );

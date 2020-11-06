@@ -1,10 +1,12 @@
 export const stepFiveStyle = {
   main: {
-    flexGrow: 1,
+    position: "absolute",
     display: "flex",
     flexDirection: "column",
+    justifyContent: "center",
     alignItems: "center",
-    margin: 0,
+    top: 50,
+    left: "35%",
   },
   grow: {
     flexGrow: 1,
@@ -18,9 +20,6 @@ export const stepFiveStyle = {
     width: 800,
   },
   title: {
-    // [theme.breakpoints.up("sm")]: {
-    //   display: "block",
-    // },
     fontSize: 24,
     fontWeight: 700,
     marginLeft: 340,

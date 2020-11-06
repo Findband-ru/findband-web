@@ -26,15 +26,18 @@ function StepOne({ setStep, classes }) {
             добавлять их в избранное и делиться своей музыкой
           </Typography>
         </div>
-        <Button className={classes.phoneButton} onClick={setStep}>
-          <Typography className={classes.textButton}>
-            По электронной почте
-          </Typography>
-        </Button>
-        <Typography className={classes.textUnderButton}>
-          или с помощью
-        </Typography>
         <div>
+          <Button className={classes.emailButton} onClick={setStep}>
+            <Typography className={classes.textButton}>
+              По электронной почте
+            </Typography>
+          </Button>
+          <Typography
+            className={classes.textUnderButton}
+            style={{ textAlign: "center" }}
+          >
+            или с помощью
+          </Typography>
           <IconButton
             className={classes.socialButtons}
             style={{ backgroundColor: "#4680C2" }}
@@ -55,7 +58,7 @@ function StepOne({ setStep, classes }) {
           </IconButton>
         </div>
       </div>
-      <div style={{ marginTop: "282px" }}>
+      <div style={{ marginTop: 150 }}>
         <Policy />
       </div>
     </div>

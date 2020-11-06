@@ -1,8 +1,11 @@
 export const signUpStyle = {
   mainPage: {
-    display: "absolute",
+    position: "absolute",
+    display: "flex",
     flexDirection: "column",
     justifyContent: "center",
+    top: 50,
+    left: "35%",
   },
   root: {
     display: "flex",

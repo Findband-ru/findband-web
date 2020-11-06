@@ -1,22 +1,33 @@
 import React from "react";
+import Link from "next/link";
 import { withStyles } from "@material-ui/core";
 import { stepTwoThreeStyle } from "./styles/stepTwoThreeStyle";
-
 import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
 import Category from "../categoryUser/CategoryUser";
 import Policy from "../policy/PolicyFooter";
-import useStyles from "./styles/stepTwoThreeStyle";
-import Next from "../buttons/NextButton";
+// import Next from "../buttons/NextButton";
 
-function StepTwo({ setCategory, setStep }) {
+function StepTwo({ setCategory, setPageType, setStep, classes }) {
   return (
     <div className={classes.main}>
       <div>
         <Typography className={classes.titleMe}>Я...</Typography>
       </div>
       <Category setCategory={setCategory} />
-      <Next setStep={() => setStep({ step: 3 })} />
-      <Policy />
+      <Link href="/onboarding">
+        <Button
+          variant="contained"
+          className={classes.nextButton}
+          onClick={() => {
+            setStep();
+            setPageType(3);
+          }}
+        >
+          <Typography className={classes.nextBtnText}>Продолжить</Typography>
+        </Button>
+      </Link>
+      <Policy style={{ marginTop: 40 }} />
     </div>
   );
 }

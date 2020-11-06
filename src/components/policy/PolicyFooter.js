@@ -10,7 +10,7 @@ import { policyStyle } from "./style";
 function Policy({ classes }) {
   return (
     <div className={classes.policySection}>
-      <div style={{ marginTop: "120px" }}>
+      <div>
         <IconButton aria-label="go to instagram">
           <Instagram className={classes.sidebarSocialIcon} />
         </IconButton>

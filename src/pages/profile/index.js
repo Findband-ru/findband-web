@@ -35,7 +35,6 @@ const ProfilePage = ({ userId, classes }) => {
           setFindSkill(doc.data().findSkill);
           setAbout(doc.data().about);
         } else {
-          // doc.data() will be undefined in this case
           console.log("No such document!");
         }
       })

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { withStyles } from "@material-ui/core";
 import Link from "next/link";
 import ImageUploading from "react-images-uploading";
-import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import IconButton from "@material-ui/core/IconButton";
@@ -118,7 +117,7 @@ function StepFive({ updateUserCredits, createUser, getImages, classes }) {
           </Typography>
         </Button>
       </Link>
-      <div style={{ marginTop: -50 }}>
+      <div>
         <Policy />
       </div>
     </div>

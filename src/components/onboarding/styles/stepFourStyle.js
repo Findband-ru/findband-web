@@ -1,11 +1,12 @@
 export const stepFourStyle = {
   main: {
-    flexGrow: 1,
+    position: "absolute",
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
     justifyContent: "center",
-    margin: 0,
+    alignItems: "center",
+    top: 50,
+    left: "35%",
   },
   grow: {
     flexGrow: 1,
@@ -19,9 +20,6 @@ export const stepFourStyle = {
   },
   title: {
     display: "none",
-    // [theme.breakpoints.up("sm")]: {
-    //   display: "block",
-    // },
     fontSize: 24,
     fontWeight: 700,
     marginLeft: 340,
@@ -65,5 +63,22 @@ export const stepFourStyle = {
     fontWeight: 400,
     fontStyle: "normal",
     color: "#fff",
+  },
+  /* Next Button */
+  nextButton: {
+    backgroundColor: "#FA5821",
+    color: "white",
+    height: 52,
+    width: 167,
+    marginTop: 30,
+    borderRadius: 26,
+    textTransform: "none",
+    textDecoration: "none",
+  },
+  nextBtnText: {
+    textDecoration: "none",
+    fontSize: 17,
+    fontWeight: 600,
+    fontStyle: "normal",
   },
 };

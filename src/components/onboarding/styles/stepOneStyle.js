@@ -1,8 +1,11 @@
 export const stepOneStyle = {
   mainPage: {
+    position: "absolute",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
+    top: 50,
+    left: "35%",
   },
   grow: {
     flexGrow: 1,
@@ -25,9 +28,6 @@ export const stepOneStyle = {
   },
   title: {
     display: "none",
-    // [theme.breakpoints.up("sm")]: {
-    //   display: "block",
-    // },
     fontSize: 24,
     fontWeight: 700,
   },
@@ -47,7 +47,7 @@ export const stepOneStyle = {
     color: "#fff",
     textTransform: "none",
   },
-  phoneButton: {
+  emailButton: {
     backgroundColor: "#FA5821",
     borderRadius: 26,
     width: 528,

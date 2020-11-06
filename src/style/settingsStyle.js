@@ -40,10 +40,4 @@ export const settingsStyle = {
     fontStyle: "normal",
     color: "#161931",
   },
-  skipText: {
-    fontSize: 15,
-    fontWeight: 700,
-    fontStyle: "normal",
-    color: "#FA5821",
-  },
 };

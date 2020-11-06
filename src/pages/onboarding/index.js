@@ -131,12 +131,14 @@ class Registration extends React.Component {
             handleLogin={this.handleLogin}
             handleSignup={this.handleSignup}
             setPageType={this.props.setPageType}
+            setIsOnboard={this.props.setIsOnboard}
           />
         );
       case 2:
         return (
           <StepTwo
             setStep={() => this.setState({ step: 3 })}
+            setPageType={this.props.setPageType}
             setCategory={(label) => {
               this.updateStateArray("mySkill", label);
             }}
@@ -146,6 +148,7 @@ class Registration extends React.Component {
         return (
           <StepThree
             setStep={() => this.setState({ step: 4 })}
+            setPageType={this.props.setPageType}
             setCategory={(label) => {
               this.updateStateArray("findSkill", label);
             }}

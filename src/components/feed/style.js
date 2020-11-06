@@ -6,6 +6,7 @@ export const container = {
   maxWidth: 1200,
   margin: "0 auto",
   left: "40%",
+  top: 80,
 };
 
 export const root = {
