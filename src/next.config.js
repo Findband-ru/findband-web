@@ -1,32 +1,35 @@
-// const withFonts = require("next-fonts");
+const withCss = require("@zeit/next-css");
+const withFonts = require("next-fonts");
 
-module.exports = {
-  distDir: "../.next",
-  webpack(config, options) {
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ["@svgr/webpack"],
-    });
-    return config;
-  },
-};
-// module.exports = withFonts({
-//   distDir: "../.next",
-//   webpack(config, options) {
-//     config.node = {
-//       fs: "empty",
-//     };
-//     config.module.rules.push({
-//       test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-//       use: [
-//         options.defaultLoaders.babel,
-//         {
-//           loader: "url-loader?limit=100000",
-//         },
-//         {
-//           loader: "file-loader",
-//         },
-//       ],
-//     });
-// return config;
-// });
+module.exports = withFonts(
+  withCss({
+    distDir: "../.next",
+    webpack: (config, { isServer }) => {
+      if (isServer) {
+        const antStyles = /antd\/.*?\/style\/css.*?/;
+        const origExternals = [...config.externals];
+        config.externals = [
+          (context, request, callback) => {
+            if (request.match(antStyles)) return callback();
+            if (typeof origExternals[0] === "function") {
+              origExternals[0](context, request, callback);
+            } else {
+              callback();
+            }
+          },
+          ...(typeof origExternals[0] === "function" ? [] : origExternals),
+        ];
+
+        config.module.rules.unshift({
+          test: antStyles,
+          use: "null-loader",
+        });
+      }
+      config.module.rules.push({
+        test: /\.svg$/,
+        use: ["@svgr/webpack"],
+      });
+      return config;
+    },
+  })
+);
