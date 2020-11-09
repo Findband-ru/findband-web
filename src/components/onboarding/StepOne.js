@@ -11,7 +11,7 @@ import {
 import Policy from "../policy/PolicyFooter";
 import { stepOneStyle } from "./styles/stepOneStyle";
 
-function StepOne({ setStep, classes }) {
+function StepOne({ setStep, classes, signInWithGoogle }) {
   return (
     <div className={classes.mainPage}>
       <div className={classes.root}>
@@ -47,6 +47,7 @@ function StepOne({ setStep, classes }) {
           <IconButton
             className={classes.socialButtons}
             style={{ backgroundColor: "#E7E7EB" }}
+            onClick={signInWithGoogle}
           >
             <FontAwesomeIcon icon={faGoogle} size="lg" />
           </IconButton>

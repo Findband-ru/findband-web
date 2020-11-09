@@ -13,7 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import CitiesList from "./cityList/ChooseCity";
 
-function StepFive({ updateUserCredits, createUser, getImages, classes }) {
+function StepFive({ updateUserCredits, createUser, getImages, classes, name }) {
   const [images, setImages] = useState([]);
 
   const onChange = (imageList) => {
@@ -54,6 +54,7 @@ function StepFive({ updateUserCredits, createUser, getImages, classes }) {
         <Typography className={classes.nameText}>Имя</Typography>
         <TextField
           classes={{ root: classes.inputName }}
+          value={name}
           variant="outlined"
           onChange={(event) =>
             updateUserCredits("name", event.currentTarget.value)
@@ -105,18 +106,14 @@ function StepFive({ updateUserCredits, createUser, getImages, classes }) {
           )}
         </ImageUploading>
       </div>
-      <Link href="/profile">
-        <Button
-          style={{ textTransform: "none", color: "#fff" }}
-          onClick={() => createUser()}
-          variant="contained"
-          className={classes.nextButton}
-        >
-          <Typography className={classes.nextText}>
-            Сохранить профиль
-          </Typography>
-        </Button>
-      </Link>
+      <Button
+        style={{ textTransform: "none", color: "#fff" }}
+        onClick={createUser}
+        variant="contained"
+        className={classes.nextButton}
+      >
+        <Typography className={classes.nextText}>Сохранить профиль</Typography>
+      </Button>
       <div>
         <Policy />
       </div>

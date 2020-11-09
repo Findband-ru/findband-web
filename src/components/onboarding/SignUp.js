@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { withStyles } from "@material-ui/core";
-import { useRouter } from "next/router";
 import Typography from "@material-ui/core/Typography";
 import { Button } from "@material-ui/core";
 import Policy from "../policy/PolicyFooter";
@@ -9,16 +8,9 @@ import { firebaseProject } from "../../../firebaseConfig";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
+import FormHelperText from "@material-ui/core/FormHelperText";
 
-function SignUp({
-  handleLogin,
-  handleSignup,
-  setStep,
-  setPageType,
-  setIsOnboard,
-  classes,
-}) {
-  const router = useRouter();
+function SignUp({ handleLogin, handleSignup, classes, isError, errorMessage }) {
   const [user, setUser] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -56,7 +48,7 @@ function SignUp({
               Введи адрес электронной почты
             </InputLabel>
             <OutlinedInput
-              id="component-outlined"
+              error={isError}
               type="email"
               value={email}
               label="Введи адрес электронной почты"
@@ -68,12 +60,16 @@ function SignUp({
           <FormControl variant="outlined" classes={{ root: classes.inputName }}>
             <InputLabel htmlFor="component-outlined">Введи пароль</InputLabel>
             <OutlinedInput
-              id="component-outlined"
+              error={isError}
+              helperText="Incorrect entry."
               type="password"
               value={password}
               label="Введи адрес электронной почты"
               onChange={(e) => setPassword(e.target.value)}
             />
+            <FormHelperText error={isError} disabled={true}>
+              {errorMessage}
+            </FormHelperText>
           </FormControl>
         </div>
       </div>
@@ -82,11 +78,7 @@ function SignUp({
           <>
             <Button
               className={classes.nextButton}
-              onClick={() => {
-                setStep();
-                setPageType(3);
-                handleSignup(email, password);
-              }}
+              onClick={() => handleSignup(email, password)}
             >
               <Typography className={classes.textButton}>
                 Зарегистрироваться
@@ -99,6 +91,7 @@ function SignUp({
                 style={{
                   color: "#FA5821",
                   fontWeight: 600,
+                  cursor: "pointer",
                 }}
               >
                 Войти
@@ -109,12 +102,7 @@ function SignUp({
           <>
             <Button
               className={classes.nextButton}
-              onClick={() => {
-                handleLogin(email, password);
-                router.push("/");
-                setPageType(0);
-                setIsOnboard(false);
-              }}
+              onClick={() => handleLogin(email, password)}
             >
               <Typography className={classes.textButton}>Войти</Typography>
             </Button>
@@ -125,6 +113,7 @@ function SignUp({
                 style={{
                   color: "#FA5821",
                   fontWeight: 600,
+                  cursor: "pointer",
                 }}
               >
                 Зарегистрироваться

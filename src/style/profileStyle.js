@@ -4,7 +4,6 @@ export const profileStyle = {
     marginLeft: 50,
   },
   title: {
-    display: "none",
     fontSize: 24,
     fontWeight: 700,
   },

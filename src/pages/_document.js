@@ -7,10 +7,14 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-          />
+          <link rel="icon" type="image/png" href="/favicon-16x16.png" />
+          <link rel="stylesheet" href="/fonts/font.css" />
+          <style global jsx>{`
+            body {
+              font-family: AvertaCyrillicBlack, sans-serif !important;
+              overflow: hidden;
+            }
+          `}</style>
         </Head>
         <body>
           <Main />

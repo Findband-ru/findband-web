@@ -17,6 +17,8 @@ class Registration extends React.Component {
     name: "",
     about: "",
     userId: null,
+    errorMsg: null,
+    isError: false,
   };
 
   uploadImages = () =>
@@ -43,8 +45,11 @@ class Registration extends React.Component {
         about: this.state.about,
         images: await Promise.all(imagesUrls),
       })
-      .then(function () {
+      .then(() => {
         console.log("Document successfully written!");
+        this.props.setPageType(0);
+        this.props.setIsOnboard(false);
+        this.props.router.push("/");
       })
       .catch(function (error) {
         console.error("Error writing document: ", error);
@@ -52,57 +57,87 @@ class Registration extends React.Component {
   };
 
   handleLogin = (email, password) => {
-    // this.clearErrors();
+    this.clearErrors();
     console.log(email, password);
     firebaseProject
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then(({ user }) => {
         console.log("uid", user.uid);
+        this.props.setPageType(0);
+        this.props.setIsOnboard(false);
         this.props.router.push("/");
       })
       .catch((err) => {
         console.log(err);
-        // switch (err.code) {
-        //   case "auth/invalid-email":
-        //   case "auth/user-disabled":
-        //   case "auth/user-not-found":
-        //     setEmailError(err.message);
-        //     break;
-        //   case "auth/wrong-password":
-        //     setPasswordError(err.message);
-        //     break;
-        // }
+        switch (err.code) {
+          case "auth/invalid-email":
+          case "auth/user-disabled":
+          case "auth/user-not-found":
+            this.setState({ errorMsg: err.message, isError: true });
+            break;
+          case "auth/wrong-password":
+            this.setState({ errorMsg: err.message, isError: true });
+            break;
+        }
       });
   };
 
   handleSignup = (email, password) => {
-    // this.clearErrors();
+    this.clearErrors();
     firebaseProject
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then(({ user }) => {
         console.log("uid", user.uid);
         this.setState({ userId: user.uid });
+        setStep();
+        setPageType(3);
       })
       .catch((err) => {
         console.log(err);
-        // switch (err.code) {
-        //   case "auth/email-already-in-use":
-        //   case "auth/invalid-email":
-        //     setEmailError(err.message);
-        //     break;
-        //   case "auth/weak-password":
-        //     setPasswordError(err.message);
-        //     break;
-        // }
+        switch (err.code) {
+          case "auth/email-already-in-use":
+          case "auth/invalid-email":
+            this.setState({ errorMsg: err.message, isError: true });
+            break;
+          case "auth/weak-password":
+            this.setState({ errorMsg: err.message, isError: true });
+            break;
+        }
       });
   };
 
-  // clearErrors = () => {
-  //   setEmailError("");
-  //   setPasswordError("");
-  // };
+  signInWithGoogle = () => {
+    const auth = firebaseProject.auth();
+    const googleProvider = new firebaseProject.auth.GoogleAuthProvider();
+
+    auth.signInWithPopup(googleProvider).then((res) => {
+      console.log(res.user.displayName, res.user.email, res.user.uid);
+
+      firebaseProject
+        .firestore()
+        .collection("users")
+        .doc(res.user.uid)
+        .get()
+        .then((doc) => {
+          if (!doc.exists) {
+            this.setState({
+              step: 2,
+              name: res.user.displayName,
+              userId: res.user.uid,
+            });
+          } else {
+            this.props.setPageType(0);
+            this.props.setIsOnboard(false);
+            this.props.router.push("/");
+          }
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+    });
+  };
 
   updateStateArray = (array, label) => {
     let categoryArr = this.state[array];
@@ -122,6 +157,10 @@ class Registration extends React.Component {
     setTimeout(() => console.log(this.state), 0);
   };
 
+  clearErrors = () => {
+    this.setState({ errorMsg: null });
+  };
+
   setStep = () => {
     switch (this.state.step) {
       case 1:
@@ -132,6 +171,8 @@ class Registration extends React.Component {
             handleSignup={this.handleSignup}
             setPageType={this.props.setPageType}
             setIsOnboard={this.props.setIsOnboard}
+            isError={this.state.isError}
+            errorMessage={this.state.errorMsg}
           />
         );
       case 2:
@@ -167,10 +208,16 @@ class Registration extends React.Component {
             updateUserCredits={this.updateUserCredits}
             getImages={(images) => this.setState({ images })}
             createUser={this.createUser}
+            name={this.state.name}
           />
         );
       default:
-        return <StepOne setStep={() => this.setState({ step: 1 })} />;
+        return (
+          <StepOne
+            setStep={() => this.setState({ step: 1 })}
+            signInWithGoogle={this.signInWithGoogle}
+          />
+        );
     }
   };
 
