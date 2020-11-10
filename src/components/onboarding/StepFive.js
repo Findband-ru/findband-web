@@ -1,54 +1,48 @@
-import React, { useState } from "react";
-import { withStyles } from "@material-ui/core";
-import Link from "next/link";
+import React from "react";
+import {
+  Typography,
+  TextField,
+  IconButton,
+  Button,
+  TextareaAutosize,
+  withStyles,
+} from "@material-ui/core";
 import ImageUploading from "react-images-uploading";
-import Typography from "@material-ui/core/Typography";
-import TextField from "@material-ui/core/TextField";
-import IconButton from "@material-ui/core/IconButton";
-import Button from "@material-ui/core/Button";
-import TextareaAutosize from "@material-ui/core/TextareaAutosize";
-import Policy from "../policy/PolicyFooter";
-import { stepFiveStyle } from "./styles/stepFiveStyle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+import { stepFiveStyle } from "./styles/stepFiveStyle";
 import CitiesList from "./cityList/ChooseCity";
 
-function StepFive({ updateUserCredits, createUser, getImages, classes, name }) {
-  const [images, setImages] = useState([]);
-
-  const onChange = (imageList) => {
-    getImages(imageList);
-    setImages(imageList);
-  };
-
+function StepFive({
+  updateUserCredits,
+  createUser,
+  getImages,
+  classes,
+  name,
+  images,
+}) {
   return (
-    <div className={classes.main}>
-      <div>
+    <div className={classes.root}>
+      <div className={classes.title}>
         <Typography className={classes.aboutTitle}>Расскажи о себе</Typography>
-      </div>
-      <div>
-        <div>
-          <ImageUploading
-            multiple
-            value={images}
-            onChange={onChange}
-            maxNumber={4}
-            dataURLKey="data_url"
-          >
-            {({ onImageUpload }) => (
-              <div>
-                <Button
-                  style={{ textTransform: "none" }}
-                  onClick={onImageUpload}
-                >
-                  <Typography className={classes.subtitle}>
-                    Загрузи фотографии
-                  </Typography>
-                </Button>
-              </div>
-            )}
-          </ImageUploading>
-        </div>
+
+        <ImageUploading
+          multiple
+          value={images}
+          onChange={(imageList) => getImages(imageList)}
+          maxNumber={4}
+          dataURLKey="data_url"
+        >
+          {({ onImageUpload }) => (
+            <div>
+              <Button style={{ textTransform: "none" }} onClick={onImageUpload}>
+                <Typography className={classes.subtitle}>
+                  Загрузи фотографии
+                </Typography>
+              </Button>
+            </div>
+          )}
+        </ImageUploading>
       </div>
       <div className={classes.textInputBlock}>
         <Typography className={classes.nameText}>Имя</Typography>
@@ -82,7 +76,7 @@ function StepFive({ updateUserCredits, createUser, getImages, classes, name }) {
         <ImageUploading
           multiple
           value={images}
-          onChange={onChange}
+          onChange={(imageList) => getImages(imageList)}
           dataURLKey="data_url"
         >
           {({ imageList, onImageRemove }) => (
@@ -114,9 +108,6 @@ function StepFive({ updateUserCredits, createUser, getImages, classes, name }) {
       >
         <Typography className={classes.nextText}>Сохранить профиль</Typography>
       </Button>
-      <div>
-        <Policy />
-      </div>
     </div>
   );
 }

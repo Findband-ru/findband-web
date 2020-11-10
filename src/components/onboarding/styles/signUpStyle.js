@@ -1,21 +1,13 @@
 export const signUpStyle = {
-  mainPage: {
-    position: "absolute",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    top: 50,
-    left: "35%",
-  },
   root: {
     display: "flex",
     flexDirection: "column",
     maxWidth: 800,
     margin: "0 auto",
+    textAlign: "center",
   },
   textTitle: {
     fontSize: 24,
-    fontWeight: 700,
     fontStyle: "normal",
     marginTop: 40,
     color: "#161931",
@@ -23,7 +15,6 @@ export const signUpStyle = {
   },
   textDesclaimer: {
     fontSize: 17,
-    fontWeight: 400,
     fontStyle: "normal",
     color: "#7C7E8F",
     marginBottom: 5,
@@ -37,7 +28,6 @@ export const signUpStyle = {
   },
   textButton: {
     fontSize: 17,
-    fontWeight: 600,
     fontStyle: "normal",
     color: "#fff",
     textTransform: "none",
@@ -45,8 +35,12 @@ export const signUpStyle = {
   nextButton: {
     backgroundColor: "#FA5821",
     borderRadius: 26,
-    width: 528,
+    width: 510,
     height: 52,
-    marginTop: 55,
+    margin: "16px auto",
+  },
+  hasAccount: {
+    color: "#FA5821",
+    cursor: "pointer",
   },
 };

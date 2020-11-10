@@ -1,19 +1,22 @@
 export const profileStyle = {
-  container: {
-    flexGrow: 1,
-    marginLeft: 50,
+  profileContainer: {
+    display: "flex",
+    position: "absolute",
+    justifyContent: "center",
+    borderWidth: 0,
+    maxWidth: 1200,
+    margin: "0 auto",
+    left: "40%",
   },
   title: {
     fontSize: 24,
     fontWeight: 700,
   },
   root: {
-    position: "absolute",
-    marginTop: 100,
-    marginLeft: 700,
     maxHeight: 588,
     maxWidth: 528,
     borderRadius: 20,
+    margin: "0 auto 50px auto",
   },
   media: {
     maxHeight: 365,

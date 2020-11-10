@@ -1,18 +1,13 @@
 import React from "react";
-import Link from "next/link";
-import { withStyles } from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
+import { Input, Typography, Button, withStyles } from "@material-ui/core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDropbox, faSoundcloud } from "@fortawesome/free-brands-svg-icons";
 import { faLaptop } from "@fortawesome/free-solid-svg-icons";
-import Policy from "../policy/PolicyFooter";
 import { stepFourStyle } from "./styles/stepFourStyle";
-// import Next from "../buttons/NextButton";
 
-function StepFour({ classes, setPageType, setStep }) {
+function StepFour({ classes, setPageType, setStep, getAudio }) {
   return (
-    <div className={classes.main}>
+    <div className={classes.root}>
       <div className={classes.block}>
         <Typography className={classes.loadTitle}>Загрузи свой трек</Typography>
         <Typography className={classes.subtitle}>
@@ -24,7 +19,18 @@ function StepFour({ classes, setPageType, setStep }) {
           variant="contained"
           className={classes.loadButtons}
           style={{ backgroundColor: "#F3F3F5" }}
+          onClick={() => {
+            const audioInput = document.getElementById("audio");
+            audioInput.click();
+          }}
         >
+          <Input
+            type="file"
+            id="audio"
+            onChange={(event) => getAudio(event.target.files[0])}
+            style={{ display: "none" }}
+            fullWidth={true}
+          />
           <FontAwesomeIcon
             icon={faLaptop}
             size="lg"
@@ -63,19 +69,16 @@ function StepFour({ classes, setPageType, setStep }) {
           </Typography>
         </Button>
       </div>
-      <Link href="/onboarding">
-        <Button
-          variant="contained"
-          className={classes.nextButton}
-          onClick={() => {
-            setStep();
-            setPageType(4);
-          }}
-        >
-          <Typography className={classes.nextBtnText}>Продолжить</Typography>
-        </Button>
-      </Link>
-      <Policy />
+      <Button
+        variant="contained"
+        className={classes.nextButton}
+        onClick={() => {
+          setStep();
+          setPageType(4);
+        }}
+      >
+        <Typography className={classes.nextBtnText}>Продолжить</Typography>
+      </Button>
     </div>
   );
 }

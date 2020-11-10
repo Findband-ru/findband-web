@@ -3,9 +3,9 @@ export const buttonGroup = {
   flexWrap: "wrap",
   alignItems: "center",
   justifyContent: "space-between",
-  height: 500,
   width: 600,
   marginTop: 11,
+  marginBottom: 11,
 };
 export const button = {
   position: "relative",

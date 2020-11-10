@@ -44,70 +44,64 @@ const ProfilePage = ({ userId, classes }) => {
   }, []);
 
   return (
-    <div>
-      <main className={classes.container}>
-        <Card className={classes.root}>
-          <CardMedia
-            className={classes.media}
-            image={images}
-            title="Profile Image"
+    <div className={classes.profileContainer}>
+      <Card className={classes.root}>
+        <CardMedia
+          className={classes.media}
+          image={images}
+          title="Profile Image"
+        >
+          <IconButton
+            className={classes.heartIcon}
+            aria-label="add to favorites"
           >
-            <IconButton
-              className={classes.heartIcon}
-              aria-label="add to favorites"
+            <StarBorder />
+          </IconButton>
+        </CardMedia>
+        <CardContent>
+          <div>
+            <Typography
+              variant="body2"
+              color="textSecondary"
+              component="p"
+              className={classes.title}
             >
-              <StarBorder />
-            </IconButton>
-          </CardMedia>
-          <CardContent>
-            <div>
-              <Typography
-                variant="body2"
-                color="textSecondary"
-                component="p"
-                className={classes.title}
-              >
-                {name}
-              </Typography>
-              <Typography
-                variant="body2"
-                color="textSecondary"
-                component="p"
-                style={{ fontWeight: 700 }}
-              >
-                {mySkill.join(", ")}
-              </Typography>
-              <Typography
-                variant="body2"
-                color="textSecondary"
-                component="p"
-                style={{ fontWeight: 700 }}
-              >
-                <span style={{ fontWeight: 400 }}>Ищу </span>{" "}
-                {findSkill.join(", ")}
-              </Typography>
-              <Typography
-                variant="body2"
-                className={classes.text}
-                component="p"
-              >
-                {about}
-              </Typography>
-            </div>
-          </CardContent>
-          <CardActions disableSpacing>
-            <IconButton aria-label="go to telegram">
-              <Telegram />
-            </IconButton>
-            <IconButton aria-label="go to instagram">
-              <Instagram />
-            </IconButton>
-            <IconButton aria-label="share">
-              <ShareIcon />
-            </IconButton>
-          </CardActions>
-        </Card>
-      </main>
+              {name}
+            </Typography>
+            <Typography
+              variant="body2"
+              color="textSecondary"
+              component="p"
+              style={{ fontWeight: 700 }}
+            >
+              {mySkill.join(", ")}
+            </Typography>
+            <Typography
+              variant="body2"
+              color="textSecondary"
+              component="p"
+              style={{ fontWeight: 700 }}
+            >
+              <span style={{ fontWeight: 400 }}>Ищу </span>{" "}
+              {findSkill.join(", ")}
+            </Typography>
+            <Typography variant="body2" className={classes.text} component="p">
+              {about}
+            </Typography>
+          </div>
+        </CardContent>
+        <CardActions disableSpacing>
+          <IconButton aria-label="go to telegram">
+            <Telegram />
+          </IconButton>
+          <IconButton aria-label="go to instagram">
+            <Instagram />
+          </IconButton>
+          <IconButton aria-label="share">
+            <ShareIcon />
+          </IconButton>
+        </CardActions>
+      </Card>
     </div>
   );
 };

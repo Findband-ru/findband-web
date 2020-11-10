@@ -1,14 +1,11 @@
 import React from "react";
-import { withStyles } from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
-import { Button, IconButton } from "@material-ui/core";
+import { Typography, Button, IconButton, withStyles } from "@material-ui/core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebookF,
   faGoogle,
   faVk,
 } from "@fortawesome/free-brands-svg-icons";
-import Policy from "../policy/PolicyFooter";
 import { stepOneStyle } from "./styles/stepOneStyle";
 
 function StepOne({ setStep, classes, signInWithGoogle }) {
@@ -58,9 +55,6 @@ function StepOne({ setStep, classes, signInWithGoogle }) {
             <FontAwesomeIcon icon={faFacebookF} size="lg" color="#fff" />
           </IconButton>
         </div>
-      </div>
-      <div style={{ marginTop: 150 }}>
-        <Policy />
       </div>
     </div>
   );

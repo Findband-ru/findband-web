@@ -2,12 +2,13 @@ import { createMuiTheme } from "@material-ui/core/styles";
 
 const theme = createMuiTheme({
   typography: {
-    fontFamily: ["AvertaCyrillicBlack", "sans-serif"].join(),
+    fontFamily: ["AvertaCyrillicLight", "sans-serif"].join(),
+    fontWeight: 100,
   },
   overrides: {
     MuiCssBaseline: {
       "@global": {
-        "@font-face": ["AvertaCyrillicBlack", "sans-serif"].join(),
+        "@font-face": ["AvertaCyrillicLight", "sans-serif"].join(),
       },
     },
   },

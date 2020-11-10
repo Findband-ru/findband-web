@@ -39,18 +39,23 @@ class FeedCards extends React.Component {
 
   render() {
     const { classes } = this.props;
-
+    // noimageavailable
     return (
       <div className={classes.container}>
         <List className={classes.feed}>
           {this.state.docProfile !== null &&
             this.state.docProfile.map((item, ind) => {
+              console.log(item.images[0]);
               return (
                 <ListItem className={classes.profileCard} key={ind}>
                   <Card className={classes.root}>
                     <CardMedia
                       className={classes.media}
-                      image={item.images[0]}
+                      image={
+                        item.images[0] !== undefined
+                          ? item.images[0]
+                          : "/noimageavailable.png"
+                      }
                       title="Profile Image"
                     >
                       <IconButton

@@ -9,7 +9,7 @@ const handleLogout = () => {
   firebaseProject.auth().signOut();
 };
 
-function Auth({ userId, classes, setPageType, setIsOnboard }) {
+function Auth({ userId, classes, setPageType }) {
   return (
     <div>
       {userId === null ? (
@@ -17,10 +17,7 @@ function Auth({ userId, classes, setPageType, setIsOnboard }) {
           <Button
             variant="contained"
             className={classes.signinButton}
-            onClick={() => {
-              setPageType(2);
-              setIsOnboard(true);
-            }}
+            onClick={() => setPageType(2)}
           >
             <Typography className={classes.signinBtnText}>Войти</Typography>
           </Button>

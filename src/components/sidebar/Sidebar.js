@@ -10,101 +10,85 @@ import Instagram from "@material-ui/icons/Instagram";
 import Twitter from "@material-ui/icons/Twitter";
 import { sidebarStyle } from "./style";
 
-function Sidebar({
-  userId,
-  setIsProfile,
-  setPageType,
-  isOnboard,
-  setIsOnboard,
-  classes,
-}) {
+function Sidebar({ userId, setPageType, classes }) {
   const router = useRouter();
 
   return (
-    <div>
-      {isOnboard !== true ? (
-        <div className={classes.container}>
-          {userId === null ? (
-            <div>
-              <Button
-                className={classes.sidebarButton}
-                onClick={() => {
-                  setPageType(2);
-                  setIsOnboard(true);
-                  router.push("/onboarding");
-                }}
-              >
-                <User />
-                <Typography className={classes.sideBarText}>Войти</Typography>
-              </Button>
-            </div>
-          ) : (
-            <div>
-              <Button
-                className={classes.sidebarButton}
-                onClick={() => {
-                  setIsProfile(true);
-                  setPageType(1);
-                  router.push("/profile");
-                }}
-              >
-                <User />
-                <Typography className={classes.sideBarText}>Профиль</Typography>
-              </Button>
-            </div>
-          )}
-          <div>
-            <Button
-              className={classes.sidebarButton}
-              onClick={() => {
-                setIsProfile(false);
-                setPageType(0);
-                router.push("/");
-              }}
-            >
-              <Feed />
-              <Typography className={classes.sideBarText}>Лента</Typography>
-            </Button>
-          </div>
-          <div>
-            <Button className={classes.sidebarButton}>
-              <Like />
-              <Typography className={classes.sideBarText}>Избранные</Typography>
-            </Button>
-          </div>
-          <div>
-            <Button className={classes.sidebarButton}>
-              <Messages />
-              <Typography className={classes.sideBarText}>Сообщения</Typography>
-            </Button>
-          </div>
-          <div className={classes.policyContainer}>
-            <IconButton aria-label="go to instagram">
-              <Instagram className={classes.sidebarSocialIcon} />
-            </IconButton>
-            <IconButton aria-label="go to twitter">
-              <Twitter className={classes.sidebarSocialIcon} />
-            </IconButton>
-            <IconButton aria-label="go to telegram">
-              <Telegram className={classes.sidebarSocialIcon} />
-            </IconButton>
-            <Typography className={classes.policyText}>
-              Политика конфиденциальности
-            </Typography>
-            <Typography className={classes.policyText}>
-              Условия использования
-            </Typography>
-            <Typography className={classes.policyText}>
-              Рекламные документы
-            </Typography>
-          </div>
-          <Typography className={classes.projectNameText}>
-            © FINDBAND.RU 2020
-          </Typography>
+    <div className={classes.container}>
+      {userId === null ? (
+        <div>
+          <Button
+            className={classes.sidebarButton}
+            onClick={() => {
+              setPageType(2);
+              router.push("/onboarding");
+            }}
+          >
+            <User />
+            <Typography className={classes.sideBarText}>Войти</Typography>
+          </Button>
         </div>
       ) : (
-        <div style={{ display: "none" }} />
+        <div>
+          <Button
+            className={classes.sidebarButton}
+            onClick={() => {
+              setPageType(1);
+              router.push("/profile");
+            }}
+          >
+            <User />
+            <Typography className={classes.sideBarText}>Профиль</Typography>
+          </Button>
+        </div>
       )}
+      <div>
+        <Button
+          className={classes.sidebarButton}
+          onClick={() => {
+            setPageType(0);
+            router.push("/");
+          }}
+        >
+          <Feed />
+          <Typography className={classes.sideBarText}>Лента</Typography>
+        </Button>
+      </div>
+      <div>
+        <Button className={classes.sidebarButton}>
+          <Like />
+          <Typography className={classes.sideBarText}>Избранные</Typography>
+        </Button>
+      </div>
+      <div>
+        <Button className={classes.sidebarButton}>
+          <Messages />
+          <Typography className={classes.sideBarText}>Сообщения</Typography>
+        </Button>
+      </div>
+      <div className={classes.policyContainer}>
+        <IconButton aria-label="go to instagram">
+          <Instagram className={classes.sidebarSocialIcon} />
+        </IconButton>
+        <IconButton aria-label="go to twitter">
+          <Twitter className={classes.sidebarSocialIcon} />
+        </IconButton>
+        <IconButton aria-label="go to telegram">
+          <Telegram className={classes.sidebarSocialIcon} />
+        </IconButton>
+        <Typography className={classes.policyText}>
+          Политика конфиденциальности
+        </Typography>
+        <Typography className={classes.policyText}>
+          Условия использования
+        </Typography>
+        <Typography className={classes.policyText}>
+          Рекламные документы
+        </Typography>
+      </div>
+      <Typography className={classes.projectNameText}>
+        © FINDBAND.RU 2020
+      </Typography>
     </div>
   );
 }

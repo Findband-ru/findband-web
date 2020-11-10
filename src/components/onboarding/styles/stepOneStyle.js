@@ -1,12 +1,4 @@
 export const stepOneStyle = {
-  mainPage: {
-    position: "absolute",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    top: 50,
-    left: "35%",
-  },
   grow: {
     flexGrow: 1,
     flexDirection: "row",
@@ -29,20 +21,16 @@ export const stepOneStyle = {
   title: {
     display: "none",
     fontSize: 24,
-    fontWeight: 700,
   },
   textTitle: {
     fontSize: 24,
-    fontWeight: 700,
     marginTop: 40,
   },
   textDesclaimer: {
     fontSize: 15,
-    fontWeight: 400,
   },
   textButton: {
     fontSize: 17,
-    fontWeight: 600,
     fontStyle: "normal",
     color: "#fff",
     textTransform: "none",
@@ -56,7 +44,6 @@ export const stepOneStyle = {
   },
   textUnderButton: {
     fontSize: 14,
-    fontWeight: 400,
     fontStyle: "normal",
     marginTop: 12,
     color: "#7C7E8F",

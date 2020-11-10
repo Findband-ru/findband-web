@@ -1,12 +1,7 @@
 export const stepFiveStyle = {
-  main: {
-    position: "absolute",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    top: 50,
-    left: "35%",
+  root: {
+    maxWidth: 500,
+    margin: "0 auto",
   },
   grow: {
     flexGrow: 1,
@@ -20,19 +15,15 @@ export const stepFiveStyle = {
     width: 800,
   },
   title: {
-    fontSize: 24,
-    fontWeight: 700,
-    marginLeft: 340,
+    textAlign: "center",
   },
   subtitle: {
     fontSize: 15,
-    fontWeight: 400,
     fontStyle: "normal",
     color: "#7C7E8F",
   },
   skipText: {
     fontSize: 15,
-    fontWeight: 400,
     fontStyle: "normal",
     color: "#7C7E8F",
     marginRight: 140,
@@ -40,7 +31,6 @@ export const stepFiveStyle = {
   },
   aboutTitle: {
     fontSize: 24,
-    fontWeight: 700,
     fontStyle: "normal",
     marginTop: 38,
   },
@@ -57,13 +47,11 @@ export const stepFiveStyle = {
     display: "inline-block",
     alignSelf: "flex-start",
     fontSize: 17,
-    fontWeight: 600,
     fontStyle: "normal",
     marginTop: 30,
   },
   fotoText: {
     fontSize: 17,
-    fontWeight: 600,
     fontStyle: "normal",
     marginTop: 38,
     marginBottom: 12,
@@ -76,7 +64,6 @@ export const stepFiveStyle = {
   symbolLimit: {
     display: "inline-block",
     fontSize: 13,
-    fontWeight: 400,
     fontStyle: "normal",
     color: "#B0B2BD",
     marginLeft: 206,
@@ -100,16 +87,16 @@ export const stepFiveStyle = {
   nextText: {
     textDecoration: "none",
     fontSize: 13,
-    fontWeight: 700,
     fontStyle: "normal",
   },
   nextButton: {
     backgroundColor: "#FA5821",
+    display: "block",
     color: "white",
     width: 167,
     height: 42,
     borderRadius: 26,
-    marginTop: 32,
+    margin: "32px auto",
     textTransform: "none",
     textDecoration: "none",
   },
@@ -117,7 +104,6 @@ export const stepFiveStyle = {
     width: 500,
     borderRadius: 5,
     fontSize: 17,
-    fontWeight: 400,
     color: "#B0B2BD",
     borderColor: "#B0B2BD",
     marginTop: 10,

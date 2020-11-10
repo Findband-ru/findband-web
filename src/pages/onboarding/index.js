@@ -7,19 +7,25 @@ import StepThree from "../../components/onboarding/StepThree";
 import StepFour from "../../components/onboarding/StepFour";
 import StepFive from "../../components/onboarding/StepFive";
 import { firebaseProject } from "../../../firebaseConfig";
+import Policy from "../../components/policy/PolicyFooter";
 
 class Registration extends React.Component {
   state = {
     step: 0,
+    name: "",
+    about: "",
     mySkill: [],
     findSkill: [],
     images: [],
-    name: "",
-    about: "",
+    audio: null,
     userId: null,
     errorMsg: null,
     isError: false,
   };
+
+  componentDidMount() {
+    this.props.setPageType(2);
+  }
 
   uploadImages = () =>
     this.state.images.map(async (img) => {
@@ -32,10 +38,21 @@ class Registration extends React.Component {
       return url;
     });
 
+  uploadAudio = async () => {
+    const bucketPath =
+      "/audio/" + this.state.userId + "/" + this.state.audio.name;
+    await firebaseProject.storage().ref(bucketPath).put(this.state.audio);
+    const url = await firebaseProject
+      .storage()
+      .ref(bucketPath)
+      .getDownloadURL();
+    return url;
+  };
+
   createUser = async () => {
     const findbandUsers = firebaseProject.firestore().collection("users");
     const imagesUrls = await this.uploadImages();
-
+    const audioUrl = await this.uploadAudio();
     findbandUsers
       .doc(this.state.userId)
       .set({
@@ -44,11 +61,11 @@ class Registration extends React.Component {
         name: this.state.name,
         about: this.state.about,
         images: await Promise.all(imagesUrls),
+        audio: audioUrl,
       })
       .then(() => {
         console.log("Document successfully written!");
         this.props.setPageType(0);
-        this.props.setIsOnboard(false);
         this.props.router.push("/");
       })
       .catch(function (error) {
@@ -58,14 +75,12 @@ class Registration extends React.Component {
 
   handleLogin = (email, password) => {
     this.clearErrors();
-    console.log(email, password);
     firebaseProject
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then(({ user }) => {
         console.log("uid", user.uid);
         this.props.setPageType(0);
-        this.props.setIsOnboard(false);
         this.props.router.push("/");
       })
       .catch((err) => {
@@ -74,10 +89,16 @@ class Registration extends React.Component {
           case "auth/invalid-email":
           case "auth/user-disabled":
           case "auth/user-not-found":
-            this.setState({ errorMsg: err.message, isError: true });
+            this.setState({
+              errorMsg: "Неверная электронная почта",
+              isError: true,
+            });
             break;
           case "auth/wrong-password":
-            this.setState({ errorMsg: err.message, isError: true });
+            this.setState({
+              errorMsg: "Неверный пароль",
+              isError: true,
+            });
             break;
         }
       });
@@ -90,19 +111,24 @@ class Registration extends React.Component {
       .createUserWithEmailAndPassword(email, password)
       .then(({ user }) => {
         console.log("uid", user.uid);
-        this.setState({ userId: user.uid });
-        setStep();
-        setPageType(3);
+        this.setState({ userId: user.uid, step: 2 });
+        this.props.setPageType(3);
       })
       .catch((err) => {
         console.log(err);
         switch (err.code) {
           case "auth/email-already-in-use":
           case "auth/invalid-email":
-            this.setState({ errorMsg: err.message, isError: true });
+            this.setState({
+              errorMsg: "Неверная электронная почта",
+              isError: true,
+            });
             break;
           case "auth/weak-password":
-            this.setState({ errorMsg: err.message, isError: true });
+            this.setState({
+              errorMsg: "Нужно ввести пароль",
+              isError: true,
+            });
             break;
         }
       });
@@ -111,10 +137,7 @@ class Registration extends React.Component {
   signInWithGoogle = () => {
     const auth = firebaseProject.auth();
     const googleProvider = new firebaseProject.auth.GoogleAuthProvider();
-
     auth.signInWithPopup(googleProvider).then((res) => {
-      console.log(res.user.displayName, res.user.email, res.user.uid);
-
       firebaseProject
         .firestore()
         .collection("users")
@@ -129,7 +152,6 @@ class Registration extends React.Component {
             });
           } else {
             this.props.setPageType(0);
-            this.props.setIsOnboard(false);
             this.props.router.push("/");
           }
         })
@@ -141,7 +163,6 @@ class Registration extends React.Component {
 
   updateStateArray = (array, label) => {
     let categoryArr = this.state[array];
-
     if (!categoryArr.includes(label)) {
       categoryArr.push(label);
     } else {
@@ -150,12 +171,10 @@ class Registration extends React.Component {
     this.setState({ [array]: categoryArr });
   };
 
-  updateUserCredits = (stateValue, value) => {
+  updateUserCredits = (stateValue, value) =>
     this.setState({
       [stateValue]: value,
     });
-    setTimeout(() => console.log(this.state), 0);
-  };
 
   clearErrors = () => {
     this.setState({ errorMsg: null });
@@ -166,11 +185,8 @@ class Registration extends React.Component {
       case 1:
         return (
           <SignUp
-            setStep={() => this.setState({ step: 2 })}
             handleLogin={this.handleLogin}
             handleSignup={this.handleSignup}
-            setPageType={this.props.setPageType}
-            setIsOnboard={this.props.setIsOnboard}
             isError={this.state.isError}
             errorMessage={this.state.errorMsg}
           />
@@ -190,14 +206,13 @@ class Registration extends React.Component {
           <StepThree
             setStep={() => this.setState({ step: 4 })}
             setPageType={this.props.setPageType}
-            setCategory={(label) => {
-              this.updateStateArray("findSkill", label);
-            }}
+            setCategory={(label) => this.updateStateArray("findSkill", label)}
           />
         );
       case 4:
         return (
           <StepFour
+            getAudio={(audio) => this.setState({ audio })}
             setStep={() => this.setState({ step: 5 })}
             setPageType={this.props.setPageType}
           />
@@ -209,6 +224,7 @@ class Registration extends React.Component {
             getImages={(images) => this.setState({ images })}
             createUser={this.createUser}
             name={this.state.name}
+            images={this.state.images}
           />
         );
       default:
@@ -222,7 +238,14 @@ class Registration extends React.Component {
   };
 
   render() {
-    return this.setStep();
+    return (
+      <div style={{ paddingTop: 50 }}>
+        {this.setStep()}
+        <div>
+          <Policy />
+        </div>
+      </div>
+    );
   }
 }
 

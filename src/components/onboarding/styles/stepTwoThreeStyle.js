@@ -1,15 +1,13 @@
 export const stepTwoThreeStyle = {
-  main: {
-    position: "absolute",
+  root: {
+    maxWidth: 600,
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
-    top: 50,
-    left: "35%",
+    margin: "0 auto",
+    textAlign: "center",
   },
   titleMe: {
     fontSize: 24,
-    fontWeight: 700,
     fontStyle: "normal",
     marginTop: 38,
   },
@@ -19,7 +17,7 @@ export const stepTwoThreeStyle = {
     color: "white",
     height: 52,
     width: 167,
-    marginTop: 30,
+    margin: "16px auto",
     borderRadius: 26,
     textTransform: "none",
     textDecoration: "none",
@@ -27,7 +25,6 @@ export const stepTwoThreeStyle = {
   nextBtnText: {
     textDecoration: "none",
     fontSize: 17,
-    fontWeight: 600,
     fontStyle: "normal",
   },
 };

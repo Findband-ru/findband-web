@@ -13,6 +13,7 @@ export default class MyDocument extends Document {
             body {
               font-family: AvertaCyrillicBlack, sans-serif !important;
               overflow: hidden;
+              font-weight: 100;
             }
           `}</style>
         </Head>

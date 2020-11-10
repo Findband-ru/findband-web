@@ -1,36 +1,37 @@
 import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { withStyles } from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
-import { Button } from "@material-ui/core";
+import {
+  Typography,
+  InputBase,
+  Button,
+  IconButton,
+  withStyles,
+} from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import LocationOn from "@material-ui/icons/LocationOn";
 import Tune from "@material-ui/icons/Tune";
 import Auth from "../buttons/AuthButton";
-import Setting from "../../../public/svg/icons/setting.svg";
 import { navStyle } from "./style";
-import IconButton from "@material-ui/core/IconButton";
 import Close from "../../../public/svg/icons/close.svg";
 import ShevronLeft from "../../../public/svg/icons/shevronLeft.svg";
+import Setting from "../../../public/svg/icons/setting.svg";
 
-function Navbar({
-  userId,
-  pageType,
-  setPageType,
-  isOnboard,
-  setIsOnboard,
-  classes,
-}) {
+function Navbar({ userId, pageType, setPageType, classes }) {
   const router = useRouter();
+  const goBack = () => {
+    setPageType(0);
+    router.back();
+  };
 
   switch (pageType) {
     case 1:
       /* Страница профиля */
       return (
         <div className={classes.grow} color="transparent">
-          <span className={classes.title}>Findband</span>
+          <Typography className={classes.title} variant="h6" noWrap>
+            Findband
+          </Typography>
           <div>
             <span className={classes.title} style={{ marginLeft: 200 }}>
               Мой профиль
@@ -51,20 +52,15 @@ function Navbar({
           style={{ justifyContent: "center" }}
           color="transparent"
         >
-          <span className={classes.title}>
+          <Button onClick={goBack}>
+            <ShevronLeft />
+          </Button>
+          <Typography className={classes.title} variant="h6" noWrap>
             Findband
-            <IconButton
-              style={{ left: "80%" }}
-              onClick={() => {
-                setPageType(0);
-                setIsOnboard(0);
-              }}
-            >
-              <Link href="/">
-                <Close />
-              </Link>
-            </IconButton>
-          </span>
+          </Typography>
+          <IconButton style={{ left: "80%" }} onClick={goBack}>
+            <Close />
+          </IconButton>
         </div>
       );
     /* Выбор категории "Я/Ищу" */
@@ -84,12 +80,13 @@ function Navbar({
           style={{ justifyContent: "center" }}
           color="transparent"
         >
-          <span className={classes.title}>Findband</span>
+          <Typography className={classes.title} variant="h6" noWrap>
+            Findband
+          </Typography>
           <Button
             style={{ left: "10%" }}
             onClick={() => {
               setPageType(0);
-              setIsOnboard(false);
               router.push("/");
             }}
           >
@@ -107,8 +104,8 @@ function Navbar({
           <div className={classes.editProfile}>
             <Button
               onClick={() => {
-                router.push("/profile");
                 setPageType(1);
+                router.back();
               }}
             >
               <ShevronLeft />
@@ -128,11 +125,7 @@ function Navbar({
           <Typography className={classes.title} variant="h6" noWrap>
             Findband
           </Typography>
-          <Auth
-            userId={userId}
-            setPageType={setPageType}
-            setIsOnboard={setIsOnboard}
-          />
+          <Auth userId={userId} setPageType={setPageType} />
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
