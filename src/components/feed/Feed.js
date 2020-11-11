@@ -39,7 +39,6 @@ class FeedCards extends React.Component {
 
   render() {
     const { classes } = this.props;
-    // noimageavailable
     return (
       <div className={classes.container}>
         <List className={classes.feed}>

@@ -25,7 +25,6 @@ function StepFive({
     <div className={classes.root}>
       <div className={classes.title}>
         <Typography className={classes.aboutTitle}>Расскажи о себе</Typography>
-
         <ImageUploading
           multiple
           value={images}
@@ -63,6 +62,7 @@ function StepFive({
         <TextareaAutosize
           className={classes.textArea}
           rowsMin={6}
+          maxLength={160}
           placeholder="Расскажи о себе..."
           onChange={(event) =>
             updateUserCredits("about", event.currentTarget.value)
@@ -86,7 +86,11 @@ function StepFive({
                   <img
                     key={index}
                     className={classes.imageItem}
-                    src={image.data_url}
+                    src={
+                      image.data_url !== undefined
+                        ? image.data_url
+                        : "/noimageavailable.png"
+                    }
                   />
                   <IconButton className={classes.closeIcon}>
                     <FontAwesomeIcon

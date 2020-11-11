@@ -8,6 +8,7 @@ import StepFour from "../../components/onboarding/StepFour";
 import StepFive from "../../components/onboarding/StepFive";
 import { firebaseProject } from "../../../firebaseConfig";
 import Policy from "../../components/policy/PolicyFooter";
+import HeaderOnboard from "../../components/onboarding/Header";
 
 class Registration extends React.Component {
   state = {
@@ -24,7 +25,7 @@ class Registration extends React.Component {
   };
 
   componentDidMount() {
-    this.props.setPageType(2);
+    this.props.setPageType(1);
   }
 
   uploadImages = () =>
@@ -52,7 +53,10 @@ class Registration extends React.Component {
   createUser = async () => {
     const findbandUsers = firebaseProject.firestore().collection("users");
     const imagesUrls = await this.uploadImages();
-    const audioUrl = await this.uploadAudio();
+    let audioUrl = null;
+    if (this.state.audio) {
+      audioUrl = await this.uploadAudio();
+    }
     findbandUsers
       .doc(this.state.userId)
       .set({
@@ -90,7 +94,7 @@ class Registration extends React.Component {
           case "auth/user-disabled":
           case "auth/user-not-found":
             this.setState({
-              errorMsg: "Неверная электронная почта",
+              errorMsg: "Данной электронной почты не существует",
               isError: true,
             });
             break;
@@ -112,7 +116,7 @@ class Registration extends React.Component {
       .then(({ user }) => {
         console.log("uid", user.uid);
         this.setState({ userId: user.uid, step: 2 });
-        this.props.setPageType(3);
+        this.props.setPageType(1);
       })
       .catch((err) => {
         console.log(err);
@@ -120,13 +124,13 @@ class Registration extends React.Component {
           case "auth/email-already-in-use":
           case "auth/invalid-email":
             this.setState({
-              errorMsg: "Неверная электронная почта",
+              errorMsg: "Неверный формат электронной почты",
               isError: true,
             });
             break;
           case "auth/weak-password":
             this.setState({
-              errorMsg: "Нужно ввести пароль",
+              errorMsg: "Незащищённый пароль",
               isError: true,
             });
             break;
@@ -239,12 +243,16 @@ class Registration extends React.Component {
 
   render() {
     return (
-      <div style={{ paddingTop: 50 }}>
+      <>
+        <HeaderOnboard
+          step={this.state.step}
+          setStep={(newstep) => this.setState({ step: newstep })}
+        />
         {this.setStep()}
         <div>
           <Policy />
         </div>
-      </div>
+      </>
     );
   }
 }

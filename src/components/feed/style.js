@@ -10,7 +10,6 @@ export const container = {
 };
 
 export const root = {
-  maxHeight: 588,
   maxWidth: 528,
   borderRadius: 20,
 };

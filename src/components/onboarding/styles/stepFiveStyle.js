@@ -1,6 +1,7 @@
 export const stepFiveStyle = {
   root: {
     maxWidth: 500,
+    width: "100%",
     margin: "0 auto",
   },
   grow: {
@@ -12,10 +13,17 @@ export const stepFiveStyle = {
     boxShadow: "none",
     borderBottom: "2px solid #F3F3F5",
     margin: "0 auto",
-    width: 800,
+    maxWidth: 800,
+    width: "100%",
   },
   title: {
     textAlign: "center",
+  },
+  aboutTitle: {
+    fontSize: 24,
+    fontWeight: 700,
+    fontStyle: "normal",
+    marginTop: 38,
   },
   subtitle: {
     fontSize: 15,
@@ -29,11 +37,6 @@ export const stepFiveStyle = {
     marginRight: 140,
     marginLeft: 110,
   },
-  aboutTitle: {
-    fontSize: 24,
-    fontStyle: "normal",
-    marginTop: 38,
-  },
   input: {
     display: "none",
   },
@@ -41,23 +44,28 @@ export const stepFiveStyle = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    width: 500,
+    maxWidth: 500,
+    width: "100%",
   },
   nameText: {
     display: "inline-block",
     alignSelf: "flex-start",
     fontSize: 17,
+    fontWeight: 600,
     fontStyle: "normal",
     marginTop: 30,
   },
   fotoText: {
+    textAlign: "center",
     fontSize: 17,
+    fontWeight: 600,
     fontStyle: "normal",
     marginTop: 38,
     marginBottom: 12,
   },
   inputName: {
-    width: 500,
+    maxWidth: 500,
+    width: "100%",
     height: 52,
     marginTop: 10,
   },
@@ -69,7 +77,8 @@ export const stepFiveStyle = {
     marginLeft: 206,
   },
   imageItem: {
-    width: 240,
+    maxWidth: 240,
+    width: "100%",
     height: 155,
     borderRadius: 16,
     marginRight: 16,
@@ -82,7 +91,8 @@ export const stepFiveStyle = {
     alignItems: "center",
     justifyContent: "center",
     flexWrap: "wrap",
-    width: 540,
+    maxWidth: 540,
+    width: "100%",
   },
   nextText: {
     textDecoration: "none",
@@ -93,7 +103,8 @@ export const stepFiveStyle = {
     backgroundColor: "#FA5821",
     display: "block",
     color: "white",
-    width: 167,
+    maxWidth: 167,
+    width: "100%",
     height: 42,
     borderRadius: 26,
     margin: "32px auto",
@@ -101,7 +112,8 @@ export const stepFiveStyle = {
     textDecoration: "none",
   },
   textArea: {
-    width: 500,
+    maxWidth: 500,
+    width: "100%",
     borderRadius: 5,
     fontSize: 17,
     color: "#B0B2BD",

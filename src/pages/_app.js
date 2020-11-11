@@ -39,17 +39,15 @@ function MyApp({ Component, pageProps, classes }) {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className={classes.container}>
-          <Navbar
-            userId={userId}
-            pageType={pageType}
-            setPageType={setPageType}
-          />
-          {(pageType === 0 || pageType === 1) && (
-            <Sidebar
+          {(pageType === 0 || pageType === 2) && (
+            <Navbar
               userId={userId}
               pageType={pageType}
               setPageType={setPageType}
             />
+          )}
+          {(pageType === 0 || pageType === 2) && (
+            <Sidebar userId={userId} pageType={pageType} />
           )}
           <Component {...pageProps} userId={userId} setPageType={setPageType} />
         </div>

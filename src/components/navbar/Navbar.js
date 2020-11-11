@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import {
   Typography,
   InputBase,
@@ -13,85 +12,29 @@ import LocationOn from "@material-ui/icons/LocationOn";
 import Tune from "@material-ui/icons/Tune";
 import Auth from "../buttons/AuthButton";
 import { navStyle } from "./style";
-import Close from "../../../public/svg/icons/close.svg";
 import ShevronLeft from "../../../public/svg/icons/shevronLeft.svg";
 import Setting from "../../../public/svg/icons/setting.svg";
 
 function Navbar({ userId, pageType, setPageType, classes }) {
-  const router = useRouter();
-  const goBack = () => {
-    setPageType(0);
-    router.back();
-  };
-
   switch (pageType) {
     case 1:
+      /* Раздел Onboarding */
+      return <div style={{ display: "none" }} />;
+    case 2:
       /* Страница профиля */
       return (
         <div className={classes.grow} color="transparent">
           <Typography className={classes.title} variant="h6" noWrap>
             Findband
           </Typography>
-          <div>
-            <span className={classes.title} style={{ marginLeft: 200 }}>
-              Мой профиль
-            </span>
-            <Link href="/settings">
-              <Button onClick={() => setPageType(5)}>
-                <Setting style={{ marginLeft: 330 }} />
-              </Button>
-            </Link>
-          </div>
-        </div>
-      );
-    /* Ввод эл.почты/логина */
-    case 2:
-      return (
-        <div
-          className={classes.grow}
-          style={{ justifyContent: "center" }}
-          color="transparent"
-        >
-          <Button onClick={goBack}>
-            <ShevronLeft />
-          </Button>
-          <Typography className={classes.title} variant="h6" noWrap>
-            Findband
+          <Typography className={classes.title} style={{ marginLeft: 10 }}>
+            Мой профиль
           </Typography>
-          <IconButton style={{ left: "80%" }} onClick={goBack}>
-            <Close />
-          </IconButton>
-        </div>
-      );
-    /* Выбор категории "Я/Ищу" */
-    case 3:
-      return (
-        <div className={classes.grow} color="transparent">
-          <Typography className={classes.titleOnboarding} variant="h6" noWrap>
-            Findband
-          </Typography>
-        </div>
-      );
-    /* Страница заполнения профиля */
-    case 4:
-      return (
-        <div
-          className={classes.grow}
-          style={{ justifyContent: "center" }}
-          color="transparent"
-        >
-          <Typography className={classes.title} variant="h6" noWrap>
-            Findband
-          </Typography>
-          <Button
-            style={{ left: "10%" }}
-            onClick={() => {
-              setPageType(0);
-              router.push("/");
-            }}
-          >
-            <Typography className={classes.skipText}>Домой</Typography>
-          </Button>
+          <Link href="/settings">
+            <Button onClick={() => setPageType(5)}>
+              <Setting />
+            </Button>
+          </Link>
         </div>
       );
     /* Страница редактирования профиля */

@@ -7,13 +7,13 @@ export const profileStyle = {
     maxWidth: 1200,
     margin: "0 auto",
     left: "40%",
+    top: 80,
   },
   title: {
     fontSize: 24,
     fontWeight: 700,
   },
   root: {
-    maxHeight: 588,
     maxWidth: 528,
     borderRadius: 20,
     margin: "0 auto 50px auto",

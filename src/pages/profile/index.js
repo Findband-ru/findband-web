@@ -13,7 +13,7 @@ import ShareIcon from "@material-ui/icons/Share";
 import { profileStyle } from "../../style/profileStyle";
 import { firebaseProject } from "../../../firebaseConfig";
 
-const ProfilePage = ({ userId, classes }) => {
+const ProfilePage = ({ userId, classes, setPageType }) => {
   const [name, setName] = useState("");
   const [images, setImages] = useState("");
   const [mySkill, setMySkill] = useState([]);
@@ -21,6 +21,7 @@ const ProfilePage = ({ userId, classes }) => {
   const [about, setAbout] = useState("");
 
   useEffect(() => {
+    setPageType(2);
     firebaseProject
       .firestore()
       .collection("users")
@@ -48,7 +49,7 @@ const ProfilePage = ({ userId, classes }) => {
       <Card className={classes.root}>
         <CardMedia
           className={classes.media}
-          image={images}
+          image={images[0] !== undefined ? images[0] : "/noimageavailable.png"}
           title="Profile Image"
         >
           <IconButton

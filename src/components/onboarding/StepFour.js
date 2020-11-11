@@ -4,8 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDropbox, faSoundcloud } from "@fortawesome/free-brands-svg-icons";
 import { faLaptop } from "@fortawesome/free-solid-svg-icons";
 import { stepFourStyle } from "./styles/stepFourStyle";
+import Next from "../buttons/NextButton";
 
-function StepFour({ classes, setPageType, setStep, getAudio }) {
+function StepFour({ classes, setStep, getAudio }) {
   return (
     <div className={classes.root}>
       <div className={classes.block}>
@@ -69,16 +70,7 @@ function StepFour({ classes, setPageType, setStep, getAudio }) {
           </Typography>
         </Button>
       </div>
-      <Button
-        variant="contained"
-        className={classes.nextButton}
-        onClick={() => {
-          setStep();
-          setPageType(4);
-        }}
-      >
-        <Typography className={classes.nextBtnText}>Продолжить</Typography>
-      </Button>
+      <Next setStep={() => setStep({ step: 5 })} />
     </div>
   );
 }

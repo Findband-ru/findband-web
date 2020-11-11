@@ -23,8 +23,9 @@ export const buttonStyle = {
     backgroundColor: "#FA5821",
     color: "white",
     height: 52,
-    width: 167,
-    marginTop: 30,
+    maxWidth: 167,
+    width: "100%",
+    margin: "28px auto",
     borderRadius: 26,
     textTransform: "none",
     textDecoration: "none",
@@ -32,7 +33,6 @@ export const buttonStyle = {
   nextBtnText: {
     textDecoration: "none",
     fontSize: 17,
-    fontWeight: 600,
     fontStyle: "normal",
   },
 };

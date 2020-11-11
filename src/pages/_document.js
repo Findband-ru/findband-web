@@ -12,8 +12,8 @@ export default class MyDocument extends Document {
           <style global jsx>{`
             body {
               font-family: AvertaCyrillicBlack, sans-serif !important;
-              overflow: hidden;
               font-weight: 100;
+              overflow-y: auto;
             }
           `}</style>
         </Head>

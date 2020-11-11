@@ -1,6 +1,6 @@
 import React from "react";
-import { Button, Typography, IconButton, withStyles } from "@material-ui/core";
 import { useRouter } from "next/router";
+import { Button, Typography, IconButton, withStyles } from "@material-ui/core";
 import Messages from "../../../public/svg/icons/messages.svg";
 import Feed from "../../../public/svg/icons/feed.svg";
 import User from "../../../public/svg/icons/user.svg";
@@ -10,7 +10,7 @@ import Instagram from "@material-ui/icons/Instagram";
 import Twitter from "@material-ui/icons/Twitter";
 import { sidebarStyle } from "./style";
 
-function Sidebar({ userId, setPageType, classes }) {
+function Sidebar({ userId, classes }) {
   const router = useRouter();
 
   return (
@@ -19,10 +19,7 @@ function Sidebar({ userId, setPageType, classes }) {
         <div>
           <Button
             className={classes.sidebarButton}
-            onClick={() => {
-              setPageType(2);
-              router.push("/onboarding");
-            }}
+            onClick={() => router.push("/onboarding")}
           >
             <User />
             <Typography className={classes.sideBarText}>Войти</Typography>
@@ -32,10 +29,7 @@ function Sidebar({ userId, setPageType, classes }) {
         <div>
           <Button
             className={classes.sidebarButton}
-            onClick={() => {
-              setPageType(1);
-              router.push("/profile");
-            }}
+            onClick={() => router.push("/profile")}
           >
             <User />
             <Typography className={classes.sideBarText}>Профиль</Typography>
@@ -45,10 +39,7 @@ function Sidebar({ userId, setPageType, classes }) {
       <div>
         <Button
           className={classes.sidebarButton}
-          onClick={() => {
-            setPageType(0);
-            router.push("/");
-          }}
+          onClick={() => router.push("/")}
         >
           <Feed />
           <Typography className={classes.sideBarText}>Лента</Typography>

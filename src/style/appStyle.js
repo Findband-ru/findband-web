@@ -3,5 +3,6 @@ export const appStyle = {
     position: "relative",
     flexGrow: 1,
     justifyContent: "center",
+    backgroundColor: "#fff",
   },
 };

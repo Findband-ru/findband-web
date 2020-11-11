@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import { withStyles } from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
-import { Button } from "@material-ui/core";
+import {
+  Typography,
+  Button,
+  FormControl,
+  InputLabel,
+  OutlinedInput,
+  FormHelperText,
+  withStyles,
+} from "@material-ui/core";
+
 import { signUpStyle } from "./styles/signUpStyle";
-import FormControl from "@material-ui/core/FormControl";
-import InputLabel from "@material-ui/core/InputLabel";
-import OutlinedInput from "@material-ui/core/OutlinedInput";
-import FormHelperText from "@material-ui/core/FormHelperText";
 
 function SignUp({ handleLogin, handleSignup, classes, isError, errorMessage }) {
   const [email, setEmail] = useState("");
@@ -17,6 +20,13 @@ function SignUp({ handleLogin, handleSignup, classes, isError, errorMessage }) {
     <div className={classes.root}>
       <Typography className={classes.textTitle}>Вход и регистрация</Typography>
       <div style={{ marginTop: 30 }}>
+        <FormHelperText
+          error={isError}
+          disabled={true}
+          className={classes.errMessage}
+        >
+          {errorMessage}
+        </FormHelperText>
         <FormControl variant="outlined" classes={{ root: classes.inputName }}>
           <InputLabel htmlFor="component-outlined">
             Введи адрес электронной почты
@@ -40,9 +50,6 @@ function SignUp({ handleLogin, handleSignup, classes, isError, errorMessage }) {
             label="Введи адрес электронной почты"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <FormHelperText error={isError} disabled={true}>
-            {errorMessage}
-          </FormHelperText>
         </FormControl>
       </div>
       {hasAccount ? (

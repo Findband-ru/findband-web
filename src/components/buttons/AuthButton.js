@@ -1,7 +1,6 @@
 import React from "react";
-import { withStyles } from "@material-ui/core";
+import { Button, Typography, withStyles } from "@material-ui/core";
 import Link from "next/link";
-import { Button, Typography } from "@material-ui/core";
 import { buttonStyle } from "./style";
 import { firebaseProject } from "../../../firebaseConfig";
 
@@ -17,7 +16,7 @@ function Auth({ userId, classes, setPageType }) {
           <Button
             variant="contained"
             className={classes.signinButton}
-            onClick={() => setPageType(2)}
+            onClick={() => setPageType(1)}
           >
             <Typography className={classes.signinBtnText}>Войти</Typography>
           </Button>

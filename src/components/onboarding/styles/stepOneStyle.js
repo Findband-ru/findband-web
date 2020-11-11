@@ -8,7 +8,8 @@ export const stepOneStyle = {
     boxShadow: "none",
     borderBottom: "2px solid #F3F3F5",
     margin: "0 auto",
-    width: 800,
+    maxWidth: 800,
+    width: "100%",
   },
   root: {
     display: "flex",
@@ -16,6 +17,7 @@ export const stepOneStyle = {
     justifyContent: "center",
     alignItems: "center",
     maxWidth: 800,
+    width: "100%",
     margin: "0 auto",
   },
   title: {
@@ -24,6 +26,7 @@ export const stepOneStyle = {
   },
   textTitle: {
     fontSize: 24,
+    fontWeight: 700,
     marginTop: 40,
   },
   textDesclaimer: {
@@ -43,8 +46,8 @@ export const stepOneStyle = {
     marginTop: 24,
   },
   textUnderButton: {
-    fontSize: 14,
-    fontStyle: "normal",
+    fontSize: 13,
+    fontWeight: 400,
     marginTop: 12,
     color: "#7C7E8F",
   },
