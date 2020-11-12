@@ -4,7 +4,8 @@ export const buttonStyle = {
     backgroundColor: "#FA5821",
     color: "white",
     height: 32,
-    width: 66,
+    maxWidth: 66,
+    width: "100%",
     borderRadius: 26,
     marginLeft: 160,
     marginRight: 35,
@@ -33,6 +34,23 @@ export const buttonStyle = {
   nextBtnText: {
     textDecoration: "none",
     fontSize: 17,
+    fontStyle: "normal",
+  },
+  /* Delete Button */
+  deleteButton: {
+    backgroundColor: "#FA5821",
+    color: "white",
+    height: 52,
+    maxWidth: 150,
+    width: "100%",
+    margin: "28px auto",
+    borderRadius: 26,
+    textTransform: "none",
+    textDecoration: "none",
+  },
+  deleteBtnText: {
+    textDecoration: "none",
+    fontSize: 13,
     fontStyle: "normal",
   },
 };

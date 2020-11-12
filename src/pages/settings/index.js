@@ -1,15 +1,15 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
-import { useRouter } from "next/router";
 import { settingsStyle } from "../../style/settingsStyle";
-import { Typography } from "@material-ui/core";
+import HeaderSettings from "../../components/settings/Header";
+import Delete from "../../components/buttons/DeleteProfile";
 
 // import { firebaseProject } from "../../../firebaseConfig";
-// import { Link } from "@material-ui/core";
 
-const SettingPage = ({ classes }) => {
-  const router = useRouter();
-
+class SettingPage extends React.Component {
+  state = {
+    move: 0,
+  };
   //   const user = firebaseProject.auth().currentUser;
 
   //   user.updateProfile({
@@ -20,12 +20,14 @@ const SettingPage = ({ classes }) => {
   //   }).catch(function(error) {
   //     // An error happened.
   //   });
-
-  return (
-    <div>
-      <main className={classes.container}></main>
-    </div>
-  );
-};
+  render() {
+    return (
+      <>
+        <HeaderSettings changeNavBar={this.props.changeNavBar} />
+        <Delete userId={this.props.userId} />
+      </>
+    );
+  }
+}
 
 export default withStyles(settingsStyle)(SettingPage);

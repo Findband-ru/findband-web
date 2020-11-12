@@ -8,7 +8,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { stepOneStyle } from "./styles/stepOneStyle";
 
-function StepOne({ setStep, classes, signInWithGoogle }) {
+function StepOne({ setStep, classes, signInWithGoogle, signInWithFacebook }) {
   return (
     <div className={classes.mainPage}>
       <div className={classes.root}>
@@ -51,6 +51,7 @@ function StepOne({ setStep, classes, signInWithGoogle }) {
           <IconButton
             className={classes.socialButtons}
             style={{ backgroundColor: "#007AFF" }}
+            onClick={signInWithFacebook}
           >
             <FontAwesomeIcon icon={faFacebookF} size="lg" color="#fff" />
           </IconButton>

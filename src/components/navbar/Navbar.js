@@ -1,27 +1,21 @@
 import React from "react";
 import Link from "next/link";
-import {
-  Typography,
-  InputBase,
-  Button,
-  IconButton,
-  withStyles,
-} from "@material-ui/core";
+import { Typography, InputBase, Button, withStyles } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import LocationOn from "@material-ui/icons/LocationOn";
 import Tune from "@material-ui/icons/Tune";
 import Auth from "../buttons/AuthButton";
 import { navStyle } from "./style";
-import ShevronLeft from "../../../public/svg/icons/shevronLeft.svg";
 import Setting from "../../../public/svg/icons/setting.svg";
+import { navBarTypes } from "../../constants/index";
 
-function Navbar({ userId, pageType, setPageType, classes }) {
-  switch (pageType) {
-    case 1:
-      /* Раздел Onboarding */
+function Navbar({ userId, navBar, changeNavBar, classes }) {
+  switch (navBar) {
+    case navBarTypes.onboarding:
       return <div style={{ display: "none" }} />;
-    case 2:
-      /* Страница профиля */
+    case navBarTypes.setting:
+      return <div style={{ display: "none" }} />;
+    case navBarTypes.profile:
       return (
         <div className={classes.grow} color="transparent">
           <Typography className={classes.title} variant="h6" noWrap>
@@ -31,35 +25,10 @@ function Navbar({ userId, pageType, setPageType, classes }) {
             Мой профиль
           </Typography>
           <Link href="/settings">
-            <Button onClick={() => setPageType(5)}>
+            <Button onClick={() => changeNavBar(navBarTypes.setting)}>
               <Setting />
             </Button>
           </Link>
-        </div>
-      );
-    /* Страница редактирования профиля */
-    case 5:
-      return (
-        <div className={classes.grow}>
-          <Typography className={classes.title} variant="h6" noWrap>
-            Findband
-          </Typography>
-          <div className={classes.editProfile}>
-            <Button
-              onClick={() => {
-                setPageType(1);
-                router.back();
-              }}
-            >
-              <ShevronLeft />
-            </Button>
-            <Typography className={classes.title} style={{ marginLeft: 50 }}>
-              Ред. профиль
-            </Typography>
-            <Button style={{ textTransform: "none" }}>
-              <Typography className={classes.saveBtn}>Сохранить</Typography>
-            </Button>
-          </div>
         </div>
       );
     default:
@@ -68,7 +37,7 @@ function Navbar({ userId, pageType, setPageType, classes }) {
           <Typography className={classes.title} variant="h6" noWrap>
             Findband
           </Typography>
-          <Auth userId={userId} setPageType={setPageType} />
+          <Auth userId={userId} changeNavBar={changeNavBar} />
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />

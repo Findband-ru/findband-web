@@ -9,6 +9,7 @@ import StepFive from "../../components/onboarding/StepFive";
 import { firebaseProject } from "../../../firebaseConfig";
 import Policy from "../../components/policy/PolicyFooter";
 import HeaderOnboard from "../../components/onboarding/Header";
+import { navBarTypes, stepsOnboard } from "../../constants/index";
 
 class Registration extends React.Component {
   state = {
@@ -25,7 +26,7 @@ class Registration extends React.Component {
   };
 
   componentDidMount() {
-    this.props.setPageType(1);
+    this.props.changeNavBar(navBarTypes.onboarding);
   }
 
   uploadImages = () =>
@@ -66,10 +67,11 @@ class Registration extends React.Component {
         about: this.state.about,
         images: await Promise.all(imagesUrls),
         audio: audioUrl,
+        createdAt: firebaseProject.firestore.FieldValue.serverTimestamp(),
       })
       .then(() => {
         console.log("Document successfully written!");
-        this.props.setPageType(0);
+        this.props.changeNavBar(navBarTypes.default);
         this.props.router.push("/");
       })
       .catch(function (error) {
@@ -84,7 +86,7 @@ class Registration extends React.Component {
       .signInWithEmailAndPassword(email, password)
       .then(({ user }) => {
         console.log("uid", user.uid);
-        this.props.setPageType(0);
+        this.props.changeNavBar(navBarTypes.default);
         this.props.router.push("/");
       })
       .catch((err) => {
@@ -115,8 +117,8 @@ class Registration extends React.Component {
       .createUserWithEmailAndPassword(email, password)
       .then(({ user }) => {
         console.log("uid", user.uid);
-        this.setState({ userId: user.uid, step: 2 });
-        this.props.setPageType(1);
+        this.setState({ userId: user.uid, step: stepsOnboard.stepTwo });
+        this.props.changeNavBar(navBarTypes.onboarding);
       })
       .catch((err) => {
         console.log(err);
@@ -150,12 +152,40 @@ class Registration extends React.Component {
         .then((doc) => {
           if (!doc.exists) {
             this.setState({
-              step: 2,
+              step: stepsOnboard.stepTwo,
               name: res.user.displayName,
               userId: res.user.uid,
             });
           } else {
-            this.props.setPageType(0);
+            this.props.changeNavBar(navBarTypes.default);
+            this.props.router.push("/");
+          }
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+    });
+  };
+
+  signInWithFacebook = () => {
+    const auth = firebaseProject.auth();
+    const facebookProvider = new firebaseProject.auth.FacebookAuthProvider();
+
+    auth.signInWithPopup(facebookProvider).then((res) => {
+      firebaseProject
+        .firestore()
+        .collection("users")
+        .doc(res.user.uid)
+        .get()
+        .then((doc) => {
+          if (!doc.exists) {
+            this.setState({
+              step: stepsOnboard.stepTwo,
+              name: res.user.displayName,
+              userId: res.user.uid,
+            });
+          } else {
+            this.props.changeNavBar(navBarTypes.default);
             this.props.router.push("/");
           }
         })
@@ -198,8 +228,8 @@ class Registration extends React.Component {
       case 2:
         return (
           <StepTwo
-            setStep={() => this.setState({ step: 3 })}
-            setPageType={this.props.setPageType}
+            setStep={() => this.setState({ step: stepsOnboard.stepThree })}
+            changeNavBar={this.props.changeNavBar}
             setCategory={(label) => {
               this.updateStateArray("mySkill", label);
             }}
@@ -208,8 +238,8 @@ class Registration extends React.Component {
       case 3:
         return (
           <StepThree
-            setStep={() => this.setState({ step: 4 })}
-            setPageType={this.props.setPageType}
+            setStep={() => this.setState({ step: stepsOnboard.stepFour })}
+            changeNavBar={this.props.changeNavBar}
             setCategory={(label) => this.updateStateArray("findSkill", label)}
           />
         );
@@ -217,8 +247,8 @@ class Registration extends React.Component {
         return (
           <StepFour
             getAudio={(audio) => this.setState({ audio })}
-            setStep={() => this.setState({ step: 5 })}
-            setPageType={this.props.setPageType}
+            setStep={() => this.setState({ step: stepsOnboard.stepFive })}
+            changeNavBar={this.props.changeNavBar}
           />
         );
       case 5:
@@ -234,8 +264,9 @@ class Registration extends React.Component {
       default:
         return (
           <StepOne
-            setStep={() => this.setState({ step: 1 })}
+            setStep={() => this.setState({ step: stepsOnboard.signUp })}
             signInWithGoogle={this.signInWithGoogle}
+            signInWithFacebook={this.signInWithFacebook}
           />
         );
     }

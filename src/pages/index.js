@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import FeedCards from "../components/feed/Feed";
 
-function App({ setPageType }) {
+function App({ changeNavBar }) {
   useEffect(() => {
-    setPageType(0);
+    changeNavBar(0);
   }, []);
   return <FeedCards />;
 }

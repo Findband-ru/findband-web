@@ -12,8 +12,9 @@ import Instagram from "@material-ui/icons/Instagram";
 import ShareIcon from "@material-ui/icons/Share";
 import { profileStyle } from "../../style/profileStyle";
 import { firebaseProject } from "../../../firebaseConfig";
+import { navBarTypes } from "../../constants/index";
 
-const ProfilePage = ({ userId, classes, setPageType }) => {
+const ProfilePage = ({ userId, classes, changeNavBar }) => {
   const [name, setName] = useState("");
   const [images, setImages] = useState("");
   const [mySkill, setMySkill] = useState([]);
@@ -21,7 +22,7 @@ const ProfilePage = ({ userId, classes, setPageType }) => {
   const [about, setAbout] = useState("");
 
   useEffect(() => {
-    setPageType(2);
+    changeNavBar(navBarTypes.profile);
     firebaseProject
       .firestore()
       .collection("users")

@@ -10,10 +10,11 @@ import { appStyle } from "../style/appStyle";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { CssBaseline } from "@material-ui/core";
 import theme from "../style/theme";
+import { navBarTypes } from "../constants/index";
 
 function MyApp({ Component, pageProps, classes }) {
   const [userId, setUserId] = useState(null);
-  const [pageType, setPageType] = useState(0);
+  const [navBar, changeNavBar] = useState(navBarTypes.default);
 
   const onChange = (user) => {
     if (user) {
@@ -39,17 +40,13 @@ function MyApp({ Component, pageProps, classes }) {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className={classes.container}>
-          {(pageType === 0 || pageType === 2) && (
-            <Navbar
-              userId={userId}
-              pageType={pageType}
-              setPageType={setPageType}
-            />
-          )}
-          {(pageType === 0 || pageType === 2) && (
-            <Sidebar userId={userId} pageType={pageType} />
-          )}
-          <Component {...pageProps} userId={userId} setPageType={setPageType} />
+          <Navbar userId={userId} navBar={navBar} changeNavBar={changeNavBar} />
+          {navBar !== navBarTypes.onboarding && <Sidebar userId={userId} />}
+          <Component
+            {...pageProps}
+            userId={userId}
+            changeNavBar={changeNavBar}
+          />
         </div>
       </ThemeProvider>
     </>
