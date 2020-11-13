@@ -1,8 +1,12 @@
 export const appStyle = {
   container: {
-    position: "relative",
     flexGrow: 1,
     justifyContent: "center",
     backgroundColor: "#fff",
+    maxWidth: 1200,
+    display: "flex",
+    flexDirection: "column",
+    margin: "0 auto",
+    padding: "0 10px",
   },
 };

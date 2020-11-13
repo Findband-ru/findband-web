@@ -14,6 +14,7 @@ export default class MyDocument extends Document {
               font-family: AvertaCyrillicBlack, sans-serif !important;
               font-weight: 100;
               overflow-y: auto;
+              background: #fff !important;
             }
           `}</style>
         </Head>

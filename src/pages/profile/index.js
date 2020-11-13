@@ -11,6 +11,7 @@ import Telegram from "@material-ui/icons/Telegram";
 import Instagram from "@material-ui/icons/Instagram";
 import ShareIcon from "@material-ui/icons/Share";
 import { profileStyle } from "../../style/profileStyle";
+import AudioPlayer from "../../components/AudioPlayer/index";
 import { firebaseProject } from "../../../firebaseConfig";
 import { navBarTypes } from "../../constants/index";
 
@@ -20,6 +21,7 @@ const ProfilePage = ({ userId, classes, changeNavBar }) => {
   const [mySkill, setMySkill] = useState([]);
   const [findSkill, setFindSkill] = useState([]);
   const [about, setAbout] = useState("");
+  const [audio, setAudio] = useState("");
 
   useEffect(() => {
     changeNavBar(navBarTypes.profile);
@@ -36,6 +38,7 @@ const ProfilePage = ({ userId, classes, changeNavBar }) => {
           setMySkill(doc.data().mySkill);
           setFindSkill(doc.data().findSkill);
           setAbout(doc.data().about);
+          setAudio(doc.data().audio);
         } else {
           console.log("No such document!");
         }
@@ -46,7 +49,7 @@ const ProfilePage = ({ userId, classes, changeNavBar }) => {
   }, []);
 
   return (
-    <div className={classes.profileContainer}>
+    <div className={classes.container}>
       <Card className={classes.root}>
         <CardMedia
           className={classes.media}
@@ -57,40 +60,52 @@ const ProfilePage = ({ userId, classes, changeNavBar }) => {
             className={classes.heartIcon}
             aria-label="add to favorites"
           >
-            <StarBorder />
+            <StarBorder style={{ fontSize: 40 }} />
           </IconButton>
+          {audio !== null && (
+            <div
+              style={{
+                position: "absolute",
+                cursor: "pointer",
+                backgroundColor: "#fff",
+                borderRadius: 50,
+                borderWidth: 1,
+                bottom: -35,
+                right: 15,
+              }}
+            >
+              <AudioPlayer src={audio} autoPlay={false} />
+            </div>
+          )}
         </CardMedia>
         <CardContent>
-          <div>
-            <Typography
-              variant="body2"
-              color="textSecondary"
-              component="p"
-              className={classes.title}
-            >
-              {name}
-            </Typography>
-            <Typography
-              variant="body2"
-              color="textSecondary"
-              component="p"
-              style={{ fontWeight: 700 }}
-            >
-              {mySkill.join(", ")}
-            </Typography>
-            <Typography
-              variant="body2"
-              color="textSecondary"
-              component="p"
-              style={{ fontWeight: 700 }}
-            >
-              <span style={{ fontWeight: 400 }}>Ищу </span>{" "}
-              {findSkill.join(", ")}
-            </Typography>
-            <Typography variant="body2" className={classes.text} component="p">
-              {about}
-            </Typography>
-          </div>
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            component="p"
+            className={classes.title}
+          >
+            {name}
+          </Typography>
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            component="p"
+            style={{ fontWeight: 700 }}
+          >
+            {mySkill.join(", ")}
+          </Typography>
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            component="p"
+            style={{ fontWeight: 700 }}
+          >
+            <span style={{ fontWeight: 400 }}>Ищу </span> {findSkill.join(", ")}
+          </Typography>
+          <Typography variant="body2" className={classes.text} component="p">
+            {about}
+          </Typography>
         </CardContent>
         <CardActions disableSpacing>
           <IconButton aria-label="go to telegram">

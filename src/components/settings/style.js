@@ -15,7 +15,6 @@ export const headerStyle = {
     right: 0,
   },
   title: {
-    margin: "0 auto",
     maxWidth: 250,
     width: "100%",
     fontSize: 24,

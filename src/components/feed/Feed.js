@@ -14,6 +14,7 @@ import Instagram from "@material-ui/icons/Instagram";
 import ShareIcon from "@material-ui/icons/Share";
 import * as styles from "./style";
 import { firebaseProject } from "../../../firebaseConfig";
+import AudioPlayer from "../../components/AudioPlayer/index";
 
 class FeedCards extends React.Component {
   state = {
@@ -27,12 +28,12 @@ class FeedCards extends React.Component {
       .get()
       .then((querySnapshot) => {
         const profiles = [];
-        querySnapshot.forEach(function (doc) {
+        querySnapshot.forEach((doc) => {
           profiles.push(doc.data());
         });
         this.setState({ docProfile: profiles });
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log("Error getting documents: ", error);
       });
   }
@@ -61,8 +62,23 @@ class FeedCards extends React.Component {
                         className={classes.starIcon}
                         aria-label="add to favorites"
                       >
-                        <StarBorder />
+                        <StarBorder style={{ fontSize: 40 }} />
                       </IconButton>
+                      {item.audio !== null && (
+                        <div
+                          style={{
+                            position: "absolute",
+                            cursor: "pointer",
+                            backgroundColor: "#fff",
+                            borderRadius: 50,
+                            borderWidth: 1,
+                            bottom: -35,
+                            right: 15,
+                          }}
+                        >
+                          <AudioPlayer src={item.audio} autoPlay={false} />
+                        </div>
+                      )}
                     </CardMedia>
                     <CardContent>
                       <div>

@@ -3,6 +3,7 @@ export const navStyle = {
     alignItems: "center",
     zIndex: 5,
     display: "flex",
+    justifyContent: "space-between",
     flexGrow: 1,
     boxShadow: "none",
     borderBottom: "2px solid #F3F3F5",
@@ -15,7 +16,6 @@ export const navStyle = {
     right: 0,
   },
   title: {
-    margin: "0 auto",
     maxWidth: 250,
     width: "100%",
     fontSize: 24,

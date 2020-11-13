@@ -25,9 +25,10 @@ function StepFour({ classes, setStep, getAudio }) {
             audioInput.click();
           }}
         >
-          <Input
+          <input
             type="file"
             id="audio"
+            accept="audio/mpeg, audio/mp3"
             onChange={(event) => getAudio(event.target.files[0])}
             style={{ display: "none" }}
             fullWidth={true}

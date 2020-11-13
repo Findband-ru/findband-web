@@ -29,9 +29,7 @@ function Sidebar({ userId, classes }) {
         <div>
           <Button
             className={classes.sidebarButton}
-            onClick={() => {
-              router.push("/profile");
-            }}
+            onClick={() => router.push("/profile")}
           >
             <User />
             <Typography className={classes.sideBarText}>Профиль</Typography>

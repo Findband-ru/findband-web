@@ -1,6 +1,11 @@
 import { createMuiTheme } from "@material-ui/core/styles";
 
 const theme = createMuiTheme({
+  palette: {
+    background: {
+      default: "#fff",
+    },
+  },
   typography: {
     fontFamily: ["AvertaCyrillicLight", "sans-serif"].join(),
     fontWeight: 200,

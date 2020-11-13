@@ -8,7 +8,6 @@ export const sidebarStyle = {
     margin: "0 auto",
     overflow: "auto",
     top: 450,
-    left: "23%",
     webkitTransform: "translateY(-50%)",
     msTransform: "translateY(-50%)",
     transform: "translateY(-50%)",
